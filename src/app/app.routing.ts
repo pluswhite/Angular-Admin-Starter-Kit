@@ -3,9 +3,8 @@ import { ModuleWithProviders } from '@angular/core';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'pages',
     redirectTo: 'pages',
-    pathMatch: 'full'
   },
   {
     path: 'admin',
