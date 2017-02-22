@@ -12,7 +12,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/pages/dashboard'
+    redirectTo: '/admin/dashboard'
   }
 ];
 
