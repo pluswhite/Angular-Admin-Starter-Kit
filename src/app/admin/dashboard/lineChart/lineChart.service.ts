@@ -52,8 +52,8 @@ export class LineChartService {
       categoryAxis: {
         parseDates: true,
         gridAlpha: 0,
-        // color: layoutColors.defaultText,
-        // axisColor: layoutColors.defaultText
+        color: layoutColors.defaultText,
+        axisColor: layoutColors.defaultText
       },
       valueAxes: [
         {
