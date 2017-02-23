@@ -14,6 +14,9 @@ import { LineChartService } from './lineChart/lineChart.service';
 import { TrafficChartComponent } from './trafficChart';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 
+import { UserMapComponent } from './userMap';
+import { UserMapService } from './userMap/userMap.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,12 +28,14 @@ import { TrafficChartService } from './trafficChart/trafficChart.service';
     DashboardComponent,
     PieChartComponent,
     LineChartComponent,
-    TrafficChartComponent
+    TrafficChartComponent,
+    UserMapComponent
   ],
   providers: [
     PieChartService,
     LineChartService,
-    TrafficChartService
+    TrafficChartService,
+    UserMapService
   ],
 })
 export class DashboardModule { }

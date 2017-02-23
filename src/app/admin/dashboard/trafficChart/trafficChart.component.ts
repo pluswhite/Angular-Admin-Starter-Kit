@@ -27,8 +27,6 @@ export class TrafficChartComponent implements OnInit {
 
   private _loadDoughnutCharts () {
     let el = $('#chart-area').get(0) as HTMLCanvasElement;
-    console.log(el);
-    console.log($('#chart-area')[0]);
     new Chart(el.getContext('2d')).Doughnut(this.doughnutData, {
       segmentShowStroke: false,
       percentageInnerCutout : 64,
