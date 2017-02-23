@@ -11,6 +11,9 @@ import { PieChartService } from './pieChart/pieChart.service';
 import { LineChartComponent } from './lineChart';
 import { LineChartService } from './lineChart/lineChart.service';
 
+import { TrafficChartComponent } from './trafficChart';
+import { TrafficChartService } from './trafficChart/trafficChart.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,11 +24,13 @@ import { LineChartService } from './lineChart/lineChart.service';
   declarations: [
     DashboardComponent,
     PieChartComponent,
-    LineChartComponent
+    LineChartComponent,
+    TrafficChartComponent
   ],
   providers: [
     PieChartService,
-    LineChartService
+    LineChartService,
+    TrafficChartService
   ],
 })
 export class DashboardModule { }
