@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PieChartService } from './pieChart.service';
 
 import 'easy-pie-chart/dist/jquery.easypiechart.js';
-// import 'style-loader!./pieChart.component.scss'
+import 'style-loader!./pieChart.component.scss'
 
 @Component({
   selector: 'pie-chart',
@@ -37,7 +37,7 @@ export class PieChartComponent implements OnInit {
         onStep: function (from, to, percent) {
           jQuery(this.el).find('.percent').text(Math.round(percent));
         },
-        barColor: jQuery(this).attr('data-rel'),
+        // barColor: jQuery(this).attr('data-rel'),
         trackColor: 'rgba(0,0,0,0)',
         size: 84,
         scaleLength: 0,

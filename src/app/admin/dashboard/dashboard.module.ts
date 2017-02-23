@@ -8,6 +8,9 @@ import { routing } from './dashboard.routing';
 import { PieChartComponent } from './pieChart';
 import { PieChartService } from './pieChart/pieChart.service';
 
+import { LineChartComponent } from './lineChart';
+import { LineChartService } from './lineChart/lineChart.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,10 +20,12 @@ import { PieChartService } from './pieChart/pieChart.service';
   exports: [],
   declarations: [
     DashboardComponent,
-    PieChartComponent
+    PieChartComponent,
+    LineChartComponent
   ],
   providers: [
-    PieChartService
+    PieChartService,
+    LineChartService
   ],
 })
 export class DashboardModule { }
