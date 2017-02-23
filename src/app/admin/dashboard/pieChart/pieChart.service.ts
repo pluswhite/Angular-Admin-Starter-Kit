@@ -8,7 +8,6 @@ export class PieChartService {
 
   getData () {
     let pieColor = this._baConfig.get().colors.custom.dashboardPeiChart;
-    console.log(pieColor);
 
     let getRndArbitrary = (min, max) => {
       return Math.random() * (max - min) + min;
