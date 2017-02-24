@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: 'app/admin/dashboard/dashboard.module#DashboardModule'
+      },
+      {
+        path: 'forms',
+        loadChildren: 'app/admin/forms/forms.module#FormsModule'
       }
     ]
   },

@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { ModuleWithProviders } from '@angular/core';
 
 // noinspection TypeScriptValidateTypes
-export const routes: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
