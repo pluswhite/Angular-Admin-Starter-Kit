@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 
 import { DashboardComponent } from './dashboard.component';
@@ -17,9 +18,13 @@ import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UserMapComponent } from './userMap';
 import { UserMapService } from './userMap/userMap.service';
 
+import { TodoComponent } from './todo';
+import { TodoService } from './todo/todo.service';
+
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     routing,
     NgaModule
   ],
@@ -29,13 +34,15 @@ import { UserMapService } from './userMap/userMap.service';
     PieChartComponent,
     LineChartComponent,
     TrafficChartComponent,
-    UserMapComponent
+    UserMapComponent,
+    TodoComponent
   ],
   providers: [
     PieChartService,
     LineChartService,
     TrafficChartService,
-    UserMapService
+    UserMapService,
+    TodoService
   ],
 })
 export class DashboardModule { }
