@@ -9,11 +9,11 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'dashboard',
-      //   pathMatch: 'full'
-      // },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
       {
         path: 'dashboard',
         loadChildren: 'app/admin/dashboard/dashboard.module#DashboardModule'

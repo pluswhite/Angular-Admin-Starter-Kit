@@ -1,6 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
+import { NoContentComponent } from './no-content';
+
 export const routes: Routes = [
   {
     path: 'pages',
@@ -11,8 +13,13 @@ export const routes: Routes = [
     redirectTo: 'admin'
   },
   {
+    path: '',
+    redirectTo: '/admin/dashboard',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
-    redirectTo: '/admin/dashboard'
+    component: NoContentComponent,
   }
 ];
 
