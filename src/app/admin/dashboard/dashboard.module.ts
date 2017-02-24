@@ -21,6 +21,9 @@ import { UserMapService } from './userMap/userMap.service';
 import { TodoComponent } from './todo';
 import { TodoService } from './todo/todo.service';
 
+import { CalendarComponent } from './calendar';
+import { CalendarService } from './calendar/calendar.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -35,14 +38,16 @@ import { TodoService } from './todo/todo.service';
     LineChartComponent,
     TrafficChartComponent,
     UserMapComponent,
-    TodoComponent
+    TodoComponent,
+    CalendarComponent
   ],
   providers: [
     PieChartService,
     LineChartService,
     TrafficChartService,
     UserMapService,
-    TodoService
+    TodoService,
+    CalendarService
   ],
 })
 export class DashboardModule { }

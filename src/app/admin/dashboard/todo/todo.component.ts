@@ -3,13 +3,13 @@ import { BaThemeConfigProvider } from '../../../theme';
 
 import { TodoService } from './todo.service';
 
-import 'style-loader!./todo.component.scss';
+// import 'style-loader!./todo.component.scss';
 
 @Component({
   selector: 'todo',
   templateUrl: './todo.component.html',
   styleUrls: [
-    // './todo.component.scss'
+    './todo.component.scss'
   ]
 })
 export class TodoComponent implements OnInit {
