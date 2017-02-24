@@ -16,9 +16,10 @@ import { App } from './app.component';
 import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
+import { NoContentModule } from './no-content/no-content.module';
+import { SiteModule } from './site/site.module';
 import { PagesModule } from './pages/pages.module';
 import { AdminModule } from './admin/admin.module';
-import { NoContentModule } from './no-content/no-content.module';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -47,6 +48,7 @@ export type StoreType = {
     ReactiveFormsModule,
     NgaModule.forRoot(),
     NoContentModule,
+    SiteModule,
     PagesModule,
     AdminModule,
     routing

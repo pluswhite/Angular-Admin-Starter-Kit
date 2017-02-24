@@ -9,6 +9,10 @@ export const routes: Routes = [
     redirectTo: 'pages',
   },
   {
+    path: 'site',
+    redirectTo: 'site',
+  },
+  {
     path: 'admin',
     redirectTo: 'admin'
   },

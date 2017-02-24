@@ -44,6 +44,36 @@ export const ADMIN_MENU = [
           }
         ]
       },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Pages',
+            icon: 'ion-document',
+            selected: false,
+            expanded: false,
+            order: 650,
+          }
+        },
+        children: [
+          {
+            path: ['/site/login'],
+            data: {
+              menu: {
+                title: 'Login'
+              }
+            }
+          },
+          {
+            path: ['/site/register'],
+            data: {
+              menu: {
+                title: 'Register'
+              }
+            }
+          }
+        ]
+      },
     ]
   }
 ];
