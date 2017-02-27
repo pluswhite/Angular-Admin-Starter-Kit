@@ -1,0 +1,20 @@
+import { Injectable } from '@angular/core';
+import { Router, CanActivate } from '@angular/router';
+
+@Injectable()
+
+export class AuthGuard implements CanActivate {
+  constructor(private router: Router) {}
+
+  canActivate() {
+    console.log(localStorage.getItem("currentUser"));
+    if (localStorage.getItem("currentUser")) {
+      // Logged in so return true
+      return true;
+    }
+
+    // Not logged in so redirect to login page
+    this.router.navigate(['/site/login']);
+    return false;
+  }
+}

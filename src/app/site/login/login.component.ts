@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+
+import { AuthService } from '../../_guard/auth.service';
 
 @Component({
   selector: 'login',
@@ -17,7 +20,13 @@ export class LoginComponent implements OnInit {
   public password: AbstractControl;
   public submitted: boolean = false;
 
-  constructor(private http: Http, fb: FormBuilder) {
+  error: any = "";
+
+  constructor(
+    private router: Router,
+    private http: Http,
+    private authService: AuthService,
+    fb: FormBuilder) {
     this.form = fb.group({
       'name': [
         '',
@@ -65,21 +74,30 @@ export class LoginComponent implements OnInit {
       password = data.password,
       creds = "username=" + username + "&password=" + password + "&extra=color";
 
-    var
-      headers = new Headers;
+    // var
+    //   headers = new Headers;
 
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    this.http.post(this.requestUrl, creds, {
-      headers: headers
-    })
-    .map(res => res.json())
-    .subscribe(
-      data => {
-        localStorage.setItem('id_token', data["id_token"]);
-        console.log(data);
-      },
-      err => console.log(err),
-      () => console.log('Login Success!')
-    );
+    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    // this.http.post(this.requestUrl, creds, {
+    //   headers: headers
+    // })
+    // .map(res => res.json())
+    // .subscribe(
+    //   data => {
+    //     localStorage.setItem('id_token', data["id_token"]);
+    //     console.log(data);
+    //   },
+    //   err => console.log(err),
+    //   () => console.log('Login Success!')
+    // );
+    this.authService.login(username, password)
+      .subscribe(result => {
+        if (result["id_token"]) {
+          this.router.navigate(['/admin']);
+        } else {
+          console.log(result);
+          this.error = result;
+        }
+      });
   }
 }

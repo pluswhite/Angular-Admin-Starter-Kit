@@ -92,7 +92,12 @@ export class RegisterComponent implements OnInit {
     })
     .map(res => res.json())
     .subscribe(
-      data => console.log(data),
+      data => {
+        console.log(data);
+        if (data["id_token"]) {
+          // rou
+        }
+      },
       err => console.log(err),
       () => console.log('Register Complete')
     );
