@@ -10,6 +10,9 @@ import { SiteComponent } from './site.component';
 import { LoginComponent } from './login';
 import { LoginService } from './login/login.service';
 
+import { RegisterComponent } from './register';
+import { RegisterService } from './register/register.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,10 +24,12 @@ import { LoginService } from './login/login.service';
   exports: [],
   declarations: [
     SiteComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
-    LoginService
+    LoginService,
+    RegisterService
   ],
 })
 export class SiteModule { }
