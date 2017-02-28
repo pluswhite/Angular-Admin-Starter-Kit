@@ -5,6 +5,10 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
+/**
+ * Core Modules
+ */
+import { CoreModule } from './_core/core.module';
 /*
  * Platform and Environment providers/directives/pipes
  */
