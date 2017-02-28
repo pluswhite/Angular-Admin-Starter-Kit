@@ -90,14 +90,6 @@ export class LoginComponent implements OnInit {
     //   err => console.log(err),
     //   () => console.log('Login Success!')
     // );
-    this.authService.login(username, password)
-      .subscribe(result => {
-        if (result["id_token"]) {
-          this.router.navigate(['/admin']);
-        } else {
-          console.log(result);
-          this.error = result;
-        }
-      });
+    this.authService.login(data);
   }
 }

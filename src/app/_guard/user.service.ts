@@ -19,7 +19,9 @@ export class UserService {
         let headers = new Headers({
           'Authorization': 'Bearer ' + this.authService.token
         });
-        let options = new RequestOptions({ headers: headers });
+        let options = new RequestOptions({
+          headers: headers
+        });
 
         // get users from api
         return this.http.get(this.requestUrl, options)

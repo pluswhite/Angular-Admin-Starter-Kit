@@ -1,8 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
-import { AuthGuard } from './_guard';
-
 import { NoContentComponent } from './no-content';
 
 export const routes: Routes = [
@@ -16,8 +14,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    redirectTo: 'admin',
-    canActivate: [AuthGuard]
+    redirectTo: 'admin'
   },
   {
     path: '',

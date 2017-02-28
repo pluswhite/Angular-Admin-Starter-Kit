@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
 
@@ -21,7 +22,10 @@ export class RegisterComponent implements OnInit {
 
   public submitted: boolean = false;
 
-  constructor(private http: Http, fb: FormBuilder) {
+  constructor(
+    private router: Router,
+    private http: Http,
+    fb: FormBuilder) {
     this.form = fb.group({
       'name': [
         '',
@@ -95,7 +99,7 @@ export class RegisterComponent implements OnInit {
       data => {
         console.log(data);
         if (data["id_token"]) {
-          // rou
+          // this.router.navigate(['/site/login']);
         }
       },
       err => console.log(err),
