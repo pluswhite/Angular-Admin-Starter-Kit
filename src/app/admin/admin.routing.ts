@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: 'app/admin/dashboard/dashboard.module#DashboardModule'
       },
       {
+        path: 'users',
+        loadChildren: 'app/admin/users/users.module#UsersModule'
+      },
+      {
         path: 'forms',
         loadChildren: 'app/admin/forms/forms.module#FormsModule'
       }

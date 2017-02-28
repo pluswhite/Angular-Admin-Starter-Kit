@@ -15,6 +15,36 @@ export const ADMIN_MENU = [
         }
       },
       {
+        path: 'users',
+        data: {
+          menu: {
+            title: 'Users',
+            icon: 'ion-person-stalker',
+            selected: false,
+            expanded: false,
+            order: 650,
+          }
+        },
+        children: [
+          {
+            path: 'user-list',
+            data: {
+              menu: {
+                title: 'User List'
+              }
+            }
+          },
+          // {
+          //   path: ['/site/register'],
+          //   data: {
+          //     menu: {
+          //       title: 'Register'
+          //     }
+          //   }
+          // }
+        ]
+      },
+      {
         path: 'forms',
         data: {
           menu: {
