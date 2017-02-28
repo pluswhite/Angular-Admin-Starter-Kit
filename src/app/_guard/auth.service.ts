@@ -16,9 +16,9 @@ export class AuthService {
     private http: Http) {
     // Set token if saved in local storage
     var
-      currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      currentUser = localStorage.getItem("currentUser");
 
-    this.token = currentUser && currentUser.token;
+    this.token = currentUser || "";
   }
 
   login(data) {
@@ -38,7 +38,7 @@ export class AuthService {
     .map(res => res.json())
     .subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         let
           // Login successful if there's a jwt token in the response
           token = data && data["id_token"];

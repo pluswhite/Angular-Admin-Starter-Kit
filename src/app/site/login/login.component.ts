@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   public submitted: boolean = false;
 
   error: any = "";
+  message : string;
 
   constructor(
     private router: Router,
@@ -58,38 +59,26 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
-  public onSubmit(values: Object): void {
+  sendMsg() {
+    this.message = "Logged " + (this.authService.isLoggedIn ? "in" : "out");
+    console.log(this.message);
+  }
+
+  onSubmit(values: Object): void {
     this.submitted = true;
     if (this.form.valid) {
-      // Send form code
-      console.log(values);
+      this.message = "Trying to log in ...";
       this.login(values);
     }
   }
 
   login (data) {
-    var
-      username = data.name,
-      // email = data.email,
-      password = data.password,
-      creds = "username=" + username + "&password=" + password + "&extra=color";
-
-    // var
-    //   headers = new Headers;
-
-    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    // this.http.post(this.requestUrl, creds, {
-    //   headers: headers
-    // })
-    // .map(res => res.json())
-    // .subscribe(
-    //   data => {
-    //     localStorage.setItem('id_token', data["id_token"]);
-    //     console.log(data);
-    //   },
-    //   err => console.log(err),
-    //   () => console.log('Login Success!')
-    // );
     this.authService.login(data);
+    this.sendMsg();
+  }
+
+  logout () {
+    this.authService.logout();
+    this.sendMsg();
   }
 }
