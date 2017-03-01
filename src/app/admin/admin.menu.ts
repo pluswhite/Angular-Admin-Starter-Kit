@@ -34,14 +34,14 @@ export const ADMIN_MENU = [
               }
             }
           },
-          // {
-          //   path: ['/site/register'],
-          //   data: {
-          //     menu: {
-          //       title: 'Register'
-          //     }
-          //   }
-          // }
+          {
+            path: 'new-user',
+            data: {
+              menu: {
+                title: 'New User'
+              }
+            }
+          }
         ]
       },
       {
