@@ -1,0 +1,6 @@
+{
+  "id": 1,
+  "username": "Eric",
+  "email": "eric@v.com",
+  "token": "angular2-jwt-token"
+}

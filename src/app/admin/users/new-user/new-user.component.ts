@@ -117,7 +117,16 @@ export class NewUserComponent implements OnInit {
     this.submitted = true;
     if (this.form.valid) {
       // TDDO: Data send & handle.
-      this.newUserService.addUser(values);
+      this.newUserService.addUser(values)
+        .subscribe(
+          data => {
+            console.log(data);
+          },
+          error => {
+            this.formErrors.formError = error.message;
+            console.log(error);
+          }
+        );
     } else {
       this.formErrors.formError = "Some Errors";
     }
