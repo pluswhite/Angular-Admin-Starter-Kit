@@ -121,6 +121,7 @@ export class NewUserComponent implements OnInit {
         .subscribe(
           data => {
             console.log(data);
+            this.router.navigate(['../user-list']);
           },
           error => {
             this.formErrors.formError = error.message;
