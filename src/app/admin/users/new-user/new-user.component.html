@@ -10,72 +10,81 @@
   <div class="row justify-content-md-center">
     <div class="col-md-8 col-sm-10 col-xs-12 offset-md-2 offset-sm-1">
       <ba-card title="New User" baCardClass="with-scroll">
-        <form action="" class="">
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
           <fieldset>
-            <legend>User Level</legend>
-             <div class="form-group">
-              <label for="input01">Text</label>
-              <input type="text" class="form-control" id="input01" placeholder="Text">
+            <legend>Basic</legend>
+            <div class="form-group row">
+              <label for="user_name" class="col-sm-2 form-control-label">Name</label>
+              <div class="col-sm-10" [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched), 'has-feedback': (name.valid && name.touched)}">
+                <input [formControl]="name" type="text" class="form-control" id="user_name" placeholder="Name">
+                <i *ngIf="name.valid && name.touched" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+                <!--<i *ngIf="!name.valid && name.touched" class="ion-android-cancel form-control-feedback" aria-hidden="true"></i>-->
+                <span class="help-block sub-little-text error-block">
+                  {{formErrors.name}}
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="user_email" class="col-sm-2 form-control-label">Email</label>
+              <div class="col-sm-10" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched), 'has-feedback': (email.valid && email.touched)}">
+                <input [formControl]="email" type="text" class="form-control" id="user_email" placeholder="Email">
+                <i *ngIf="email.valid && email.touched" class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+                <span class="help-block sub-little-text error-block">
+                  {{formErrors.email}}
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleSelect1" class="col-sm-2 form-control-label">Example select</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="exampleSelect1" name="level">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="user_profile" class="col-sm-2 form-control-label">Profile</label>
+              <div class="col-sm-10">
+                <textarea placeholder="Profile" class="form-control" id="user_profile"></textarea>
+              </div>
             </div>
           </fieldset>
           <fieldset>
-            <legend>Basic Info</legend>
-            <div class="form-group has-success">
-              <label class="control-label" for="inputSuccess1">Input with success</label>
-              <input type="text" class="form-control" id="inputSuccess1">
-            </div>
-            <div class="form-group">
-              <label for="input04">With help</label>
-              <input type="text" class="form-control" id="input04" placeholder="With help">
-              <span class="help-block sub-little-text">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-            </div>
-            <div class="form-group">
-              <label for="exampleSelect1">Example select</label>
-              <select class="form-control" id="exampleSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="textarea01">Textarea</label>
-              <textarea placeholder="Default Input" class="form-control" id="textarea01"></textarea>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Extra Info</legend>
-              <div class="form-group has-warning">
-              <label class="control-label" for="inputWarning1">Input with warning</label>
-              <input type="text" class="form-control" id="inputWarning1">
-            </div>
-            <div class="form-group has-error">
-              <label class="control-label" for="inputError1">Input with error</label>
-              <input type="text" class="form-control" id="inputError1">
-            </div>
+            <legend>Extra</legend>
             <!--<ba-multi-checkbox [(ngModel)]="checkboxModel" [propertiesMapping]="checkboxPropertiesMapping"></ba-multi-checkbox>-->
-            <div class="form-group has-success has-feedback">
-              <label class="control-label" for="inputSuccess2">Input with success</label>
-              <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-              <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
-              <span id="inputSuccess2Status" class="sr-only">(success)</span>
+            <div class="form-group row">
+              <label class="col-sm-2 col-xs-3 control-label" for="inputSuccess2">Input with success</label>
+              <div class="col-sm-10 col-xs-9 has-success has-feedback">
+                <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+                <i class="ion-checkmark-circled form-control-feedback" aria-hidden="true"></i>
+                <span id="inputSuccess2Status" class="sr-only">(success)</span>
+              </div>
             </div>
-            <div class="form-group has-warning has-feedback">
-              <label class="control-label" for="inputWarning2">Input with warning</label>
-              <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
-              <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
-              <span id="inputWarning2Status" class="sr-only">(warning)</span>
+            <div class="form-group row">
+              <label class="col-sm-2 control-label" for="inputWarning2">Input with warning</label>
+              <div class="col-sm-10 has-warning has-feedback">
+                <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+                <i class="ion-alert-circled form-control-feedback" aria-hidden="true"></i>
+                <span id="inputWarning2Status" class="sr-only">(warning)</span>
+              </div>
             </div>
-            <div class="form-group has-error has-feedback">
-              <label class="control-label" for="inputError2">Input with error</label>
-              <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
-              <i class="ion-android-cancel form-control-feedback" aria-hidden="true"></i>
-              <span id="inputError2Status" class="sr-only">(error)</span>
+            <div class="form-group row has-error has-feedback">
+              <label class="col-sm-2 control-label" for="inputError2">Input with error</label>
+              <div class="col-sm-10 has-warning has-feedback">
+                <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+                <i class="ion-android-cancel form-control-feedback" aria-hidden="true"></i>
+                <span id="inputError2Status" class="sr-only">(error)</span>
+              </div>
             </div>
           </fieldset>
           <fieldset>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="offset-sm-2 col-sm-10">
+              <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </fieldset>
         </form>
       </ba-card>

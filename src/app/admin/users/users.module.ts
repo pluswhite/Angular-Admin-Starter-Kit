@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -14,6 +15,7 @@ import { NewUserService } from './new-user/new-user.service';
 @NgModule({
   imports: [
     SharedModule,
+    ReactiveFormsModule,
     routing,
     Ng2SmartTableModule
   ],

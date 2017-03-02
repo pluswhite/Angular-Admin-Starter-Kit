@@ -1,3 +1,31 @@
+fieldset,
+legend {
+  padding: 0;
+  border: 0;
+}
+fieldset {
+  margin: 0;
+  min-width: 0;
+  & + fieldset {
+    padding-top: 18px;
+    border-top: 1px solid #e5e5e5;
+  }
+}
+
+legend {
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: inherit;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: inherit;
+}
+
+label {
+  text-align: right;
+}
+
 .label {
   border-radius: 0;
 }
@@ -347,6 +375,11 @@ label.custom-input-danger {
     background-color: $color;
     color: $label-text;
   }
+
+  .error-block {
+    display: block;
+    color: $color;
+  }
 }
 
 .input-group-addon {
@@ -356,11 +389,12 @@ label.custom-input-danger {
 .form-control-feedback {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 15px;
   z-index: 2;
   display: block;
   width: 34px;
   height: 34px;
+  margin-top: 0;
   line-height: 34px;
   text-align: center;
   pointer-events: none;
