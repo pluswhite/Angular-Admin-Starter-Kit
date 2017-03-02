@@ -4,4 +4,8 @@ import { Injectable } from '@angular/core';
 export class NewUserService {
 
   constructor() { }
+
+  addUser(userData) {
+    console.log(userData);
+  }
 }

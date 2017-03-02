@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+
+import { NewUserService } from './new-user.service';
 
 @Component({
   selector: 'new-user',
@@ -9,31 +12,18 @@ export class NewUserComponent implements OnInit {
   public form: FormGroup;
   public name: AbstractControl;
   public email: AbstractControl;
+  public level: AbstractControl;
+  public profile: AbstractControl;
+  public role: AbstractControl;
   public submitted: boolean = false;
-  public checkboxModel = [{
-    name: 'Checkbox with success',
-    state: false,
-    class: 'has-success checkbox'
-  }, {
-    name: 'Checkbox with warning',
-    state: false,
-    class: 'has-warning checkbox',
-  }, {
-    name: 'Checkbox with error',
-    state: false,
-    class: 'has-error checkbox'
-  }];
-
-  public checkboxPropertiesMapping = {
-    model: 'state',
-    value: 'name',
-    label: 'name',
-    baCheckboxClass: 'class'
-  };
 
   public formErrors = {
     "name": "",
-    "email": ""
+    "email": "",
+    "level": "",
+    "profile": "",
+    "role": "",
+    "formError": ""
   };
   validationMessages = {
     'name': {
@@ -43,10 +33,19 @@ export class NewUserComponent implements OnInit {
     'email': {
       'required': 'Email is required.',
       'pattern': 'Please enter the correct email address.'
-    }
+    },
+    'level': {
+      'required': 'Level is\'t empty.',
+    },
+    'profile': {},
+    "role": {}
   };
 
-  constructor(public fb: FormBuilder) {
+  constructor(
+    public router: Router,
+    public route: ActivatedRoute,
+    public fb: FormBuilder,
+    public newUserService: NewUserService) {
   }
 
   ngOnInit() {
@@ -55,7 +54,7 @@ export class NewUserComponent implements OnInit {
 
   buildForm() {
     this.form = this.fb.group({
-      'name': [
+      "name": [
         '',
         Validators.compose([
           Validators.required,
@@ -63,17 +62,32 @@ export class NewUserComponent implements OnInit {
           Validators.maxLength(32)
         ])
       ],
-      'email': [
+      "email": [
         '',
         Validators.compose([
           Validators.required,
           Validators.pattern("^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$")
         ])
+      ],
+      'level': [
+        '1',
+        Validators.compose([
+          Validators.required
+        ]),
+      ],
+      'profile': [
+        ''
+      ],
+      'role': [
+        'editor'
       ]
     });
 
     this.email = this.form.controls['email'];
     this.name = this.form.controls['name'];
+    this.level = this.form.controls['level'];
+    this.profile = this.form.controls['profile'];
+    this.role = this.form.controls['role'];
 
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -102,7 +116,10 @@ export class NewUserComponent implements OnInit {
   public onSubmit (values: Object): void {
     this.submitted = true;
     if (this.form.valid) {
-      console.log(values);
+      // TDDO: Data send & handle.
+      this.newUserService.addUser(values);
+    } else {
+      this.formErrors.formError = "Some Errors";
     }
   }
 }
