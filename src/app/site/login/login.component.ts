@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http, Headers } from '@angular/http';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { AuthService } from '../../_guard/auth.service';
+import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
+
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'login',
@@ -13,10 +14,8 @@ import { AuthService } from '../../_guard/auth.service';
   ]
 })
 export class LoginComponent implements OnInit {
-  public requestUrl: string = "http://localhost:3001/sessions/create";
   public form: FormGroup;
-  public name:AbstractControl;
-  // public email: AbstractControl;
+  public email: AbstractControl;
   public password: AbstractControl;
   public submitted: boolean = false;
 
@@ -24,25 +23,16 @@ export class LoginComponent implements OnInit {
   message : string;
 
   constructor(
-    private router: Router,
-    private http: Http,
-    private authService: AuthService,
+    private _loginService: LoginService,
     public fb: FormBuilder) {
     this.form = fb.group({
-      'name': [
+      'email': [
         '',
         Validators.compose([
           Validators.required,
-          Validators.minLength(4)
+          EmailValidator.validate
         ])
       ],
-      // 'email': [
-      //   '',
-      //   Validators.compose([
-      //     Validators.required,
-      //     Validators.minLength(4)
-      //   ])
-      // ],
       'password': [
         '',
         Validators.compose([
@@ -52,15 +42,15 @@ export class LoginComponent implements OnInit {
       ]
     });
 
-    this.name = this.form.controls['name'];
-    // this.email = this.form.controls['email'];
+    this.email = this.form.controls['email'];
     this.password = this.form.controls['password'];
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this._loginService.checkLogin();
+  }
 
   sendMsg() {
-    this.message = "Logged " + (this.authService.isLoggedIn ? "in" : "out");
     console.log(this.message);
   }
 
@@ -68,17 +58,12 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.form.valid) {
       this.message = "Trying to log in ...";
-      this.login(values);
+      this._loginService.doLogin(values);
     }
   }
 
-  login (data) {
-    this.authService.login(data);
-    this.sendMsg();
-  }
-
   logout () {
-    this.authService.logout();
+    this._loginService.doLogout();
     this.sendMsg();
   }
 }

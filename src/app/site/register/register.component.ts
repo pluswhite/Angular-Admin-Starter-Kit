@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from './register.service';
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
@@ -24,8 +22,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private _registerService : RegisterService,
-    private router: Router,
-    private http: Http,
     fb: FormBuilder) {
     this.form = fb.group({
       'name': [
@@ -81,33 +77,6 @@ export class RegisterComponent implements OnInit {
       this._registerService.doRegister(values);
     }
   }
-
-  // register (data) {
-  //   var
-  //     username = data.name,
-  //     email = data.email,
-  //     password = data.passwords.password,
-  //     creds = "username=" + username + "&email=" + email + "&password=" + password + "&extra=color";
-
-  //   var
-  //     headers = new Headers;
-
-  //   headers.append('Content-Type', 'application/x-www-form-urlencoded');
-  //   this.http.post(this.requestUrl, creds, {
-  //     headers: headers
-  //   })
-  //   .map(res => res.json())
-  //   .subscribe(
-  //     data => {
-  //       console.log(data);
-  //       if (data["id_token"]) {
-  //         // this.router.navigate(['/site/login']);
-  //       }
-  //     },
-  //     err => console.log(err),
-  //     () => console.log('Register Complete')
-  //   );
-  // }
 
   logError () {
 
