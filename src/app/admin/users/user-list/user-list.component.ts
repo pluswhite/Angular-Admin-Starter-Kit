@@ -61,9 +61,22 @@ export class UserListComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
   constructor(protected userListService: UserListService) {
-    this.userListService.getData().then((data) => {
-      this.source.load(data);
-    });
+    // this.userListService.getData().then((data) => {
+    //   this.source.load(data);
+    // });
+
+    this.userListService
+      .getUserListData()
+      .map(res => res.json())
+      .subscribe(
+        res => {
+          console.log(res);
+          this.source.load(res);
+        },
+        error => {
+          console.log(error);
+        }
+      )
   }
 
   ngOnInit() { }
