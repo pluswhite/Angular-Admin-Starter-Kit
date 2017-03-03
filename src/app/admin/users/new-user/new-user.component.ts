@@ -118,10 +118,11 @@ export class NewUserComponent implements OnInit {
     if (this.form.valid) {
       // TDDO: Data send & handle.
       this.newUserService.addUser(values)
+        .map(res => res.json())
         .subscribe(
           data => {
             console.log(data);
-            this.router.navigate(['../user-list']);
+            // this.router.navigate(['../user-list']);
           },
           error => {
             this.formErrors.formError = error.message;

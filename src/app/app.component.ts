@@ -1,6 +1,7 @@
 import { Component, ViewContainerRef } from '@angular/core';
 
 import { GlobalState } from './global.state';
+import { Angular2TokenService } from 'angular2-token';
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
 import { BaThemeConfig } from './theme/theme.config';
 import { layoutPaths } from './theme/theme.constants';
@@ -26,10 +27,17 @@ export class App {
   isMenuCollapsed: boolean = false;
 
   constructor(private _state: GlobalState,
+              private _tokenService: Angular2TokenService,
               private _imageLoader: BaImageLoaderService,
               private _spinner: BaThemeSpinner,
               private viewContainerRef: ViewContainerRef,
               private themeConfig: BaThemeConfig) {
+
+    this._tokenService.init({
+      signInPath: 'http://localhost:3005/auth/sign_in',
+      signInRedirect: 'admin/dashboard',
+      registerAccountPath: 'http://localhost:3005/auth'
+    });
 
     themeConfig.config();
 

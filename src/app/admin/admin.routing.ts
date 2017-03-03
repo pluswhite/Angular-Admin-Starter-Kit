@@ -1,6 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
+import { Angular2TokenService } from 'angular2-token';
+
 import { AuthGuard } from '../_guard';
 
 import { AdminComponent } from './admin.component';
@@ -10,7 +12,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [
-      AuthGuard
+      Angular2TokenService
     ],
     children: [
       {

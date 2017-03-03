@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
+import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 /**
  * Core Modules
  */
@@ -56,6 +56,7 @@ export type StoreType = {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    A2tUiModule,
     NgaModule.forRoot(),
     NoContentModule,
     SiteModule,
@@ -66,6 +67,7 @@ export type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
+    Angular2TokenService,
     AuthGuard,
     AuthService,
     UserService

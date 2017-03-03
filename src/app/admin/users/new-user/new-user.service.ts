@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { Angular2TokenService } from 'angular2-token';
 
 @Injectable()
 export class NewUserService {
@@ -10,15 +11,12 @@ export class NewUserService {
   public subject: Subject<any> = new Subject<any>();
 
   constructor(
+    private _tokenService: Angular2TokenService,
     public http: Http
   ) { }
 
   addUser(userData) {
     // console.log(userData);
-    return this.http.get(this.userRequestUrl)
-            .map((res: Response) => {
-              let user = res.json();
-              this.subject.next(user);
-            })
+    return this._tokenService.get(this.userRequestUrl);
   }
 }
