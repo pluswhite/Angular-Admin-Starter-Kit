@@ -36,7 +36,7 @@ export class App {
     this._tokenService.init({
       apiPath: 'http://localhost:3005',
       signInPath: 'auth/sign_in',
-      signInRedirect: 'auth/sign_in',
+      signInRedirect: '/site/login',
       registerAccountPath: 'auth',
     });
 

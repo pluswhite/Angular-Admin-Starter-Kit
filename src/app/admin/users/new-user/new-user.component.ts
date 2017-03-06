@@ -122,7 +122,9 @@ export class NewUserComponent implements OnInit {
         .subscribe(
           data => {
             console.log(data);
-            // this.router.navigate(['../user-list']);
+            this.router.navigate(['../user-list'], {
+              relativeTo: this.route
+            });
           },
           error => {
             this.formErrors.formError = error.message;

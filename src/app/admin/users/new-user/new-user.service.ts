@@ -7,7 +7,7 @@ import { Angular2TokenService } from 'angular2-token';
 @Injectable()
 export class NewUserService {
 
-  public userRequestUrl = "mock-data/new-user-mock.json";
+  public userRequestUrl = "users";
   public subject: Subject<any> = new Subject<any>();
 
   constructor(
@@ -17,6 +17,9 @@ export class NewUserService {
 
   addUser(userData) {
     // console.log(userData);
-    return this._tokenService.get(this.userRequestUrl);
+    return this._tokenService.post(this.userRequestUrl, {
+      userData
+    });
+    // return this._tokenService.get(this.userRequestUrl);
   }
 }
