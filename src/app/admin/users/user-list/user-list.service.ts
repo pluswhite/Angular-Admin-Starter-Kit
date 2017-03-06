@@ -4,7 +4,7 @@ import { Angular2TokenService } from 'angular2-token';
 @Injectable()
 export class UserListService {
 
-  public requestUrl = "mock-data/user-list-mock.json"
+  public requestUrl = "users"
 
   constructor(
     private _tokenService: Angular2TokenService
@@ -544,14 +544,6 @@ export class UserListService {
       isPercentUp: false
     }
   ];
-
-  getData(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.smartTableData);
-      }, 2000);
-    });
-  }
 
   getUserListData() {
     return this._tokenService
