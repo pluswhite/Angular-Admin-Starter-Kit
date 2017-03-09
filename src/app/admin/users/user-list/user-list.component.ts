@@ -14,8 +14,6 @@ import 'style-loader!./user-list.component.scss';
 })
 export class UserListComponent implements OnInit {
 
-  uery: string = '';
-
   settings = {
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline"></i>',

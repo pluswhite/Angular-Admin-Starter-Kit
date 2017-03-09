@@ -8,6 +8,7 @@ import { layoutPaths } from './theme/theme.constants';
 
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
+import 'style-loader!../../node_modules/ng2-toasty/style.css';
 
 /*
  * App Component
@@ -18,6 +19,7 @@ import 'style-loader!./theme/initial.scss';
   template: `
     <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
       <div class="additional-bg"></div>
+      <ng2-toasty></ng2-toasty>
       <router-outlet></router-outlet>
     </main>
   `
