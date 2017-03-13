@@ -16,13 +16,7 @@ import 'style-loader!../../node_modules/ng2-toasty/style.css';
  */
 @Component({
   selector: 'app-root',
-  template: `
-    <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
-      <div class="additional-bg"></div>
-      <ng2-toasty></ng2-toasty>
-      <router-outlet></router-outlet>
-    </main>
-  `
+  templateUrl: './app.component.html'
 })
 export class App {
 

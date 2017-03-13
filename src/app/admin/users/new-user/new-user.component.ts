@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
+import { ToastyService, ToastData } from 'ng2-toasty';
+
 import { NewUserService } from './new-user.service';
 
 @Component({
@@ -45,7 +47,8 @@ export class NewUserComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public fb: FormBuilder,
-    public newUserService: NewUserService) {
+    private _toastyService: ToastyService,
+    private _newUserService: NewUserService) {
   }
 
   ngOnInit() {
@@ -114,16 +117,29 @@ export class NewUserComponent implements OnInit {
   }
 
   public onSubmit (values: Object): void {
+    var
+      that = this;
     this.submitted = true;
     if (this.form.valid) {
       // TDDO: Data send & handle.
-      this.newUserService.addUser(values)
+      this._newUserService.addUser(values)
         .map(res => res.json())
         .subscribe(
           data => {
             console.log(data);
-            this.router.navigate(['../user-list'], {
-              relativeTo: this.route
+            this._toastyService.success({
+              title: "Success!",
+              msg: "New user has been added.",
+              showClose: true,
+              timeout: 5000,
+              theme: 'default',
+              onAdd: (toast:ToastData) => {
+              },
+              onRemove: function(toast:ToastData) {
+                that.router.navigate(['../user-list'], {
+                  relativeTo: that.route
+              });
+              }
             });
           },
           error => {

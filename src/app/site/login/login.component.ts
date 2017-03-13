@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   public submitted: boolean = false;
 
   error: any = "";
-  message : string;
 
   constructor(
     private _loginService: LoginService,
@@ -50,20 +49,14 @@ export class LoginComponent implements OnInit {
     this._loginService.checkLogin();
   }
 
-  sendMsg() {
-    console.log(this.message);
-  }
-
   onSubmit(values: Object): void {
     this.submitted = true;
     if (this.form.valid) {
-      this.message = "Trying to log in ...";
       this._loginService.doLogin(values);
     }
   }
 
   logout () {
     this._loginService.doLogout();
-    this.sendMsg();
   }
 }

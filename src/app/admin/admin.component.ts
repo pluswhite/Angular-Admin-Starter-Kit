@@ -37,10 +37,11 @@ export class AdminComponent implements OnInit {
         timeout: 10000,
         theme: 'default',
         onAdd: (toast:ToastData) => {
-            console.log('Toast ' + toast.id + ' has been added!');
+          console.log(toast);
+          console.log('Toast ' + toast.id + ' has been added!');
         },
         onRemove: function(toast:ToastData) {
-            console.log('Toast ' + toast.id + ' has been removed!');
+          console.log('Toast ' + toast.id + ' has been removed!');
         }
     };
     // Add see all possible types in one shot
