@@ -9,9 +9,31 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <ba-card title="User List" baCardClass="with-scroll">
-        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
-      </ba-card>
+      <p-messages [value]="msgs"></p-messages>
+      <p-panel>
+        <p-header>
+          <div class="ui-helper-clearfix">
+            <p-toolbar [style]="{'border':'none'}">
+              <div class="ui-toolbar-group-left">
+                <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Custom Header</span>
+              </div>
+              <div class="ui-toolbar-group-right">
+                <button pButton class="ui-button-primary" type="button" icon="fa-refresh" (click)="refresh()"></button>
+              </div>
+            </p-toolbar>
+          </div>
+        </p-header>
+        <p-dataTable [value]="users" [lazy]="true" [rows]="10" [paginator]="true" [responsive]="true" [stacked]="stacked"
+          [totalRecords]="totalRecords" (onLazyLoad)="loadUsersLazy($event)">
+          <p-header>List of Users</p-header>
+          <p-column field="id" header="ID"></p-column>
+          <p-column field="firstName" header="First Name"></p-column>
+          <p-column field="lastName" header="Last Name"></p-column>
+          <p-column field="username" header="Username"></p-column>
+          <p-column field="email" header="E-mail"></p-column>
+          <p-column field="age" header="Age"></p-column>
+        </p-dataTable>
+      </p-panel>
     </div>
   </div>
 

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
+
+import { DataTableModule, SharedModule as PrimeSharedModule, PanelModule, MessagesModule, ToolbarModule, ButtonModule } from 'primeng/primeng';
 
 import { routing } from './users.routing';
 import { UsersComponent } from './users.component';
@@ -17,7 +18,12 @@ import { NewUserService } from './new-user/new-user.service';
     SharedModule,
     ReactiveFormsModule,
     routing,
-    Ng2SmartTableModule
+    PrimeSharedModule,
+    PanelModule,
+    ButtonModule,
+    ToolbarModule,
+    MessagesModule,
+    DataTableModule
   ],
   exports: [],
   declarations: [

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+
+import { LazyLoadEvent, Message } from 'primeng/primeng';
 
 import { UserListService } from './user-list.service';
+import { User } from './user';
 
 import 'style-loader!./user-list.component.scss';
 
@@ -14,73 +16,61 @@ import 'style-loader!./user-list.component.scss';
 })
 export class UserListComponent implements OnInit {
 
-  settings = {
-    add: {
-      addButtonContent: '<i class="ion-ios-plus-outline"></i>',
-      createButtonContent: '<i class="ion-checkmark"></i>',
-      cancelButtonContent: '<i class="ion-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="ion-edit"></i>',
-      saveButtonContent: '<i class="ion-checkmark"></i>',
-      cancelButtonContent: '<i class="ion-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="ion-trash-a"></i>',
-      confirmDelete: true
-    },
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number'
-      },
-      firstName: {
-        title: 'First Name',
-        type: 'string'
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string'
-      },
-      username: {
-        title: 'Username',
-        type: 'string'
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string'
-      },
-      age: {
-        title: 'Age',
-        type: 'number'
-      }
-    }
-  };
+  dataSource: User[];
 
-  source: LocalDataSource = new LocalDataSource();
+  users: User[];
+
+  totalRecords: number;
+
+  msgs: Message[] = [];
+
   constructor(protected userListService: UserListService) {
+  }
 
+  ngOnInit() {
+    this.getDataList();
+  }
+
+  getDataList () {
     this.userListService
       .getUserListData()
       .map(res => res.json())
       .subscribe(
         res => {
-          // console.log(res.data);
-          this.source.load(res.data);
+          this.dataSource = res.data;
+          this.totalRecords = this.dataSource.length;
+          this.users = this.dataSource.slice(0, 10);
         },
         error => {
           console.log(error);
+          this.msgs.push({
+            severity:'error',
+            summary:'Error Message',
+            detail:'Some error occurs.'
+          });
         }
       )
   }
 
-  ngOnInit() { }
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
+  loadUsersLazy(event: LazyLoadEvent) {
+    //in a real application, make a remote request to load data using state metadata from event
+    //event.first = First row offset
+    //event.rows = Number of rows per page
+    //event.sortField = Field name to sort with
+    //event.sortOrder = Sort order as number, 1 for asc and -1 for dec
+    //filters: FilterMetadata object having field as key and filter value, filter matchMode as value
+
+    //imitate db connection over a network
+    setTimeout(() => {
+      if(this.dataSource) {
+        this.users = this.dataSource.slice(event.first, (event.first + event.rows));
+      }
+    }, 250);
+  }
+
+  refresh () {
+    this.msgs = [];
+    this.getDataList();
   }
 }

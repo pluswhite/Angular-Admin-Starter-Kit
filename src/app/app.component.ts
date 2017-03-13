@@ -8,6 +8,8 @@ import { layoutPaths } from './theme/theme.constants';
 
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
+import 'style-loader!../../node_modules/primeng/resources/themes/omega/theme.css';
+import 'style-loader!../../node_modules/primeng/resources/primeng.min.css';
 import 'style-loader!../../node_modules/ng2-toasty/style.css';
 
 /*
