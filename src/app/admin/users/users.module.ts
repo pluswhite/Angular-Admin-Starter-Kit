@@ -24,6 +24,9 @@ import { UserListService } from './user-list/user-list.service';
 import { NewUserComponent } from './new-user';
 import { NewUserService } from './new-user/new-user.service';
 
+import { EditUserComponent } from './edit-user';
+import { EditUserService } from './edit-user/edit-user.service';
+
 @NgModule({
   imports: [
     SharedModule,
@@ -43,12 +46,14 @@ import { NewUserService } from './new-user/new-user.service';
   declarations: [
     UsersComponent,
     UserListComponent,
-    NewUserComponent
+    NewUserComponent,
+    EditUserComponent
   ],
   providers: [
+    ConfirmationService,
     UserListService,
     NewUserService,
-    ConfirmationService
+    EditUserService
   ],
 })
 export class UsersModule { }

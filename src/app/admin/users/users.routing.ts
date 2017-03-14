@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { UserListComponent } from './user-list';
 import { NewUserComponent } from './new-user';
+import { EditUserComponent } from './edit-user';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'new-user',
         component: NewUserComponent
+      },
+      {
+        path: 'edit-user/:id',
+        component: EditUserComponent
       }
     ]
   }

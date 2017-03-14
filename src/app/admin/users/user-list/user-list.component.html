@@ -47,6 +47,7 @@
             <template let-user="rowData" pTemplate="body">
               <!--<p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="checked"></p-inputSwitch>-->
               <button type="button" pButton (click)="editUser(user)" icon="fa-edit"></button>
+              <a [routerLink]="['../edit-user', user.id]" pButton icon="fa-edit" class="ui-button-success"></a>
               <button type="button" class="ui-button-danger" pButton (click)="deleteUser(user)" icon="fa-trash"></button>
             </template>
           </p-column>
