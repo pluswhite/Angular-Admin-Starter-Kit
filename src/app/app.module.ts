@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
-import { ToastyModule } from 'ng2-toasty';
 /**
  * Core Modules
  */
@@ -58,7 +57,6 @@ export type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     A2tUiModule,
-    ToastyModule.forRoot(),
     NgaModule.forRoot(),
     NoContentModule,
     SiteModule,

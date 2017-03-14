@@ -10,7 +10,6 @@ import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
 import 'style-loader!../../node_modules/primeng/resources/themes/voclain/theme.css';
 import 'style-loader!../../node_modules/primeng/resources/primeng.min.css';
-import 'style-loader!../../node_modules/ng2-toasty/style.css';
 
 /*
  * App Component
@@ -24,12 +23,13 @@ export class App {
 
   isMenuCollapsed: boolean = false;
 
-  constructor(private _state: GlobalState,
-              private _tokenService: Angular2TokenService,
-              private _imageLoader: BaImageLoaderService,
-              private _spinner: BaThemeSpinner,
-              private viewContainerRef: ViewContainerRef,
-              private themeConfig: BaThemeConfig) {
+  constructor(
+    private _state: GlobalState,
+    private _tokenService: Angular2TokenService,
+    private _imageLoader: BaImageLoaderService,
+    private _spinner: BaThemeSpinner,
+    private viewContainerRef: ViewContainerRef,
+    private themeConfig: BaThemeConfig) {
 
     this._tokenService.init({
       apiPath: 'http://localhost:3005',
