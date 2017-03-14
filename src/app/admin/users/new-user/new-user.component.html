@@ -10,6 +10,7 @@
   <div class="row justify-content-md-center">
     <div class="col-md-8 col-sm-10 col-xs-12 offset-md-2 offset-sm-1">
       <ba-card title="New User" baCardClass="with-scroll">
+        <p-growl [value]="msgs"></p-growl>
         <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
           <fieldset>
             <legend>Basic</legend>

@@ -20,6 +20,5 @@ export class NewUserService {
     return this._tokenService.post(this.userRequestUrl, {
       userData
     });
-    // return this._tokenService.get(this.userRequestUrl);
   }
 }

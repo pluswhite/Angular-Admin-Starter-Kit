@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LazyLoadEvent, Message } from 'primeng/primeng';
+import { LazyLoadEvent, Message, ConfirmationService } from 'primeng/primeng';
 
 import { UserListService } from './user-list.service';
 import { User } from './user';
@@ -22,9 +22,14 @@ export class UserListComponent implements OnInit {
 
   totalRecords: number;
 
-  msgs: Message[] = [];
+  checked: boolean = true;
 
-  constructor(protected userListService: UserListService) {
+  msgs: Message[] = [];
+  popMsgs: Message[] = [];
+
+  constructor(
+    private confirmationService: ConfirmationService,
+    protected userListService: UserListService) {
   }
 
   ngOnInit() {
@@ -39,14 +44,14 @@ export class UserListComponent implements OnInit {
         res => {
           this.dataSource = res.data;
           this.totalRecords = this.dataSource.length;
-          this.users = this.dataSource.slice(0, 10);
+          this.users = this.dataSource.slice(0, 30);
         },
         error => {
           console.log(error);
           this.msgs.push({
             severity:'error',
             summary:'Error Message',
-            detail:'Some error occurs.'
+            detail:'Get data failure. Please refresh.'
           });
         }
       )
@@ -69,8 +74,35 @@ export class UserListComponent implements OnInit {
     }, 250);
   }
 
-  refresh () {
+  refresh() {
     this.msgs = [];
     this.getDataList();
+  }
+
+  editUser(user: User) {
+    console.log(user);
+    this.popMsgs = [];
+    this.popMsgs.push({
+      severity: 'info',
+      summary: 'Edit User',
+      detail: 'The user you edit: ' + user.id,
+    });
+  }
+
+  deleteUser(user: User) {
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'fa fa-trash',
+      accept: () => {
+        console.log(user);
+        this.popMsgs = [];
+        this.popMsgs.push({
+          severity:'error',
+          summary:'Confirmed',
+          detail:'Record ' + user.id + ' deleted'
+        });
+      }
+    });
   }
 }

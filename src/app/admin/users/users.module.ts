@@ -2,7 +2,18 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
 
-import { DataTableModule, SharedModule as PrimeSharedModule, PanelModule, MessagesModule, ToolbarModule, ButtonModule } from 'primeng/primeng';
+import {
+  DataTableModule,
+  SharedModule as PrimeSharedModule,
+  PanelModule,
+  MessagesModule,
+  ToolbarModule,
+  ButtonModule,
+  InputSwitchModule,
+  ConfirmDialogModule,
+  ConfirmationService,
+  GrowlModule
+} from 'primeng/primeng';
 
 import { routing } from './users.routing';
 import { UsersComponent } from './users.component';
@@ -23,7 +34,10 @@ import { NewUserService } from './new-user/new-user.service';
     ButtonModule,
     ToolbarModule,
     MessagesModule,
-    DataTableModule
+    DataTableModule,
+    InputSwitchModule,
+    ConfirmDialogModule,
+    GrowlModule
   ],
   exports: [],
   declarations: [
@@ -33,7 +47,8 @@ import { NewUserService } from './new-user/new-user.service';
   ],
   providers: [
     UserListService,
-    NewUserService
+    NewUserService,
+    ConfirmationService
   ],
 })
 export class UsersModule { }

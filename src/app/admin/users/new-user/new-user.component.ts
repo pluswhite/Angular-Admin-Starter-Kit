@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { ToastyService, ToastData } from 'ng2-toasty';
+import { Message } from 'primeng/primeng';
 
 import { NewUserService } from './new-user.service';
 
@@ -43,11 +43,12 @@ export class NewUserComponent implements OnInit {
     "role": {}
   };
 
+  msgs: Message[] = [];
+
   constructor(
     public router: Router,
     public route: ActivatedRoute,
     public fb: FormBuilder,
-    private _toastyService: ToastyService,
     private _newUserService: NewUserService) {
   }
 
@@ -127,20 +128,15 @@ export class NewUserComponent implements OnInit {
         .subscribe(
           data => {
             console.log(data);
-            this._toastyService.success({
-              title: "Success!",
-              msg: "New user has been added.",
-              showClose: true,
-              timeout: 5000,
-              theme: 'default',
-              onAdd: (toast:ToastData) => {
-              },
-              onRemove: function(toast:ToastData) {
-                that.router.navigate(['../user-list'], {
-                  relativeTo: that.route
-              });
-              }
+            this.msgs = [];
+            this.msgs.push({
+              severity:'success',
+              summary:'Success!',
+              detail:'New user has been added.'
             });
+            // that.router.navigate(['../user-list'], {
+            //   relativeTo: that.route
+            // });
           },
           error => {
             this.formErrors.formError = error.message;
