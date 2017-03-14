@@ -33,14 +33,6 @@ export const ADMIN_MENU = [
                 title: 'User List'
               }
             }
-          },
-          {
-            path: 'new-user',
-            data: {
-              menu: {
-                title: 'New User'
-              }
-            }
           }
         ]
       },

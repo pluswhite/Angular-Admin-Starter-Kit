@@ -1,88 +1,87 @@
 <div class="widgets">
   <div class="row">
     <div class="col-lg-12 add-user-wrapper">
-      <a [routerLink]="['../user-list']" class="btn btn-success">
-        <i class="ion-reply"></i>
-        Back
-      </a>
+      <a [routerLink]="['../user-list']" pButton icon="fa-reply" label="Back" class="ui-button-success"></a>
     </div>
   </div>
-  <div class="row justify-content-md-center">
-    <div class="col-md-8 col-sm-10 col-xs-12 offset-md-2 offset-sm-1">
-      <ba-card title="New User" baCardClass="with-scroll">
-        <p-growl [value]="msgs"></p-growl>
-        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
-          <fieldset>
-            <legend>Basic</legend>
-            <div class="form-group row">
-              <label for="user_name" class="col-sm-2 form-control-label">Name</label>
-              <div class="col-sm-10" [ngClass]="{'has-error': (!name.valid && name.touched)}">
-                <input [formControl]="name" type="text" class="form-control" id="user_name" placeholder="Name">
-                <span class="help-block sub-little-text error-block">
-                  {{formErrors.name}}
-                </span>
-              </div>
+  <p-panel header="New User">
+  <div class="ui-g">
+    <div class="ui-md-2"></div>
+    <div class="ui-g-10 ui-md-8 ui-sm-12">
+      <p-growl [value]="msgs"></p-growl>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+        <fieldset>
+          <legend>Basic</legend>
+          <div class="form-group row">
+            <label for="user_name" class="col-sm-2 form-control-label">Name</label>
+            <div class="col-sm-10" [ngClass]="{'has-error': (!name.valid && name.touched)}">
+              <input [formControl]="name" type="text" class="form-control" id="user_name" placeholder="Name">
+              <span class="help-block sub-little-text error-block">
+                {{formErrors.name}}
+              </span>
             </div>
-            <div class="form-group row">
-              <label for="user_email" class="col-sm-2 form-control-label">Email</label>
-              <div class="col-sm-10" [ngClass]="{'has-error': (!email.valid && email.touched)}">
-                <input [formControl]="email" type="text" class="form-control" id="user_email" placeholder="Email">
-                <span class="help-block sub-little-text error-block">
-                  {{formErrors.email}}
-                </span>
-              </div>
+          </div>
+          <div class="form-group row">
+            <label for="user_email" class="col-sm-2 form-control-label">Email</label>
+            <div class="col-sm-10" [ngClass]="{'has-error': (!email.valid && email.touched)}">
+              <input [formControl]="email" type="text" class="form-control" id="user_email" placeholder="Email">
+              <span class="help-block sub-little-text error-block">
+                {{formErrors.email}}
+              </span>
             </div>
-            <div class="form-group row">
-              <label for="user_level" class="col-sm-2 form-control-label">Level</label>
-              <div class="col-sm-10"  [ngClass]="{'has-error': (!level.valid && level.touched)}">
-                <select [formControl]="level" class="form-control" id="user_level">
-                  <option selected value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-                <span class="help-block sub-little-text error-block">
-                  {{formErrors.level}}
-                </span>
-              </div>
+          </div>
+          <div class="form-group row">
+            <label for="user_level" class="col-sm-2 form-control-label">Level</label>
+            <div class="col-sm-10"  [ngClass]="{'has-error': (!level.valid && level.touched)}">
+              <select [formControl]="level" class="form-control" id="user_level">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <span class="help-block sub-little-text error-block">
+                {{formErrors.level}}
+              </span>
             </div>
-            <div class="form-group row">
-              <label for="user_profile" class="col-sm-2 form-control-label">Profile</label>
-              <div class="col-sm-10">
-                <textarea [formControl]="profile" placeholder="Profile" class="form-control" id="user_profile"></textarea>
-              </div>
+          </div>
+          <div class="form-group row">
+            <label for="user_profile" class="col-sm-2 form-control-label">Profile</label>
+            <div class="col-sm-10">
+              <textarea [formControl]="profile" placeholder="Profile" class="form-control" id="user_profile"></textarea>
             </div>
-          </fieldset>
-          <fieldset>
-            <legend>Extra</legend>
-            <div class="form-group row">
-              <label for="user_type" class="col-sm-2 col-xs-3 control-label">Role</label>
-              <div class="col-sm-10">
-                <label class="radio-inline custom-radio nowrap">
-                  <input [formControl]="role" type="radio" value="Administrator" checked>
-                  <span>Administrator</span>
-                </label>
-                <label class="radio-inline custom-radio nowrap">
-                  <input [formControl]="role" type="radio" value="editor">
-                  <span>Editor</span>
-                </label>
-                <label class="radio-inline custom-radio nowrap">
-                  <input [formControl]="role" type="radio" value="guest">
-                  <span>Guest</span>
-                </label>
-              </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Extra</legend>
+          <div class="form-group row">
+            <label for="user_type" class="col-sm-2 col-xs-3 control-label">Role</label>
+            <div class="col-sm-10">
+              <label class="radio-inline custom-radio nowrap">
+                <input [formControl]="role" type="radio" value="Administrator" checked>
+                <span>Administrator</span>
+              </label>
+              <label class="radio-inline custom-radio nowrap">
+                <input [formControl]="role" type="radio" value="editor">
+                <span>Editor</span>
+              </label>
+              <label class="radio-inline custom-radio nowrap">
+                <input [formControl]="role" type="radio" value="guest">
+                <span>Guest</span>
+              </label>
             </div>
-          </fieldset>
-          <fieldset>
-            <h4 *ngIf="formErrors.formError" class="color">{{formErrors.formError}}</h4>
-            <div class="offset-sm-2 col-sm-10">
-              <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </fieldset>
-        </form>
-      </ba-card>
+          </div>
+        </fieldset>
+        <fieldset>
+          <h4 *ngIf="formErrors.formError" class="color">{{formErrors.formError}}</h4>
+          <div class="offset-sm-2 col-sm-10">
+            <button [disabled]="!form.valid" pButton type="submit" label="Submit" class="ui-button-success"></button>
+          </div>
+        </fieldset>
+      </form>
     </div>
+    <div class="ui-md-2"></div>
   </div>
+  </p-panel>
 
 </div>
