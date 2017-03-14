@@ -48,6 +48,7 @@ export class UserListComponent implements OnInit {
         },
         error => {
           console.log(error);
+          this.msgs = [];
           this.msgs.push({
             severity:'error',
             summary:'Error Message',
@@ -87,6 +88,7 @@ export class UserListComponent implements OnInit {
       summary: 'Edit User',
       detail: 'The user you edit: ' + user.id,
     });
+    console.log(this.popMsgs);
   }
 
   deleteUser(user: User) {
@@ -97,11 +99,23 @@ export class UserListComponent implements OnInit {
       accept: () => {
         console.log(user);
         this.popMsgs = [];
-        this.popMsgs.push({
-          severity:'error',
-          summary:'Confirmed',
-          detail:'Record ' + user.id + ' deleted'
-        });
+        // this.userListService.doDeleteUser(user)
+        //   .subscribe(
+        //     res => {
+        //       this.popMsgs.push({
+        //         severity:'error',
+        //         summary:'Confirmed',
+        //         detail:'Record ' + user.id + ' deleted'
+        //       });
+        //     },
+        //     error => {
+        //       this.popMsgs.push({
+        //         severity:'error',
+        //         summary:'Failure!',
+        //         detail:'Can\'t delete user: ' + user.id
+        //       });
+        //     }
+        //   );
       }
     });
   }

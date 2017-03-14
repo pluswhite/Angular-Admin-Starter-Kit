@@ -10,7 +10,7 @@ export class BaThemeConfig {
   }
 
   config() {
-    this._baConfig.changeTheme({ name: 'dark' });
+    this._baConfig.changeTheme({ name: 'ng2' });
     //
     // let colorScheme = {
     //   primary: '#209e91',

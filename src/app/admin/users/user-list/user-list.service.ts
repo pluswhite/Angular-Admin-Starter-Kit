@@ -14,4 +14,8 @@ export class UserListService {
     return this._tokenService
       .get(this.requestUrl);
   }
+
+  doDeleteUser(user) {
+    return this._tokenService.delete(this.requestUrl + '/' + user.id);
+  }
 }

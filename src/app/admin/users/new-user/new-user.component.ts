@@ -130,13 +130,15 @@ export class NewUserComponent implements OnInit {
             console.log(data);
             this.msgs = [];
             this.msgs.push({
-              severity:'success',
-              summary:'Success!',
-              detail:'New user has been added.'
+              severity: 'success',
+              summary: 'Success!',
+              detail: 'New user has been added.'
             });
-            // that.router.navigate(['../user-list'], {
-            //   relativeTo: that.route
-            // });
+            setTimeout(function() {
+              that.router.navigate(['../user-list'], {
+                relativeTo: that.route
+              });
+            }, 1000);
           },
           error => {
             this.formErrors.formError = error.message;
