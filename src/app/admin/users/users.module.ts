@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
+import { PrimeNGModule } from '../../_shared/primeng.module';
 
 import { routing } from './users.routing';
 import { UsersComponent } from './users.component';
@@ -17,6 +18,7 @@ import { EditUserService } from './edit-user/edit-user.service';
 @NgModule({
   imports: [
     SharedModule,
+    PrimeNGModule,
     ReactiveFormsModule,
     routing
   ],

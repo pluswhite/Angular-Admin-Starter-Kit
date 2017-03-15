@@ -5,10 +5,6 @@ import { NoContentComponent } from './no-content';
 
 export const routes: Routes = [
   {
-    path: 'pages',
-    redirectTo: 'pages',
-  },
-  {
     path: 'site',
     redirectTo: 'site',
   },

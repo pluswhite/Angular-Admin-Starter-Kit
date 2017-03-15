@@ -22,6 +22,8 @@ import { GlobalState } from './global.state';
 
 import { NgaModule } from './theme/nga.module';
 
+import { VmModule } from './vm/vm.module';
+
 import { AuthGuard } from './_guard';
 import { AuthService } from './_guard/auth.service';
 import { UserService } from './_guard/user.service';
@@ -58,6 +60,7 @@ export type StoreType = {
     ReactiveFormsModule,
     A2tUiModule,
     NgaModule.forRoot(),
+    VmModule.forRoot(),
     NoContentModule,
     SiteModule,
     PagesModule,

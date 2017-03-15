@@ -1,59 +1,57 @@
-<div class="widgets">
-  <div class="row">
-    <div class="col-lg-12 add-user-wrapper">
-      <a [routerLink]="['../new-user']" pButton icon="fa-user-plus" label="New User" class="ui-button-success"></a>
-    </div>
+<div class="row">
+  <div class="col-lg-12 add-user-wrapper">
+    <a [routerLink]="['../new-user']" pButton icon="fa-user-plus" label="New User" class="ui-button-success"></a>
   </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <p-messages [value]="msgs"></p-messages>
-      <p-growl [value]="popMsgs"></p-growl>
-      <p-confirmDialog width="425"></p-confirmDialog>
-      <p-panel #pnl [style]="{'position': 'relative'}">
-        <p-header>
-          <div class="ui-helper-clearfix">
-            <p-toolbar [style]="{'border':'none'}">
-              <div class="ui-toolbar-group-left">
-                <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">User List</span>
-              </div>
-              <div class="ui-toolbar-group-right">
-                <button pButton class="ui-button-primary" type="button" icon="fa-refresh" (click)="refresh()"></button>
-              </div>
-            </p-toolbar>
-          </div>
-        </p-header>
-        <p-dataTable
-          [value]="users"
-          [lazy]="true"
-          [rows]="30"
-          [paginator]="true"
-          [rowsPerPageOptions]="[30,50,100]"
-          [responsive]="true"
-          [stacked]="stacked"
-          [totalRecords]="totalRecords"
-          resizableColumns="true"
-          sortMode="multiple"
-          (onLazyLoad)="loadUsersLazy($event)">
-          <!--<p-header>List of Users</p-header>-->
-          <p-column field="id" header="ID" [sortable]="true"></p-column>
-          <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
-          <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
-          <p-column field="username" header="Username" [sortable]="true"></p-column>
-          <p-column field="email" header="E-mail" [sortable]="true"></p-column>
-          <p-column field="age" header="Age" [sortable]="true"></p-column>
-          <p-column styleClass="col-button" header="Actions">
-            <!--<template pTemplate="header">
-              <button type="button" pButton icon="fa-edit"></button>
-            </template>-->
-            <template let-user="rowData" pTemplate="body">
-              <!--<p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="checked"></p-inputSwitch>-->
-              <a [routerLink]="['../edit-user', user.id]" pButton icon="fa-edit"></a>
-              <button type="button" class="ui-button-danger" pButton (click)="deleteUser(user)" icon="fa-trash"></button>
-            </template>
-          </p-column>
-        </p-dataTable>
-        <p-blockUI [target]="pnl" [blocked]="blockedPanel"></p-blockUI>
-      </p-panel>
-    </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <p-messages [value]="msgs"></p-messages>
+    <p-growl [value]="popMsgs"></p-growl>
+    <p-confirmDialog width="425"></p-confirmDialog>
+    <p-panel #pnl [style]="{'position': 'relative'}">
+      <p-header>
+        <div class="ui-helper-clearfix">
+          <p-toolbar [style]="{'border':'none'}">
+            <div class="ui-toolbar-group-left">
+              <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">User List</span>
+            </div>
+            <div class="ui-toolbar-group-right">
+              <button pButton class="ui-button-primary" type="button" icon="fa-refresh" (click)="refresh()"></button>
+            </div>
+          </p-toolbar>
+        </div>
+      </p-header>
+      <p-dataTable
+        [value]="users"
+        [lazy]="true"
+        [rows]="30"
+        [paginator]="true"
+        [rowsPerPageOptions]="[30,50,100]"
+        [responsive]="true"
+        [stacked]="stacked"
+        [totalRecords]="totalRecords"
+        resizableColumns="true"
+        sortMode="multiple"
+        (onLazyLoad)="loadUsersLazy($event)">
+        <!--<p-header>List of Users</p-header>-->
+        <p-column field="id" header="ID" [sortable]="true"></p-column>
+        <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
+        <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
+        <p-column field="username" header="Username" [sortable]="true"></p-column>
+        <p-column field="email" header="E-mail" [sortable]="true"></p-column>
+        <p-column field="age" header="Age" [sortable]="true"></p-column>
+        <p-column styleClass="col-button" header="Actions">
+          <!--<template pTemplate="header">
+            <button type="button" pButton icon="fa-edit"></button>
+          </template>-->
+          <template let-user="rowData" pTemplate="body">
+            <!--<p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="checked"></p-inputSwitch>-->
+            <a [routerLink]="['../edit-user', user.id]" pButton icon="fa-edit"></a>
+            <button type="button" class="ui-button-danger" pButton (click)="deleteUser(user)" icon="fa-trash"></button>
+          </template>
+        </p-column>
+      </p-dataTable>
+      <p-blockUI [target]="pnl" [blocked]="blockedPanel"></p-blockUI>
+    </p-panel>
   </div>
 </div>
