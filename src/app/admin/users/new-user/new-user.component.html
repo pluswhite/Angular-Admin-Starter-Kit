@@ -75,7 +75,7 @@
         <fieldset>
           <h4 *ngIf="formErrors.formError" class="color">{{formErrors.formError}}</h4>
           <div class="offset-sm-2 col-sm-10">
-            <button [disabled]="!form.valid" pButton type="submit" label="Submit" class="ui-button-success"></button>
+            <button [disabled]="!form.valid" pButton type="submit" icon="fa-save" label="Save" class="ui-button-success"></button>
           </div>
         </fieldset>
       </form>

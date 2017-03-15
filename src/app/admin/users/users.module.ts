@@ -2,20 +2,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
 
-import {
-  DataTableModule,
-  SharedModule as PrimeSharedModule,
-  PanelModule,
-  MessagesModule,
-  ToolbarModule,
-  ButtonModule,
-  InputSwitchModule,
-  ConfirmDialogModule,
-  ConfirmationService,
-  GrowlModule,
-  BlockUIModule
-} from 'primeng/primeng';
-
 import { routing } from './users.routing';
 import { UsersComponent } from './users.component';
 
@@ -32,17 +18,7 @@ import { EditUserService } from './edit-user/edit-user.service';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    routing,
-    PrimeSharedModule,
-    PanelModule,
-    ButtonModule,
-    ToolbarModule,
-    MessagesModule,
-    DataTableModule,
-    InputSwitchModule,
-    ConfirmDialogModule,
-    GrowlModule,
-    BlockUIModule
+    routing
   ],
   exports: [],
   declarations: [
@@ -52,7 +28,6 @@ import { EditUserService } from './edit-user/edit-user.service';
     EditUserComponent
   ],
   providers: [
-    ConfirmationService,
     UserListService,
     NewUserService,
     EditUserService
