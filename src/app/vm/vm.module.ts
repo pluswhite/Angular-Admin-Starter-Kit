@@ -7,7 +7,7 @@ import {
 
 import { VmHeaderComponent } from './components/vmHeader';
 import { VmSidebarComponent } from './components/vmSidebar';
-import { VmContentTopComponent } from './components/vmContentTop/vm-content-top.component';
+import { VmContentTopComponent } from './components/vmContentTop';
 import { VmBackTopComponent } from './components/vmBackTop';
 
 const VM_COMPONENTS = [
