@@ -27,6 +27,8 @@ export class UserListComponent implements OnInit {
   msgs: Message[] = [];
   popMsgs: Message[] = [];
 
+  blockedPanel: boolean = false;
+
   constructor(
     private confirmationService: ConfirmationService,
     protected userListService: UserListService) {
@@ -37,6 +39,7 @@ export class UserListComponent implements OnInit {
   }
 
   getDataList () {
+    this.blockedPanel = true;
     this.userListService
       .getUserListData()
       .map(res => res.json())
@@ -45,6 +48,7 @@ export class UserListComponent implements OnInit {
           this.dataSource = res.data;
           this.totalRecords = this.dataSource.length;
           this.users = this.dataSource.slice(0, 30);
+          this.blockedPanel = false;
         },
         error => {
           console.log(error);

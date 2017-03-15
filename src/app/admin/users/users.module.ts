@@ -12,7 +12,8 @@ import {
   InputSwitchModule,
   ConfirmDialogModule,
   ConfirmationService,
-  GrowlModule
+  GrowlModule,
+  BlockUIModule
 } from 'primeng/primeng';
 
 import { routing } from './users.routing';
@@ -40,7 +41,8 @@ import { EditUserService } from './edit-user/edit-user.service';
     DataTableModule,
     InputSwitchModule,
     ConfirmDialogModule,
-    GrowlModule
+    GrowlModule,
+    BlockUIModule
   ],
   exports: [],
   declarations: [

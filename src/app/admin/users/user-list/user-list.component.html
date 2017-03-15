@@ -9,7 +9,7 @@
       <p-messages [value]="msgs"></p-messages>
       <p-growl [value]="popMsgs"></p-growl>
       <p-confirmDialog width="425"></p-confirmDialog>
-      <p-panel>
+      <p-panel #pnl [style]="{'position': 'relative'}">
         <p-header>
           <div class="ui-helper-clearfix">
             <p-toolbar [style]="{'border':'none'}">
@@ -22,7 +22,8 @@
             </p-toolbar>
           </div>
         </p-header>
-        <p-dataTable [value]="users"
+        <p-dataTable
+          [value]="users"
           [lazy]="true"
           [rows]="30"
           [paginator]="true"
@@ -46,12 +47,12 @@
             </template>-->
             <template let-user="rowData" pTemplate="body">
               <!--<p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="checked"></p-inputSwitch>-->
-              <button type="button" pButton (click)="editUser(user)" icon="fa-edit"></button>
-              <a [routerLink]="['../edit-user', user.id]" pButton icon="fa-edit" class="ui-button-success"></a>
+              <a [routerLink]="['../edit-user', user.id]" pButton icon="fa-edit"></a>
               <button type="button" class="ui-button-danger" pButton (click)="deleteUser(user)" icon="fa-trash"></button>
             </template>
           </p-column>
         </p-dataTable>
+        <p-blockUI [target]="pnl" [blocked]="blockedPanel"></p-blockUI>
       </p-panel>
     </div>
   </div>
