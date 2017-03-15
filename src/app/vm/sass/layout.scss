@@ -19,14 +19,9 @@ main {
   min-height: 100%;
   position: relative;
   font: 14px/16px $font-family;
-  color: $default-text;
+  // color: $default-text;
 
   @include body-bg();
-
-  .additional-bg {
-    display: none;
-    @include additional-bg();
-  }
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
@@ -61,13 +56,13 @@ a {
 
 .vm-main {
   margin-left: $left-space;
-  padding: 50px 0 34px 0;
+  padding: 50px 0 50px 0;
   min-height: 500px;
   position: relative;
 }
 
 .vm-footer {
-  height: 34px;
+  height: 50px;
   padding: 0 18px 0 ($left-space + 20px);
   width: 100%;
   position: absolute;
@@ -76,6 +71,7 @@ a {
   font-size: 13px;
   color: $default-text;
   transition: padding-left 0.5s ease;
+  border-top: 1px solid #ccc;
 }
 
 .vm-footer-main {

@@ -5,12 +5,16 @@ import {
   MenuModule,
 } from 'primeng/primeng';
 
-import { VmHeaderComponent } from './components/vmHeader/vm-header.component';
-import { VmSidebarComponent } from './components/vmSidebar/vm-sidebar.component';
+import { VmHeaderComponent } from './components/vmHeader';
+import { VmSidebarComponent } from './components/vmSidebar';
+import { VmContentTopComponent } from './components/vmContentTop/vm-content-top.component';
+import { VmBackTopComponent } from './components/vmBackTop';
 
 const VM_COMPONENTS = [
   VmHeaderComponent,
-  VmSidebarComponent
+  VmSidebarComponent,
+  VmContentTopComponent,
+  VmBackTopComponent
 ];
 
 
