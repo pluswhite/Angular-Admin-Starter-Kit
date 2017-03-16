@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import {
   ButtonModule,
   MenuModule,
+  BreadcrumbModule
 } from 'primeng/primeng';
 
 import { VmHeaderComponent } from './components/vmHeader';
@@ -37,6 +38,7 @@ const VM_SERVICES = [
     RouterModule,
     ButtonModule,
     MenuModule,
+    BreadcrumbModule
   ],
   exports: [
     ...VM_COMPONENTS

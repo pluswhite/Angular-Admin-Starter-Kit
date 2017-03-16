@@ -1,7 +1,12 @@
 .vm-content-top {
+  padding-bottom: 0.5em;
   margin-bottom: 15px;
   border-bottom: 1px solid #ccc;
   h1 {
     color: #1b1d1f;
+  }
+  .vm-breadcrumb {
+    border: none;
+    background: none;
   }
 }
