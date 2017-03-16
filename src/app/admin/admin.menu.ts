@@ -7,7 +7,7 @@ export const ADMIN_MENU = [
         data: {
           menu: {
             title: 'Dashboard',
-            icon: 'ion-android-home',
+            icon: 'fa fa-dashboard',
             selected: false,
             expanded: false,
             order: 0
@@ -19,7 +19,7 @@ export const ADMIN_MENU = [
         data: {
           menu: {
             title: 'Users',
-            icon: 'ion-person-stalker',
+            icon: 'fa fa-user',
             selected: false,
             expanded: false,
             order: 650,
@@ -36,42 +36,12 @@ export const ADMIN_MENU = [
           }
         ]
       },
-      // {
-      //   path: 'forms',
-      //   data: {
-      //     menu: {
-      //       title: 'Form Elements',
-      //       icon: 'ion-compose',
-      //       selected: false,
-      //       expanded: false,
-      //       order: 400,
-      //     }
-      //   },
-      //   children: [
-      //     {
-      //       path: 'inputs',
-      //       data: {
-      //         menu: {
-      //           title: 'Form Inputs',
-      //         }
-      //       }
-      //     },
-      //     {
-      //       path: 'layouts',
-      //       data: {
-      //         menu: {
-      //           title: 'Form Layouts',
-      //         }
-      //       }
-      //     }
-      //   ]
-      // },
       {
         path: '',
         data: {
           menu: {
             title: 'Pages',
-            icon: 'ion-document',
+            icon: 'fa fa-file',
             selected: false,
             expanded: false,
             order: 650,

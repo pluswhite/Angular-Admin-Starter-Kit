@@ -6,7 +6,7 @@ import 'style-loader!./vm-menu-item.component.scss';
   selector: 'vm-menu-item',
   templateUrl: './vm-menu-item.component.html'
 })
-export class VmMenuItem {
+export class VmMenuItemComponent {
 
   @Input() menuItem:any;
   @Input() child:boolean = false;

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
-import { BaMenuService } from '../../services';
+import { VmMenuService } from '../../services';
 import { GlobalState } from '../../../global.state';
 
 import 'style-loader!./vm-menu.component.scss';
@@ -11,7 +11,7 @@ import 'style-loader!./vm-menu.component.scss';
   selector: 'vm-menu',
   templateUrl: './vm-menu.component.html'
 })
-export class BaMenu {
+export class VmMenuComponent {
 
   @Input() sidebarCollapsed: boolean = false;
   @Input() menuHeight: number;
@@ -26,7 +26,7 @@ export class BaMenu {
   protected _onRouteChange: Subscription;
   public outOfArea: number = -200;
 
-  constructor(private _router: Router, private _service: BaMenuService, private _state: GlobalState) {
+  constructor(private _router: Router, private _service: VmMenuService, private _state: GlobalState) {
   }
 
   public updateMenu(newMenuItems) {

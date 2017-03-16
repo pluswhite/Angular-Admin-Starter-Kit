@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Routes } from '@angular/router';
 
-import { BaMenuService } from '../theme';
+import { VmMenuService } from '../vm';
 import { ADMIN_MENU } from './admin.menu';
 
 @Component({
@@ -14,7 +14,7 @@ import { ADMIN_MENU } from './admin.menu';
 
 export class AdminComponent implements OnInit {
   constructor(
-    private _menuService: BaMenuService
+    private _menuService: VmMenuService
     ) {
 
     }

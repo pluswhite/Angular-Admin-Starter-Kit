@@ -1,0 +1,1 @@
+export { VmMenuService } from './services';
