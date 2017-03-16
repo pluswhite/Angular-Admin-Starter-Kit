@@ -31,4 +31,18 @@ export class VmHeaderComponent implements OnInit {
         }
       );
   }
+
+  validateToken() {
+    this._tokenService
+      .validateToken()
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+          this.router.navigate(['/site/login']);
+        }
+      );
+  }
 }
