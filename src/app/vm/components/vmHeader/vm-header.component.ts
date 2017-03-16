@@ -27,6 +27,7 @@ export class VmHeaderComponent implements OnInit {
         },
         error => {
           console.log(error);
+          this.router.navigate(['/site/login']);
         }
       );
   }
