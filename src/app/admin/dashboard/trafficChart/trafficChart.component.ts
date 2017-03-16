@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrafficChartService } from './trafficChart.service';
 
-import * as Chart from 'chart.js';
+import Chart from 'chart.js';
 
 import 'style-loader!./trafficChart.component.scss';
 

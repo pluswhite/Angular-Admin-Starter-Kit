@@ -30,7 +30,7 @@ import { UserService } from './_guard/user.service';
 
 import { NoContentModule } from './no-content/no-content.module';
 import { SiteModule } from './site/site.module';
-import { PagesModule } from './pages/pages.module';
+// import { PagesModule } from './pages/pages.module';
 import { AdminModule } from './admin/admin.module';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -63,7 +63,7 @@ export type StoreType = {
     VmModule.forRoot(),
     NoContentModule,
     SiteModule,
-    PagesModule,
+    // PagesModule,
     AdminModule,
     routing
   ],
