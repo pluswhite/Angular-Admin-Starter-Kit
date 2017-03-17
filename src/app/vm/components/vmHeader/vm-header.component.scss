@@ -1,3 +1,4 @@
+@import '../../sass/conf/conf';
 .vm-header {
   position: fixed;
   right: 0;
@@ -7,5 +8,5 @@
   height: 50px;
   padding: .7em 1.5em 0 1.5em;
   color: #fff;
-  background-color: #0388e5;
+  background-color: $primary;
 }

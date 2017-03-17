@@ -33,11 +33,11 @@ $bootstrap-panel-header-border: 1px solid $border-light;
 $bootstrap-panel-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
 
 // color scheme
-$primary: #00abff !default;
+$primary: #2196f3 !default;
 $info: #40daf1 !default;
-$success: #8bd22f !default;
-$warning: #e7ba08 !default;
-$danger: #f95372 !default;
+$success: #4CAF50 !default;
+$warning: #FFB300 !default;
+$danger: #f44336 !default;
 
 $primary-light: tint($primary, 30%);
 $info-light: tint($info, 30%);
@@ -64,8 +64,6 @@ $hoverlink: darken($activelink, 20%);
 // main background
 @mixin body-bg() {
   background-color: $body-bg;
-
-  $mainBgUrl: $images-root + 'sky-bg.jpg';
 
   &::before {
     content: '';
