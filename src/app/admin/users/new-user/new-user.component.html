@@ -12,7 +12,7 @@
         <fieldset>
           <legend>Basic</legend>
           <div class="form-group row">
-            <label for="user_name" class="col-sm-2 form-control-label">Name</label>
+            <label for="user_name" class="label col-sm-2 form-control-label">Name</label>
             <div class="col-sm-10" [ngClass]="{'has-error': (!name.valid && name.touched)}">
               <input [formControl]="name" type="text" class="form-control" id="user_name" placeholder="Name">
               <span class="help-block sub-little-text error-block">

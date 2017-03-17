@@ -47,7 +47,7 @@ export class UserListComponent implements OnInit {
         res => {
           this.dataSource = res.data;
           this.totalRecords = this.dataSource.length;
-          this.users = this.dataSource.slice(0, 30);
+          this.users = this.dataSource.slice(0, 15);
           this.blockedPanel = false;
         },
         error => {

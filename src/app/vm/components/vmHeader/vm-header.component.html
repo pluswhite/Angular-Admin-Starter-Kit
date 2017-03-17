@@ -1,14 +1,14 @@
 <div class="vm-header">
   <div class="ui-g ui-g-nopad">
     <div class="ui-g-3">
-      <p>VALUEMAKER ADMIN</p>
+      <p>ValueMaker Admin</p>
     </div>
     <div class="ui-g-9 ui-g-nopad" style="text-align: right;">
       <span>
         <i class="fa fa-user"></i> {{_tokenService.currentUserData?.email}}
       </span>
-      <button pButton type="button" label="Validate Token" (click)="validateToken()" class="ui-button-secondary"></button>
-      <button pButton type="button" title="Sign out" label="Sign out" icon="fa-power-off" (click)="logout()" class="ui-button-danger"></button>
+      <button pButton type="button" title="Validate Token" icon="fa-send-o" (click)="validateToken()" class="ui-button-secondary"></button>
+      <button pButton type="button" title="Sign out" icon="fa-power-off" (click)="logout()" class="ui-button-danger"></button>
     </div>
   </div>
 </div>
