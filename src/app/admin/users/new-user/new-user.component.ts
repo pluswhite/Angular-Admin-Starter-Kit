@@ -54,20 +54,16 @@ export class NewUserComponent implements OnInit {
     this.levels.push({
       label: '1',
       value: '1'
-    });
-    this.levels.push({
+    }, {
       label: '2',
       value: '2'
-    });
-    this.levels.push({
+    }, {
       label: '3',
       value: '3'
-    });
-    this.levels.push({
+    }, {
       label: '4',
       value: '4'
-    });
-    this.levels.push({
+    }, {
       label: '5',
       value: '5'
     });

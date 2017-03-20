@@ -27,7 +27,7 @@ export const ADMIN_MENU = [
         },
         children: [
           {
-            path: 'user-list',
+            path: 'list',
             data: {
               menu: {
                 title: 'User List'

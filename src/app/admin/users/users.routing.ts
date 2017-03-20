@@ -11,15 +11,15 @@ const routes: Routes = [
     component: UsersComponent,
     children: [
       {
-        path: 'user-list',
+        path: 'list',
         component: UserListComponent
       },
       {
-        path: 'new-user',
+        path: 'new',
         component: NewUserComponent
       },
       {
-        path: 'edit-user/:id',
+        path: ':id',
         component: EditUserComponent
       }
     ]
