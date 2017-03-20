@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { Message } from 'primeng/primeng';
+import { Message, SelectItem } from 'primeng/primeng';
 
 import { NewUserService } from './new-user.service';
 
@@ -42,14 +42,35 @@ export class NewUserComponent implements OnInit {
     'profile': {},
     "role": {}
   };
-
+  levels: SelectItem[] = [];
   msgs: Message[] = [];
+  errorMsgs: Message[] = [];
 
   constructor(
     public router: Router,
     public route: ActivatedRoute,
     public fb: FormBuilder,
     private _newUserService: NewUserService) {
+    this.levels.push({
+      label: '1',
+      value: '1'
+    });
+    this.levels.push({
+      label: '2',
+      value: '2'
+    });
+    this.levels.push({
+      label: '3',
+      value: '3'
+    });
+    this.levels.push({
+      label: '4',
+      value: '4'
+    });
+    this.levels.push({
+      label: '5',
+      value: '5'
+    });
   }
 
   ngOnInit() {
@@ -95,7 +116,7 @@ export class NewUserComponent implements OnInit {
 
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
-    // this.onValueChanged();
+    this.onValueChanged();
   }
 
   onValueChanged(data?: any) {
@@ -107,7 +128,7 @@ export class NewUserComponent implements OnInit {
 
     for (const field in this.formErrors) {
       this.formErrors[field] = '';
-      const control = form .get(field);
+      const control = form.get(field);
       if (control && control.dirty && !control.valid) {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
@@ -122,7 +143,6 @@ export class NewUserComponent implements OnInit {
       that = this;
     this.submitted = true;
     if (this.form.valid) {
-      // TDDO: Data send & handle.
       this._newUserService.addUser(values)
         .map(res => res.json())
         .subscribe(
@@ -141,12 +161,22 @@ export class NewUserComponent implements OnInit {
             }, 1000);
           },
           error => {
-            this.formErrors.formError = error.message;
+            this.errorMsgs = [];
+            this.errorMsgs.push({
+              severity: 'error',
+              summary: 'Form Error!',
+              detail: error.message
+            });
             console.log(error);
           }
         );
     } else {
-      this.formErrors.formError = "Some Errors";
+      this.errorMsgs = [];
+      this.errorMsgs.push({
+        severity: 'error',
+        summary: 'Form Error!',
+        detail: "Some Errors in your form."
+      });
     }
   }
 }

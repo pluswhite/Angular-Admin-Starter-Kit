@@ -4,81 +4,68 @@
   </div>
 </div>
 <p-panel header="New User">
-  <div class="ui-g">
-    <div class="ui-md-2"></div>
-    <div class="ui-g-10 ui-md-8 ui-sm-12">
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-3 ui-md-3 ui-sm-1"></div>
+    <div class="ui-g-6 ui-md-6 ui-sm-10">
       <p-growl [value]="msgs"></p-growl>
-      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+      <p-messages [value]="errorMsg"></p-messages>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="ui-grid ui-grid-responsive ui-grid-pad">
         <fieldset>
           <legend>Basic</legend>
-          <div class="form-group row">
-            <label for="user_name" class="label col-sm-2 form-control-label">Name</label>
-            <div class="col-sm-10" [ngClass]="{'has-error': (!name.valid && name.touched)}">
-              <input [formControl]="name" type="text" class="form-control" id="user_name" placeholder="Name">
-              <span class="help-block sub-little-text error-block">
-                {{formErrors.name}}
-              </span>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              <label for="userName" class="label">Name: </label>
+            </div>
+            <div class="ui-grid-col-10" [ngClass]="{'has-error': (formErrors.name)}">
+              <input type="text" id="userName" placeholder="Name" [formControl]="name" pInputText>
+              <div class="help-block error-block">{{formErrors.name}}</div>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="user_email" class="col-sm-2 form-control-label">Email</label>
-            <div class="col-sm-10" [ngClass]="{'has-error': (!email.valid && email.touched)}">
-              <input [formControl]="email" type="text" class="form-control" id="user_email" placeholder="Email">
-              <span class="help-block sub-little-text error-block">
-                {{formErrors.email}}
-              </span>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              <label for="userEmail" class="label">Email: </label>
+            </div>
+            <div class="ui-grid-col-10" [ngClass]="{'has-error': (formErrors.email)}">
+              <input type="text" id="userEmail" placeholder="Email" [formControl]="email" pInputText>
+              <div class="help-block error-block">{{formErrors.email}}</div>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="user_level" class="col-sm-2 form-control-label">Level</label>
-            <div class="col-sm-10"  [ngClass]="{'has-error': (!level.valid && level.touched)}">
-              <select [formControl]="level" class="form-control" id="user_level">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-              <span class="help-block sub-little-text error-block">
-                {{formErrors.level}}
-              </span>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              <label for="userLevel" class="label">Level: </label>
+            </div>
+            <div class="ui-grid-col-10">
+              <p-dropdown [options]="levels" autoWidth="false" placeholder="User Level" [formControl]="level"></p-dropdown>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="user_profile" class="col-sm-2 form-control-label">Profile</label>
-            <div class="col-sm-10">
-              <textarea [formControl]="profile" placeholder="Profile" class="form-control" id="user_profile"></textarea>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              <label for="" class="label">Profile: </label>
+            </div>
+            <div class="ui-grid-col-10">
+              <textarea rows="5" placeholder="Profile" [formControl]="profile" pInputTextarea></textarea>
             </div>
           </div>
         </fieldset>
         <fieldset>
           <legend>Extra</legend>
-          <div class="form-group row">
-            <label for="user_type" class="col-sm-2 col-xs-3 control-label">Role</label>
-            <div class="col-sm-10">
-              <label class="radio-inline custom-radio nowrap">
-                <input [formControl]="role" type="radio" value="Administrator" checked>
-                <span>Administrator</span>
-              </label>
-              <label class="radio-inline custom-radio nowrap">
-                <input [formControl]="role" type="radio" value="editor">
-                <span>Editor</span>
-              </label>
-              <label class="radio-inline custom-radio nowrap">
-                <input [formControl]="role" type="radio" value="guest">
-                <span>Guest</span>
-              </label>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              <label for="" class="">Role: </label>
+            </div>
+            <div class="ui-grid-col-10">
+              <p-radioButton name="groupname" label="Administrator" value="administrator" [formControl]="role"></p-radioButton>
+              <p-radioButton name="groupname" label="Editor" value="editor" [formControl]="role"></p-radioButton>
+              <p-radioButton name="groupname" label="Guest" value="guest" [formControl]="role"></p-radioButton>
             </div>
           </div>
         </fieldset>
         <fieldset>
-          <h4 *ngIf="formErrors.formError" class="color">{{formErrors.formError}}</h4>
-          <div class="offset-sm-2 col-sm-10">
-            <button [disabled]="!form.valid" pButton type="submit" icon="fa-save" label="Save" class="ui-button-success"></button>
-          </div>
+          <!--<h4 *ngIf="formErrors.formError" class="color">{{formErrors.formError}}</h4>-->
+          <button [disabled]="!form.valid" pButton type="submit" icon="fa-save" label="Save" class="ui-button-success"></button>
         </fieldset>
       </form>
     </div>
-    <div class="ui-md-2"></div>
+    <div class="ui-g-3 ui-md-3 ui-sm-1"></div>
   </div>
 </p-panel>

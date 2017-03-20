@@ -12,7 +12,10 @@ import {
   ConfirmDialogModule,
   ConfirmationService,
   GrowlModule,
-  BlockUIModule
+  BlockUIModule,
+  InputTextareaModule,
+  DropdownModule,
+  RadioButtonModule
 } from 'primeng/primeng';
 
 @NgModule({
@@ -27,7 +30,10 @@ import {
     InputSwitchModule,
     ConfirmDialogModule,
     GrowlModule,
-    BlockUIModule
+    BlockUIModule,
+    InputTextareaModule,
+    DropdownModule,
+    RadioButtonModule
 	],
   providers: [
     ConfirmationService
