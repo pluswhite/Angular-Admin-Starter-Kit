@@ -29,8 +29,8 @@ const routes: Routes = [
         loadChildren: 'app/admin/users/users.module#UsersModule'
       },
       {
-        path: 'forms',
-        loadChildren: 'app/admin/forms/forms.module#FormsModule'
+        path: 'reports',
+        loadChildren: 'app/admin/reports/reports.module#ReportsModule'
       }
     ]
   },

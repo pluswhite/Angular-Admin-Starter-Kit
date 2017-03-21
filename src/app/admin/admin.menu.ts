@@ -37,6 +37,28 @@ export const ADMIN_MENU = [
         ]
       },
       {
+        path: 'reports',
+        data: {
+          menu: {
+            title: 'Reports',
+            icon: 'fa fa-files-o',
+            selected: false,
+            expanded: false,
+            order: 650,
+          }
+        },
+        children: [
+          {
+            path: 'list',
+            data: {
+              menu: {
+                title: 'Total Report'
+              }
+            }
+          }
+        ]
+      },
+      {
         path: '',
         data: {
           menu: {
