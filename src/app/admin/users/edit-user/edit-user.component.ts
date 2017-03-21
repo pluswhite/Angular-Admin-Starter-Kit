@@ -46,6 +46,7 @@ export class EditUserComponent implements OnInit {
   levels: SelectItem[] = [];
   msgs: Message[] = [];
   errorMsgs: Message[] = [];
+  blockedPanel: boolean = false;
   private currentId;
 
   constructor(
@@ -73,13 +74,14 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.blockedPanel = true;
     this.currentId = +this.route.snapshot.params['id'];
     // TODO: Get user info by current id.
     this.buildForm();
     this.route.params
       .switchMap((params: Params) => this.usersService.getUser(params['id']))
       .subscribe(
-        data => {
+        (data) => {
           console.log(data);
           this.form.patchValue({
             name: data.name,
@@ -88,9 +90,16 @@ export class EditUserComponent implements OnInit {
             profile: data.profile,
             role: data.role
           });
+          this.blockedPanel = false;
         },
-        error => {
+        (error) => {
           console.log(error);
+          this.errorMsgs = [];
+          this.errorMsgs.push({
+            severity: 'error',
+            summary: 'Error!',
+            detail: "Some errors from get user info."
+          });
         }
       )
   }

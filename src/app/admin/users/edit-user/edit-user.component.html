@@ -3,7 +3,7 @@
     <a [routerLink]="['../list']" pButton icon="fa-reply" label="Back" class="ui-button-secondary"></a>
   </div>
 </div>
-<p-panel header="Edit User">
+<p-panel #pnl header="Edit User" [style]="{'position': 'relative'}">
   <div class="ui-g ui-fluid">
     <div class="ui-g-3 ui-md-3 ui-sm-1"></div>
     <div class="ui-g-6 ui-md-6 ui-sm-10">
@@ -69,4 +69,5 @@
     </div>
     <div class="ui-g-3 ui-md-3 ui-sm-1"></div>
   </div>
+  <p-blockUI [target]="pnl" [blocked]="blockedPanel"></p-blockUI>
 </p-panel>
