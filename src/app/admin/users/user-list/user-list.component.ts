@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { LazyLoadEvent, Message, ConfirmationService } from 'primeng/primeng';
 
-import { UserListService } from './user-list.service';
+import { UsersService } from '../users.service';
 import { User } from './user';
 
 import 'style-loader!./user-list.component.scss';
@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private confirmationService: ConfirmationService,
-    protected userListService: UserListService) {
+    protected usersService: UsersService) {
   }
 
   ngOnInit() {
@@ -40,7 +40,7 @@ export class UserListComponent implements OnInit {
 
   getDataList () {
     this.blockedPanel = true;
-    this.userListService
+    this.usersService
       .getUserListData()
       .map(res => res.json())
       .subscribe(
@@ -103,7 +103,7 @@ export class UserListComponent implements OnInit {
       accept: () => {
         console.log(user);
         this.popMsgs = [];
-        // this.userListService.doDeleteUser(user)
+        // this.usersService.doDeleteUser(user)
         //   .subscribe(
         //     res => {
         //       this.popMsgs.push({

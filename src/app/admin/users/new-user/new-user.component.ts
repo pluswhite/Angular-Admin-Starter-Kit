@@ -4,7 +4,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 import { Message, SelectItem } from 'primeng/primeng';
 
-import { NewUserService } from './new-user.service';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'new-user',
@@ -50,7 +50,7 @@ export class NewUserComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public fb: FormBuilder,
-    private _newUserService: NewUserService) {
+    private usersService: UsersService) {
     this.levels.push({
       label: '1',
       value: '1'
@@ -139,7 +139,7 @@ export class NewUserComponent implements OnInit {
       that = this;
     this.submitted = true;
     if (this.form.valid) {
-      this._newUserService.addUser(values)
+      this.usersService.addUser(values)
         .map(res => res.json())
         .subscribe(
           data => {

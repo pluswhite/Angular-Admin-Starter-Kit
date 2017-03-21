@@ -5,7 +5,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Message, SelectItem } from 'primeng/primeng';
 
-import { EditUserService } from './edit-user.service';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'edit-user',
@@ -52,7 +52,7 @@ export class EditUserComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public fb: FormBuilder,
-    private _editUserService: EditUserService) {
+    private usersService: UsersService) {
 
     this.levels.push({
       label: '1',
@@ -77,7 +77,7 @@ export class EditUserComponent implements OnInit {
     // TODO: Get user info by current id.
     this.buildForm();
     this.route.params
-      .switchMap((params: Params) => this._editUserService.getUser(params['id']))
+      .switchMap((params: Params) => this.usersService.getUser(params['id']))
       .subscribe(
         data => {
           console.log(data);
@@ -161,7 +161,7 @@ export class EditUserComponent implements OnInit {
       that = this;
     this.submitted = true;
     if (this.form.valid) {
-      this._editUserService.addUser(values)
+      this.usersService.addUser(values)
         .map(res => res.json())
         .subscribe(
           data => {

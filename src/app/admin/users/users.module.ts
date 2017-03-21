@@ -6,14 +6,13 @@ import { PrimeNGModule } from '../../_shared/primeng.module';
 import { routing } from './users.routing';
 import { UsersComponent } from './users.component';
 
+import { UsersService } from './users.service';
+
 import { UserListComponent } from './user-list';
-import { UserListService } from './user-list/user-list.service';
 
 import { NewUserComponent } from './new-user';
-import { NewUserService } from './new-user/new-user.service';
 
 import { EditUserComponent } from './edit-user';
-import { EditUserService } from './edit-user/edit-user.service';
 
 @NgModule({
   imports: [
@@ -30,9 +29,7 @@ import { EditUserService } from './edit-user/edit-user.service';
     EditUserComponent
   ],
   providers: [
-    UserListService,
-    NewUserService,
-    EditUserService
+    UsersService
   ],
 })
 export class UsersModule { }
