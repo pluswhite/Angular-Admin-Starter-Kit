@@ -17,16 +17,12 @@ import 'style-loader!./user-list.component.scss';
 export class UserListComponent implements OnInit {
 
   dataSource: User[];
-
   users: User[];
-
   totalRecords: number;
-
   checked: boolean = true;
 
   msgs: Message[] = [];
   popMsgs: Message[] = [];
-
   blockedPanel: boolean = false;
 
   constructor(
@@ -38,7 +34,7 @@ export class UserListComponent implements OnInit {
     this.getDataList();
   }
 
-  getDataList () {
+  getDataList() {
     this.blockedPanel = true;
     this.usersService
       .getUserListData()

@@ -1,1 +1,32 @@
-<h3>Total Report</h3>
+<p-panel #pnl [style]="{'position': 'relative'}" header="Total Report">
+  <p-dataTable
+    [value]="reportListItem"
+    [lazy]="true"
+    [rows]="15"
+    [paginator]="true"
+    [rowsPerPageOptions]="[15,30,50,100]"
+    [responsive]="true"
+    [stacked]="stacked"
+    [totalRecords]="totalRecords"
+    resizableColumns="true"
+    sortMode="multiple"
+    (onLazyLoad)="loadListLazy($event)">
+    <!--<p-header>List of Users</p-header>-->
+    <p-column field="id" header="ID" [sortable]="true"></p-column>
+    <p-column field="date" header="Date" [sortable]="true"></p-column>
+    <p-column field="traffic" header="Traffic" [sortable]="true"></p-column>
+    <p-column field="show" header="Show" [sortable]="true"></p-column>
+    <p-column field="click" header="Click" [sortable]="true"></p-column>
+    <p-column field="income" header="Income" [sortable]="true"></p-column>
+    <p-column styleClass="col-button" header="Actions">
+      <!--<template pTemplate="header">
+        <button type="button" pButton icon="fa-edit"></button>
+      </template>-->
+      <template let-user="rowData" pTemplate="body">
+        <!--<p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="checked"></p-inputSwitch>-->
+        <a [routerLink]="['../', user.id]" pButton icon="fa-edit"></a>
+        <button type="button" class="ui-button-danger" pButton (click)="deleteUser(user)" icon="fa-trash"></button>
+      </template>
+    </p-column>
+  </p-dataTable>
+</p-panel>
