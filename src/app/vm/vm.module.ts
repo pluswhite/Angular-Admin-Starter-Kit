@@ -8,6 +8,8 @@ import {
   ChartModule
 } from 'primeng/primeng';
 
+import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
+
 import { VmHeaderComponent } from './components/vmHeader';
 import { VmSidebarComponent } from './components/vmSidebar';
 import { VmContentTopComponent } from './components/vmContentTop';
@@ -40,7 +42,8 @@ const VM_SERVICES = [
     ButtonModule,
     MenuModule,
     BreadcrumbModule,
-    ChartModule
+    ChartModule,
+    Ng2BreadcrumbModule.forRoot()
   ],
   exports: [
     ...VM_COMPONENTS

@@ -10,6 +10,11 @@ const routes: Routes = [
     component: ReportsComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
+      },
+      {
         path: 'list',
         component: TotalReportComponent
       }
