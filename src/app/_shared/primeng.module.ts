@@ -15,7 +15,8 @@ import {
   BlockUIModule,
   InputTextareaModule,
   DropdownModule,
-  RadioButtonModule
+  RadioButtonModule,
+  MultiSelectModule
 } from 'primeng/primeng';
 
 @NgModule({
@@ -33,7 +34,8 @@ import {
     BlockUIModule,
     InputTextareaModule,
     DropdownModule,
-    RadioButtonModule
+    RadioButtonModule,
+    MultiSelectModule
 	],
   providers: [
     ConfirmationService
