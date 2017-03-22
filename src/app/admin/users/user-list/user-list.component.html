@@ -20,32 +20,37 @@
     </div>
   </p-header>
   <p-dataTable
-    [value]="users"
-    [lazy]="true"
+    [value]="dataSource"
     [rows]="15"
     [paginator]="true"
     [rowsPerPageOptions]="[15,30,50,100]"
     [responsive]="true"
     [stacked]="stacked"
-    [totalRecords]="totalRecords"
     resizableColumns="true"
     sortMode="multiple"
-    (onLazyLoad)="loadUsersLazy($event)">
-    <!--<p-header>List of Users</p-header>-->
-    <p-column field="id" header="ID" [sortable]="true"></p-column>
-    <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
-    <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
-    <p-column field="username" header="Username" [sortable]="true"></p-column>
-    <p-column field="email" header="E-mail" [sortable]="true"></p-column>
-    <p-column field="age" header="Age" [sortable]="true"></p-column>
+    reorderableColumns="true"
+    [globalFilter]="gb">
+    <p-header>
+      <div class="ui-g">
+        <div class="ui-g-6 ui-g-nopad">
+          <div style="text-align:left">
+            <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+          </div>
+        </div>
+        <div class="ui-g-6 ui-g-nopad">
+          <div style="text-align: right;">
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+          </div>
+        </div>
+      </div>
+    </p-header>
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column>
     <p-column styleClass="col-button" header="Actions">
-      <!--<template pTemplate="header">
-        <button type="button" pButton icon="fa-edit"></button>
-      </template>-->
-      <template let-user="rowData" pTemplate="body">
-        <!--<p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="checked"></p-inputSwitch>-->
-        <a [routerLink]="['../', user.id]" pButton icon="fa-edit"></a>
-        <button type="button" class="ui-button-danger" pButton (click)="deleteUser(user)" icon="fa-trash"></button>
+      <template let-item="rowData" pTemplate="body">
+        <p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="item.status" styleClass="switch-wrap"></p-inputSwitch>
+        <a [routerLink]="['../', item.id]" pButton icon="fa-edit"></a>
+        <button type="button" class="ui-button-danger" pButton (click)="deleteItem(item)" icon="fa-trash"></button>
       </template>
     </p-column>
   </p-dataTable>

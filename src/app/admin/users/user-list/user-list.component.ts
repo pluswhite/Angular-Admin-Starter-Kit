@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LazyLoadEvent, Message, ConfirmationService } from 'primeng/primeng';
+import { LazyLoadEvent, Message, ConfirmationService, SelectItem } from 'primeng/primeng';
 
 import { UsersService } from '../users.service';
 import { User } from './user';
@@ -20,6 +20,8 @@ export class UserListComponent implements OnInit {
   users: User[];
   totalRecords: number;
   checked: boolean = true;
+  cols: any[];
+  columnOptions: SelectItem[] = [];
 
   msgs: Message[] = [];
   popMsgs: Message[] = [];
@@ -31,6 +33,39 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cols = [
+      {
+        field: "id",
+        header: "ID"
+      },
+       {
+        field: "firstName",
+        header: "First Name"
+      },
+      {
+        field: "lastName",
+        header: "Last Name"
+      },
+      {
+        field: "userName",
+        header: "UserName"
+      },
+      {
+        field: "email",
+        header: "E-mail"
+      },
+      {
+        field: "age",
+        header: "Age"
+      }
+    ];
+
+    for(let i = 0, l = this.cols.length; i < l; i++) {
+      this.columnOptions.push({
+        label: this.cols[i].header,
+        value: this.cols[i]
+      });
+    }
     this.getDataList();
   }
 
@@ -42,8 +77,6 @@ export class UserListComponent implements OnInit {
       .subscribe(
         res => {
           this.dataSource = res.data;
-          this.totalRecords = this.dataSource.length;
-          this.users = this.dataSource.slice(0, 15);
           this.blockedPanel = false;
         },
         error => {
@@ -58,29 +91,12 @@ export class UserListComponent implements OnInit {
       )
   }
 
-
-  loadUsersLazy(event: LazyLoadEvent) {
-    //in a real application, make a remote request to load data using state metadata from event
-    //event.first = First row offset
-    //event.rows = Number of rows per page
-    //event.sortField = Field name to sort with
-    //event.sortOrder = Sort order as number, 1 for asc and -1 for dec
-    //filters: FilterMetadata object having field as key and filter value, filter matchMode as value
-
-    //imitate db connection over a network
-    setTimeout(() => {
-      if(this.dataSource) {
-        this.users = this.dataSource.slice(event.first, (event.first + event.rows));
-      }
-    }, 250);
-  }
-
   refresh() {
     this.msgs = [];
     this.getDataList();
   }
 
-  editUser(user: User) {
+  editItem(user: User) {
     console.log(user);
     this.popMsgs = [];
     this.popMsgs.push({
@@ -91,7 +107,7 @@ export class UserListComponent implements OnInit {
     console.log(this.popMsgs);
   }
 
-  deleteUser(user: User) {
+  deleteItem(user: User) {
     this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
