@@ -48,7 +48,7 @@
     <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column>
     <p-column styleClass="col-button" header="Actions">
       <template let-item="rowData" pTemplate="body">
-        <p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="item.status" styleClass="switch-wrap"></p-inputSwitch>
+        <p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="item.status" (onChange)="switchStatus($event, item)" styleClass="switch-wrap"></p-inputSwitch>
         <a [routerLink]="['../', item.id]" pButton icon="fa-edit"></a>
         <button type="button" class="ui-button-danger" pButton (click)="deleteItem(item)" icon="fa-trash"></button>
       </template>

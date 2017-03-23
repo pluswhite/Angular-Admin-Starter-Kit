@@ -21,6 +21,9 @@ export class DashboardComponent implements OnInit {
   ) {
     console.log(Chart);
     this._titleService.setTitle('Dashboard');
+  }
+
+  ngOnInit() {
     this.barData = {
       labels: [
         'January',
@@ -43,6 +46,12 @@ export class DashboardComponent implements OnInit {
           backgroundColor: '#9CCC65',
           borderColor: '#7CB342',
           data: [28, 48, 40, 19, 86, 27, 90]
+        },
+        {
+          label: 'My Third dataset',
+          backgroundColor: '#FFCE56',
+          borderColor: '#FFCE56',
+          data: [18, 58, 20, 69, 26, 67, 50]
         }
       ]
     };
@@ -83,6 +92,4 @@ export class DashboardComponent implements OnInit {
         }]
     };
   }
-
-  ngOnInit() { }
 }

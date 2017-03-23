@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormArray, AbstractControl, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
 import { Message, SelectItem } from 'primeng/primeng';
@@ -18,6 +18,8 @@ export class NewUserComponent implements OnInit {
   public level: AbstractControl;
   public profile: AbstractControl;
   public role: AbstractControl;
+  public permission: string[];
+  public dashboard: AbstractControl;
   public submitted: boolean = false;
 
   public formErrors = {
@@ -26,6 +28,7 @@ export class NewUserComponent implements OnInit {
     "level": "",
     "profile": "",
     "role": "",
+    "permission": "",
     "formError": ""
   };
   validationMessages = {
@@ -41,7 +44,8 @@ export class NewUserComponent implements OnInit {
       'required': 'Level is\'t empty.',
     },
     'profile': {},
-    "role": {}
+    "role": {},
+    "permission": {}
   };
   levels: SelectItem[] = [];
   msgs: Message[] = [];
@@ -104,7 +108,18 @@ export class NewUserComponent implements OnInit {
       ],
       'role': [
         'editor'
-      ]
+      ],
+      'permission': this.fb.group({
+        'dashboard': [
+          false
+        ],
+        'users': [
+          true
+        ],
+        'reports': [
+          true
+        ]
+      })
     });
 
     this.email = this.form.controls['email'];
@@ -112,6 +127,9 @@ export class NewUserComponent implements OnInit {
     this.level = this.form.controls['level'];
     this.profile = this.form.controls['profile'];
     this.role = this.form.controls['role'];
+    // this.permission = this.form.controls['permission'];
+    // console.log(this.permission);
+    this.permission = [];
 
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -142,6 +160,7 @@ export class NewUserComponent implements OnInit {
       that = this;
     this.submitted = true;
     if (this.form.valid) {
+      console.log(values);return;
       this.usersService.addUser(values)
         .map(res => res.json())
         .subscribe(
@@ -154,7 +173,7 @@ export class NewUserComponent implements OnInit {
               detail: 'New user has been added.'
             });
             setTimeout(function() {
-              that.router.navigate(['../user-list'], {
+              that.router.navigate(['../list'], {
                 relativeTo: that.route
               });
             }, 1000);

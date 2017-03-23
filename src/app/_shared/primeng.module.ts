@@ -16,6 +16,7 @@ import {
   InputTextareaModule,
   DropdownModule,
   RadioButtonModule,
+  CheckboxModule,
   MultiSelectModule
 } from 'primeng/primeng';
 
@@ -35,6 +36,7 @@ import {
     InputTextareaModule,
     DropdownModule,
     RadioButtonModule,
+    CheckboxModule,
     MultiSelectModule
 	],
   providers: [

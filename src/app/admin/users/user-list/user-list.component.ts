@@ -138,4 +138,9 @@ export class UserListComponent implements OnInit {
       }
     });
   }
+
+  switchStatus(evt, item) {
+    console.log(item);
+    console.log(evt.checked);
+  }
 }
