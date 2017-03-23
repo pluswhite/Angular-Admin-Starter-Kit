@@ -20,6 +20,8 @@ export class NewUserComponent implements OnInit {
   public role: AbstractControl;
   public permission: string[];
   public dashboard: AbstractControl;
+  public users: AbstractControl;
+  public reports: AbstractControl;
   public submitted: boolean = false;
 
   public formErrors = {
@@ -29,6 +31,7 @@ export class NewUserComponent implements OnInit {
     "profile": "",
     "role": "",
     "permission": "",
+    "dashboard": "",
     "formError": ""
   };
   validationMessages = {
@@ -45,7 +48,8 @@ export class NewUserComponent implements OnInit {
     },
     'profile': {},
     "role": {},
-    "permission": {}
+    "permission": {},
+    "dashboard": {}
   };
   levels: SelectItem[] = [];
   msgs: Message[] = [];
@@ -109,17 +113,15 @@ export class NewUserComponent implements OnInit {
       'role': [
         'editor'
       ],
-      'permission': this.fb.group({
-        'dashboard': [
-          false
-        ],
-        'users': [
-          true
-        ],
-        'reports': [
-          true
-        ]
-      })
+      'dashboard': [
+        false
+      ],
+      'users': [
+        true
+      ],
+      'reports': [
+        true
+      ]
     });
 
     this.email = this.form.controls['email'];
@@ -127,6 +129,9 @@ export class NewUserComponent implements OnInit {
     this.level = this.form.controls['level'];
     this.profile = this.form.controls['profile'];
     this.role = this.form.controls['role'];
+    this.dashboard = this.form.controls['dashboard'];
+    this.users = this.form.controls['users'];
+    this.reports = this.form.controls['reports'];
     // this.permission = this.form.controls['permission'];
     // console.log(this.permission);
     this.permission = [];

@@ -64,10 +64,9 @@
               <label for="" class="">Permission: </label>
             </div>
             <div class="ui-grid-col-10">
-              {{dashboard}}
-              <!--<p-checkbox name="permission" label="Dashboard" value="dashboard" binary="true" [formControl]="permission"></p-checkbox>-->
-              <!--<p-checkbox name="permission" label="Users" value="user" binary="true" [formControl]="form.get('dashboard')"></p-checkbox>-->
-              <!--<p-checkbox name="permission" label="Reports" value="report" binary="true" [formControl]="permission"></p-checkbox>-->
+              <p-checkbox name="permission" label="Dashboard" value="dashboard" binary="true" [formControl]="dashboard"></p-checkbox>
+              <p-checkbox name="permission" label="Users" value="user" binary="true" [formControl]="users"></p-checkbox>
+              <p-checkbox name="permission" label="Reports" value="report" binary="true" [formControl]="reports"></p-checkbox>
             </div>
           </div>
         </fieldset>
