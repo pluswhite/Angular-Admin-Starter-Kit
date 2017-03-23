@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Title }     from '@angular/platform-browser';
 
 import { MenuItem } from 'primeng/primeng';
 import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
@@ -22,6 +23,7 @@ export class VmContentTopComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private _titleService: Title,
     private _breadcrumbService: BreadcrumbService
   ) { }
 

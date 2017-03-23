@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
 import { LazyLoadEvent, Message, SelectItem } from 'primeng/primeng';
 
 import { ReportListItem } from './total-report';
@@ -23,8 +25,11 @@ export class TotalReportComponent implements OnInit {
   blockedPanel: boolean = false;
 
   constructor(
+    private _titleService: Title,
     private reportsService: ReportsService
-  ) { }
+  ) {
+    this._titleService.setTitle('Total Report');
+  }
 
   ngOnInit() {
     this.getDataList();

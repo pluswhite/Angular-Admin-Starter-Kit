@@ -1,4 +1,10 @@
 <div class="vm-content-top">
-  <h1>Page Header</h1>
-  <p-breadcrumb styleClass="vm-breadcrumb" [model]="breadcrumbItem"></p-breadcrumb>
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h1>{{_titleService.getTitle()}}</h1>
+    </div>
+    <div class="ui-g-6">
+      <p-breadcrumb styleClass="vm-breadcrumb" [model]="breadcrumbItem"></p-breadcrumb>
+    </div>
+  </div>
 </div>

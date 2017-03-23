@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import Chart from 'chart.js/dist/Chart.js'
 
 @Component({
@@ -15,8 +16,11 @@ export class DashboardComponent implements OnInit {
 
   doughnutData: any;
 
-  constructor() {
+  constructor(
+    private _titleService: Title
+  ) {
     console.log(Chart);
+    this._titleService.setTitle('Dashboard');
     this.barData = {
       labels: [
         'January',

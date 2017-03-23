@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { Message, SelectItem } from 'primeng/primeng';
 
@@ -50,7 +51,9 @@ export class NewUserComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public fb: FormBuilder,
+    private _titleService: Title,
     private usersService: UsersService) {
+    this._titleService.setTitle('New User');
     this.levels.push({
       label: '1',
       value: '1'

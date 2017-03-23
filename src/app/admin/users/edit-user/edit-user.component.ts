@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import 'rxjs/add/operator/switchMap';
 import { Message, SelectItem } from 'primeng/primeng';
@@ -53,8 +54,9 @@ export class EditUserComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public fb: FormBuilder,
+    private _titleService: Title,
     private usersService: UsersService) {
-
+    this._titleService.setTitle('Edit User');
     this.levels.push({
       label: '1',
       value: '1'

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { LazyLoadEvent, Message, ConfirmationService, SelectItem } from 'primeng/primeng';
 
@@ -28,8 +29,10 @@ export class UserListComponent implements OnInit {
   blockedPanel: boolean = false;
 
   constructor(
+    private _titleService: Title,
     private confirmationService: ConfirmationService,
     protected usersService: UsersService) {
+      _titleService.setTitle('User List');
   }
 
   ngOnInit() {
