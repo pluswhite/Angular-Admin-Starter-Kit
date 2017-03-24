@@ -6,26 +6,9 @@ import {
   PanelModule
 } from 'primeng/primeng';
 
+import { DashboardService } from './dashboard.service';
 import { DashboardComponent } from './dashboard.component';
 import { routing } from './dashboard.routing';
-
-// import { PieChartComponent } from './pieChart';
-// import { PieChartService } from './pieChart/pieChart.service';
-
-// import { LineChartComponent } from './lineChart';
-// import { LineChartService } from './lineChart/lineChart.service';
-
-// import { TrafficChartComponent } from './trafficChart';
-// import { TrafficChartService } from './trafficChart/trafficChart.service';
-
-// import { UserMapComponent } from './userMap';
-// import { UserMapService } from './userMap/userMap.service';
-
-// import { TodoComponent } from './todo';
-// import { TodoService } from './todo/todo.service';
-
-// import { CalendarComponent } from './calendar';
-// import { CalendarService } from './calendar/calendar.service';
 
 @NgModule({
   imports: [
@@ -36,21 +19,10 @@ import { routing } from './dashboard.routing';
   ],
   exports: [],
   declarations: [
-    DashboardComponent,
-    // PieChartComponent,
-    // LineChartComponent,
-    // TrafficChartComponent,
-    // UserMapComponent,
-    // TodoComponent,
-    // CalendarComponent
+    DashboardComponent
   ],
   providers: [
-    // PieChartService,
-    // LineChartService,
-    // TrafficChartService,
-    // UserMapService,
-    // TodoService,
-    // CalendarService
+    DashboardService
   ],
 })
 export class DashboardModule { }
