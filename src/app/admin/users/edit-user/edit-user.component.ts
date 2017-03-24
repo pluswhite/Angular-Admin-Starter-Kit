@@ -3,7 +3,6 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import 'rxjs/add/operator/switchMap';
 import { Message, SelectItem } from 'primeng/primeng';
 
 import { UsersService } from '../users.service';
@@ -19,6 +18,8 @@ export class EditUserComponent implements OnInit {
   public level: AbstractControl;
   public profile: AbstractControl;
   public role: AbstractControl;
+  public permission: AbstractControl;
+  public resource: AbstractControl;
   public submitted: boolean = false;
 
   public formErrors = {
@@ -27,6 +28,8 @@ export class EditUserComponent implements OnInit {
     "level": "",
     "profile": "",
     "role": "",
+    "permission": "",
+    "resource": "",
     "formError": ""
   };
   validationMessages = {
@@ -42,9 +45,14 @@ export class EditUserComponent implements OnInit {
       'required': 'Level is\'t empty.',
     },
     'profile': {},
-    "role": {}
+    "role": {},
+    "permission": {
+      'required': 'Permission is required.'
+    },
+    "resource": {}
   };
   levels: SelectItem[] = [];
+  permissions: SelectItem[] = [];
   msgs: Message[] = [];
   errorMsgs: Message[] = [];
   blockedPanel: boolean = false;
@@ -57,31 +65,47 @@ export class EditUserComponent implements OnInit {
     private _titleService: Title,
     private usersService: UsersService) {
     this._titleService.setTitle('Edit User');
-    this.levels.push({
-      label: '1',
-      value: '1'
-    }, {
-      label: '2',
-      value: '2'
-    }, {
-      label: '3',
-      value: '3'
-    }, {
-      label: '4',
-      value: '4'
-    }, {
-      label: '5',
-      value: '5'
-    });
+    this.levels.push(
+      {
+        label: '1',
+        value: '1'
+      }, {
+        label: '2',
+        value: '2'
+      }, {
+        label: '3',
+        value: '3'
+      }, {
+        label: '4',
+        value: '4'
+      }, {
+        label: '5',
+        value: '5'
+      }
+    );
+    this.permissions.push(
+      {
+        label: "Dashboard",
+        value: 'dashboard'
+      },
+      {
+        label: "Users",
+        value: 'users'
+      },
+      {
+        label: "Reports",
+        value: 'reports'
+      }
+    );
   }
 
   ngOnInit() {
     this.blockedPanel = true;
+    // console.log(this.route);
     this.currentId = +this.route.snapshot.params['id'];
     // TODO: Get user info by current id.
     this.buildForm();
-    this.route.params
-      .switchMap((params: Params) => this.usersService.getUser(params['id']))
+    this.usersService.getUser(this.currentId)
       .subscribe(
         (data) => {
           console.log(data);
@@ -90,7 +114,9 @@ export class EditUserComponent implements OnInit {
             email: data.email,
             level: data.level,
             profile: data.profile,
-            role: data.role
+            role: data.role,
+            resource: data.resource,
+            permission: data.permission
           });
           this.blockedPanel = false;
         },
@@ -134,6 +160,21 @@ export class EditUserComponent implements OnInit {
       ],
       'role': [
         'editor'
+      ],
+      'resource': [
+        [
+          'res1'
+        ]
+      ],
+      'permission': [
+        [
+          'dashboard',
+          'users',
+          'reports'
+        ],
+        Validators.compose([
+          Validators.required
+        ])
       ]
     });
 
@@ -142,6 +183,8 @@ export class EditUserComponent implements OnInit {
     this.level = this.form.controls['level'];
     this.profile = this.form.controls['profile'];
     this.role = this.form.controls['role'];
+    this.resource = this.form.controls['resource'];
+    this.permission = this.form.controls['permission'];
 
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -181,7 +224,7 @@ export class EditUserComponent implements OnInit {
             this.msgs.push({
               severity: 'success',
               summary: 'Success!',
-              detail: 'New user has been added.'
+              detail: 'User has been updated.'
             });
             setTimeout(function() {
               that.router.navigate(['../user-list'], {

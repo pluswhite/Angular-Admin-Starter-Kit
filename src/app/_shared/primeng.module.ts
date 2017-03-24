@@ -17,7 +17,8 @@ import {
   DropdownModule,
   RadioButtonModule,
   CheckboxModule,
-  MultiSelectModule
+  MultiSelectModule,
+  SpinnerModule
 } from 'primeng/primeng';
 
 @NgModule({
@@ -37,7 +38,8 @@ import {
     DropdownModule,
     RadioButtonModule,
     CheckboxModule,
-    MultiSelectModule
+    MultiSelectModule,
+    SpinnerModule
 	],
   providers: [
     ConfirmationService

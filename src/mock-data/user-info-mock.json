@@ -4,5 +4,12 @@
   "email": "eric@v.com",
   "level": "3",
   "profile": "Eric Profile.",
-  "role": "administrator"
+  "role": "administrator",
+  "resource": [
+    "res2"
+  ],
+  "permission": [
+    "dashboard",
+    "reports"
+  ]
 }

@@ -19,6 +19,7 @@ export class NewUserComponent implements OnInit {
   public profile: AbstractControl;
   public role: AbstractControl;
   public permission: AbstractControl;
+  public resource: AbstractControl;
   public submitted: boolean = false;
 
   public formErrors = {
@@ -28,7 +29,7 @@ export class NewUserComponent implements OnInit {
     "profile": "",
     "role": "",
     "permission": "",
-    "dashboard": "",
+    "resource": "",
     "formError": ""
   };
   validationMessages = {
@@ -47,7 +48,8 @@ export class NewUserComponent implements OnInit {
     "role": {},
     "permission": {
       'required': 'Permission is required.'
-    }
+    },
+    "resource": {}
   };
   levels: SelectItem[] = [];
   permissions: SelectItem[] = [];
@@ -124,6 +126,13 @@ export class NewUserComponent implements OnInit {
       'role': [
         'editor'
       ],
+      'resource': [
+        [
+          'res1',
+          'res2',
+          'res3'
+        ]
+      ],
       'permission': [
         [
           'dashboard',
@@ -141,9 +150,8 @@ export class NewUserComponent implements OnInit {
     this.level = this.form.controls['level'];
     this.profile = this.form.controls['profile'];
     this.role = this.form.controls['role'];
+    this.resource = this.form.controls['resource'];
     this.permission = this.form.controls['permission'];
-    console.log(this.permission);
-    // this.permission = this.form.controls['permission'];
 
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));

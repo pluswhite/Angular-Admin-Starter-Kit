@@ -61,7 +61,17 @@
           </div>
           <div class="ui-grid-row">
             <div class="ui-grid-col-2">
-              <label for="" class="">Permission: </label>
+              <label for="">Resources: </label>
+            </div>
+            <div class="ui-grid-col-10">
+              <p-checkbox name="resources" label="Res1" value="res1" [formControl]="resource"></p-checkbox>
+              <p-checkbox name="resources" label="Res2" value="res2" [formControl]="resource"></p-checkbox>
+              <p-checkbox name="resources" label="Res3" value="res3" [formControl]="resource"></p-checkbox>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              <label for="" class="label">Permissions: </label>
             </div>
             <div class="ui-grid-col-10" [ngClass]="{'has-error': (formErrors.permission)}">
               <p-multiSelect [options]="permissions" [formControl]="permission"></p-multiSelect>
