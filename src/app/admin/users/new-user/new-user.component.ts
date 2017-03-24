@@ -18,7 +18,7 @@ export class NewUserComponent implements OnInit {
   public level: AbstractControl;
   public profile: AbstractControl;
   public role: AbstractControl;
-  public permission: string[];
+  public permission: AbstractControl;
   public dashboard: AbstractControl;
   public users: AbstractControl;
   public reports: AbstractControl;
@@ -52,6 +52,7 @@ export class NewUserComponent implements OnInit {
     "dashboard": {}
   };
   levels: SelectItem[] = [];
+  permissions: SelectItem[] = [];
   msgs: Message[] = [];
   errorMsgs: Message[] = [];
 
@@ -77,6 +78,18 @@ export class NewUserComponent implements OnInit {
     }, {
       label: '5',
       value: '5'
+    });
+    this.permissions.push({
+      label: "Dashboard",
+      value: 'dashboard'
+    },
+    {
+      label: "Users",
+      value: 'users'
+    },
+    {
+      label: "Reports",
+      value: 'reports'
     });
   }
 
@@ -113,6 +126,9 @@ export class NewUserComponent implements OnInit {
       'role': [
         'editor'
       ],
+      'permission': [
+        ''
+      ],
       'dashboard': [
         false
       ],
@@ -132,9 +148,9 @@ export class NewUserComponent implements OnInit {
     this.dashboard = this.form.controls['dashboard'];
     this.users = this.form.controls['users'];
     this.reports = this.form.controls['reports'];
-    // this.permission = this.form.controls['permission'];
+    this.permission = this.form.controls['permission'];
     // console.log(this.permission);
-    this.permission = [];
+    // this.permission = this.form.controls['permission'];
 
     this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -165,7 +181,7 @@ export class NewUserComponent implements OnInit {
       that = this;
     this.submitted = true;
     if (this.form.valid) {
-      console.log(values);return;
+      // console.log(values);return;
       this.usersService.addUser(values)
         .map(res => res.json())
         .subscribe(

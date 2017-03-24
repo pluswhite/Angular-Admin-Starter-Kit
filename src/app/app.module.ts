@@ -24,10 +24,6 @@ import { NgaModule } from './theme/nga.module';
 
 import { VmModule } from './vm/vm.module';
 
-import { AuthGuard } from './_guard';
-import { AuthService } from './_guard/auth.service';
-import { UserService } from './_guard/user.service';
-
 import { NoContentModule } from './no-content/no-content.module';
 import { SiteModule } from './site/site.module';
 // import { PagesModule } from './pages/pages.module';
@@ -71,10 +67,7 @@ export type StoreType = {
     ENV_PROVIDERS,
     APP_PROVIDERS,
     Title,
-    Angular2TokenService,
-    AuthGuard,
-    AuthService,
-    UserService
+    Angular2TokenService
   ]
 })
 
