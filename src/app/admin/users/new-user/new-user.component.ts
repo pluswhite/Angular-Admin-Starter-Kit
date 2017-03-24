@@ -19,9 +19,6 @@ export class NewUserComponent implements OnInit {
   public profile: AbstractControl;
   public role: AbstractControl;
   public permission: AbstractControl;
-  public dashboard: AbstractControl;
-  public users: AbstractControl;
-  public reports: AbstractControl;
   public submitted: boolean = false;
 
   public formErrors = {
@@ -48,8 +45,9 @@ export class NewUserComponent implements OnInit {
     },
     'profile': {},
     "role": {},
-    "permission": {},
-    "dashboard": {}
+    "permission": {
+      'required': 'Permission is required.'
+    }
   };
   levels: SelectItem[] = [];
   permissions: SelectItem[] = [];
@@ -127,16 +125,14 @@ export class NewUserComponent implements OnInit {
         'editor'
       ],
       'permission': [
-        ''
-      ],
-      'dashboard': [
-        false
-      ],
-      'users': [
-        true
-      ],
-      'reports': [
-        true
+        [
+          'dashboard',
+          'users',
+          'reports'
+        ],
+        Validators.compose([
+          Validators.required
+        ])
       ]
     });
 
@@ -145,11 +141,8 @@ export class NewUserComponent implements OnInit {
     this.level = this.form.controls['level'];
     this.profile = this.form.controls['profile'];
     this.role = this.form.controls['role'];
-    this.dashboard = this.form.controls['dashboard'];
-    this.users = this.form.controls['users'];
-    this.reports = this.form.controls['reports'];
     this.permission = this.form.controls['permission'];
-    // console.log(this.permission);
+    console.log(this.permission);
     // this.permission = this.form.controls['permission'];
 
     this.form.valueChanges
@@ -181,34 +174,34 @@ export class NewUserComponent implements OnInit {
       that = this;
     this.submitted = true;
     if (this.form.valid) {
-      // console.log(values);return;
-      this.usersService.addUser(values)
-        .map(res => res.json())
-        .subscribe(
-          data => {
-            console.log(data);
-            this.msgs = [];
-            this.msgs.push({
-              severity: 'success',
-              summary: 'Success!',
-              detail: 'New user has been added.'
-            });
-            setTimeout(function() {
-              that.router.navigate(['../list'], {
-                relativeTo: that.route
-              });
-            }, 1000);
-          },
-          error => {
-            this.errorMsgs = [];
-            this.errorMsgs.push({
-              severity: 'error',
-              summary: 'Form Error!',
-              detail: error.message
-            });
-            console.log(error);
-          }
-        );
+      console.log(values);return;
+      // this.usersService.addUser(values)
+      //   .map(res => res.json())
+      //   .subscribe(
+      //     data => {
+      //       console.log(data);
+      //       this.msgs = [];
+      //       this.msgs.push({
+      //         severity: 'success',
+      //         summary: 'Success!',
+      //         detail: 'New user has been added.'
+      //       });
+      //       setTimeout(function() {
+      //         that.router.navigate(['../list'], {
+      //           relativeTo: that.route
+      //         });
+      //       }, 1000);
+      //     },
+      //     error => {
+      //       this.errorMsgs = [];
+      //       this.errorMsgs.push({
+      //         severity: 'error',
+      //         summary: 'Form Error!',
+      //         detail: error.message
+      //       });
+      //       console.log(error);
+      //     }
+      //   );
     } else {
       this.errorMsgs = [];
       this.errorMsgs.push({
