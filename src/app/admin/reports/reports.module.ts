@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
 import { PrimeNGModule } from '../../_shared/primeng.module';
 
@@ -11,6 +12,7 @@ import { TotalReportComponent } from './total-report';
   imports: [
     PrimeNGModule,
     SharedModule,
+    ReactiveFormsModule,
     routing
   ],
   exports: [],

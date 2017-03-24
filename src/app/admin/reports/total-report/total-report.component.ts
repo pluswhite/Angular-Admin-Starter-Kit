@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
 import { LazyLoadEvent, Message, SelectItem } from 'primeng/primeng';
@@ -9,16 +10,20 @@ import { ReportsService } from '../reports.service';
 
 @Component({
   selector: 'total-report',
-  templateUrl: 'total-report.component.html'
+  templateUrl: './total-report.component.html',
+  styleUrls: [
+    './total-report.component.scss'
+  ]
 })
 export class TotalReportComponent implements OnInit {
-
+  public form: FormGroup;
+  public name: AbstractControl;
+  public email: AbstractControl;
+  public level: AbstractControl;
   dataSource: ReportListItem[];
-  reportListItem: ReportListItem[];
-  totalRecords: number;
-  checked: boolean = true;
   cols: any[];
   columnOptions: SelectItem[] = [];
+  levels: SelectItem[] = [];
 
   msgs: Message[] = [];
   popMsgs: Message[] = [];
@@ -26,13 +31,51 @@ export class TotalReportComponent implements OnInit {
 
   constructor(
     private _titleService: Title,
+    public formBuilder: FormBuilder,
     private reportsService: ReportsService
   ) {
     this._titleService.setTitle('Total Report');
+    this.levels.push(
+      {
+        label: '1',
+        value: '1'
+      }, {
+        label: '2',
+        value: '2'
+      }, {
+        label: '3',
+        value: '3'
+      }, {
+        label: '4',
+        value: '4'
+      }, {
+        label: '5',
+        value: '5'
+      }
+    );
   }
 
   ngOnInit() {
-    this.getDataList();
+    this.form = this.formBuilder.group({
+      "name": [
+        '',
+      ],
+      "email": [
+        '',
+        Validators.compose([
+          Validators.pattern("^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$")
+        ])
+      ],
+      'level': [
+        '1'
+      ]
+    });
+
+    this.name = this.form.controls['name'];
+    this.email = this.form.controls['email'];
+    this.level = this.form.controls['level'];
+
+    this.getDataList(this.form.value);
     this.cols = [
       {
         field: "id",
@@ -53,6 +96,10 @@ export class TotalReportComponent implements OnInit {
       {
         field: "click",
         header: "Click"
+      },
+      {
+        field: "income",
+        header: "Income"
       }
     ];
 
@@ -64,17 +111,14 @@ export class TotalReportComponent implements OnInit {
     }
   }
 
-  getDataList() {
+  getDataList(search?: any) {
     this.blockedPanel = true;
     this.reportsService
-      .getTotalReportListData()
+      .getTotalReportListData(search)
       .map(res => res.json())
       .subscribe(
         (res) => {
           this.blockedPanel = false;
-          // this.dataSource = res.data;
-          // this.totalRecords = this.dataSource.length;
-          // this.reportListItem = this.dataSource.slice(0, 15);
           this.dataSource = res.data;
         },
         (error) => {
@@ -87,7 +131,7 @@ export class TotalReportComponent implements OnInit {
     this.getDataList();
   }
 
-  deleteItem(item) {
-    console.log(item);
+  public onSubmit (values: Object): void {
+    this.getDataList(values);
   }
 }

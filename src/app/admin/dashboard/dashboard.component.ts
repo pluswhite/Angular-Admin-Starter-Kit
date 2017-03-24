@@ -36,25 +36,32 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.barData = {
       labels: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July"
       ],
       datasets: [
         {
           label: 'Users',
           backgroundColor: '#42A5F5',
           borderColor: '#1E88E5',
-          data: []
+          data: [65, 59, 80, 81, 56, 55, 40]
         },
         {
           label: 'Sales',
           backgroundColor: '#9CCC65',
           borderColor: '#7CB342',
-          data: []
+          data: [28, 48, 40, 19, 86, 27, 90]
         },
         {
           label: 'Revenus',
           backgroundColor: '#FFCE56',
           borderColor: '#FFCE56',
-          data: []
+          data: [18, 58, 20, 69, 26, 67, 50]
         }
       ]
     };
