@@ -12,16 +12,42 @@
           <i class="fa fa-envelope"></i>
         </li>
         <li>
-          <i class="fa fa-cog"></i>
+          <a href="javascript:void(0);">
+            <i class="fa fa-cog"></i>
+          </a>          
         </li>
         <li>
-          <span>
-            <i class="fa fa-user"></i> {{_tokenService.currentUserData?.email}}
-          </span>
-        </li>
-        <li>
-          <button pButton type="button" title="Validate Token" icon="fa-send-o" (click)="validateToken()" class="ui-button-secondary"></button>
-          <button pButton type="button" title="Sign out" icon="fa-power-off" (click)="logout()" class="ui-button-danger"></button>
+          <a href="javascript:void(0);">
+            <i class="fa fa-user"></i> 
+            Thsi@v.com
+            {{_tokenService.currentUserData?.email}}
+          </a>
+          <ul class="sub-menu fadeInDown">
+            <li role="menuitem">
+              <a href="javascript:void(0);">
+                <i class="fa fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="javascript:void(0);">
+                <i class="fa fa-key"></i>
+                <span>Password</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="javascript:void(0);" (click)="validateToken()">
+                <i class="fa fa-send-o"></i>
+                <span>Validate Token</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="javascript:void(0);" (click)="logout()">
+                <i class="fa fa-power-off"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

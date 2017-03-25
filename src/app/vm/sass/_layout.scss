@@ -38,6 +38,10 @@ main {
 a {
   transition: color 0.5s ease;
   outline: 0 !important;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .body-bg {

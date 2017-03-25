@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [
-      Angular2TokenService
+      // Angular2TokenService
     ],
     children: [
       {
