@@ -1,7 +1,11 @@
 <div class="vm-header">
   <div class="ui-g ui-g-nopad">
     <div class="ui-g-3">
-      <p>ValueMaker Admin</p>
+      <div class="logo">
+        <a [routerLink]="['/admin/dashboard']" >
+          THSIXA Admin
+        </a>
+      </div>
     </div>
     <div class="ui-g-9 ui-g-nopad" style="text-align: right;">
       <ul class="top-menu">
@@ -16,7 +20,7 @@
             <i class="fa fa-cog"></i>
           </a>          
         </li>
-        <li>
+        <li class="active">
           <a href="javascript:void(0);">
             <i class="fa fa-user"></i> 
             Thsi@v.com
