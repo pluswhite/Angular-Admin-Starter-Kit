@@ -89,6 +89,9 @@
         &.unread {
           color: #000;
         }
+        &.logout-btn {
+          color: $danger;
+        }
         &:hover {
           background-color: #e3e3e3;
         }

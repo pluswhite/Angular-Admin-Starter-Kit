@@ -47,25 +47,25 @@
           </a>
           <ul class="sub-menu fadeInDown">
             <li role="menuitem">
-              <a [routerLink]="['/admin/settings']">
+              <a [routerLink]="['/admin/settings']" title="Profile">
                 <i class="fa fa-user"></i>
                 <span>Profile</span>
               </a>
             </li>
             <li role="menuitem">
-              <a [routerLink]="['/admin/settings']">
+              <a [routerLink]="['/admin/settings']" title="Password">
                 <i class="fa fa-key"></i>
                 <span>Password</span>
               </a>
             </li>
             <li role="menuitem">
-              <a href="javascript:void(0);" (click)="validateToken()">
+              <a href="javascript:void(0);" (click)="validateToken()" title="Validate Token">
                 <i class="fa fa-send-o"></i>
                 <span>Validate Token</span>
               </a>
             </li>
             <li role="menuitem">
-              <a href="javascript:void(0);" (click)="logout()">
+              <a href="javascript:void(0);" (click)="logout()" class="logout-btn" title="Sign Out">
                 <i class="fa fa-power-off"></i>
                 <span>Sign Out</span>
               </a>
