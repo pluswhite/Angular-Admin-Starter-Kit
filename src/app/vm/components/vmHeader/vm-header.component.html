@@ -8,22 +8,81 @@
       </div>
     </div>
     <div class="ui-g-9 ui-g-nopad" style="text-align: right;">
-      <ul class="top-menu">
-        <li>
-          <i class="fa fa-bell"></i>
-        </li>
-        <li>
-          <i class="fa fa-envelope"></i>
-        </li>
-        <li>
+      <ul class="top-menu" #headerMenu>
+        <li class="">
           <a href="javascript:void(0);">
-            <i class="fa fa-cog"></i>
-          </a>          
+            <i class="fa fa-bell"></i>
+            <span class="top-badge">5</span>
+          </a>
+          <ul class="sub-menu fadeInDown">
+            <li role="menuitem">
+              <a href="#">
+                <i class="fa fa-bug"></i>
+                <span>Pending tasks</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="#">
+                <i class="fa fa-calendar-o"></i>
+                <span>Meeting today at 3pm</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="#">
+                <i class="fa fa-download"></i>
+                <span>Download documents</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="#">
+                <i class="fa fa-plane"></i>
+                <span>Book flight</span>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li class="active">
+        <li class="">
           <a href="javascript:void(0);">
-            <i class="fa fa-user"></i> 
-            Thsi@v.com
+            <i class="fa fa-envelope"></i>
+            <span class="top-badge">6</span>
+          </a>
+          <ul class="sub-menu fadeInDown">
+            <li role="menuitem">
+              <a href="javascript:void(0);">
+                <i class="fa fa-circle-o"></i>
+                <span>Give me a call</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="javascript:void(0);">
+                <i class="fa fa-dot-circle-o"></i>
+                <span>Sales reports attached</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="javascript:void(0);">
+                <i class="fa fa-circle-o"></i>
+                <span>About your invoice</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="javascript:void(0);">
+                <i class="fa fa-circle-o"></i>
+                <span>Meeting today at 10pm</span>
+              </a>
+            </li>
+            <li role="menuitem">
+              <a href="javascript:void(0);">
+                <i class="fa fa-circle-o"></i>
+                <span>Out of office</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="javascript:void(0);">
+            <i class="fa fa-user"></i>
+            <!--Thsi@v.com-->
             {{_tokenService.currentUserData?.email}}
           </a>
           <ul class="sub-menu fadeInDown">

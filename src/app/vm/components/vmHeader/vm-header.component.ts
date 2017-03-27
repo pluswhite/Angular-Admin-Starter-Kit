@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
@@ -10,6 +10,8 @@ import { Angular2TokenService } from 'angular2-token';
   ]
 })
 export class VmHeaderComponent implements OnInit {
+
+  @ViewChild('headerMenu') public _headerMenu:ElementRef;
   constructor(
     private _tokenService: Angular2TokenService,
     public router: Router
@@ -44,5 +46,16 @@ export class VmHeaderComponent implements OnInit {
           this.router.navigate(['/site/login']);
         }
       );
+  }
+
+  ngAfterViewInit() {
+    let
+      $headerMenuItem = jQuery(this._headerMenu.nativeElement).find('li > a');
+    $headerMenuItem.on('focus', function(evt){
+      $(this).parent().addClass('active');
+    });
+    $headerMenuItem.on('blur', function () {
+      $(this).parent().removeClass('active');
+    });
   }
 }
