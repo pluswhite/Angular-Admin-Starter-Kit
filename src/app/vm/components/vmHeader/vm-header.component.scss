@@ -12,10 +12,12 @@
 }
 
 .logo {
-  margin-top: 10px;
+  // margin-top: 10px;
   a {
     display: block;
+    padding: 5px;
     height: 25px;
+    line-height: 25px;
     color: #fff;
     font-size: 1.5rem;
   }
@@ -31,18 +33,33 @@
     & > a {
       position: relative;
       display: block;
-      padding: 1rem .75rem;
+      padding: .5rem .75rem;
       color: #fff;
+      .fa {
+        font-size: 1.5rem;
+      }
       .top-badge {
         position: absolute;
-        top: 10px;
-        right: -2px;
+        top: 3px;
+        right: 0;
         display: block;
         padding: 2px 4px;
         font-size: 12px;
         line-height: 12px;
         background-color: $warning;
         border-radius: 3px;
+      }
+      .profile-info {
+        display: inline-block;
+        text-align: left;
+        font-size: .75rem;
+        span {
+          display: block;
+          &.profile-role {
+            font-size: .75rem;
+            color: #c0c0c0;
+          }
+        }
       }
     }
     .sub-menu {

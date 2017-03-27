@@ -82,8 +82,11 @@
         <li class="">
           <a href="javascript:void(0);">
             <i class="fa fa-user"></i>
+            <div class="profile-info">
+              <span class="profile-name">{{_tokenService.currentUserData?.email}}</span>
+              <span class="profile-role">System Admin</span>
+            </div>
             <!--Thsi@v.com-->
-            {{_tokenService.currentUserData?.email}}
           </a>
           <ul class="sub-menu fadeInDown">
             <li role="menuitem">
