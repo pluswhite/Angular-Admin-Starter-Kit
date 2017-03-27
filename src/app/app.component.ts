@@ -36,6 +36,20 @@ export class App {
       signInPath: 'auth/sign_in',
       signInRedirect: '/site/login',
       registerAccountPath: 'auth',
+      // userTypes: [
+      //   {
+      //     name: 'ROOT',
+      //     path: ''
+      //   },
+      //   {
+      //     name: "ADMIN",
+      //     path: ''
+      //   },
+      //   {
+      //     name: 'USER',
+      //     path: ''
+      //   }
+      // ]
     });
 
     themeConfig.config();

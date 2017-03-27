@@ -24,7 +24,8 @@ export class LoginService {
     this._tokenService
       .signIn({
         email: data.email,
-        password: data.password
+        password: data.password,
+        userType: 'ADMIN'
       })
       .subscribe(
         res => {

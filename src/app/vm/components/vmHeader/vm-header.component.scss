@@ -53,6 +53,7 @@
         display: inline-block;
         text-align: left;
         font-size: .75rem;
+        vertical-align: sub;
         span {
           display: block;
           &.profile-role {
@@ -77,6 +78,9 @@
         width: 100%;
         color: #757575;
         padding: .625rem 1rem;
+        &.unread {
+          color: #000;
+        }
         &:hover {
           background-color: #e3e3e3;
         }
@@ -86,7 +90,8 @@
         }
       }
     }
-    &.active {
+    &:focus,
+    &.open {
       .sub-menu {
         display: block;
       }

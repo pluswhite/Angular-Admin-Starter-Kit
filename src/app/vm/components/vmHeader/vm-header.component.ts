@@ -11,13 +11,62 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class VmHeaderComponent implements OnInit {
 
+  public noticeCenter = [];
+  public msgCenter = [];
+
   @ViewChild('headerMenu') public _headerMenu:ElementRef;
   constructor(
     private _tokenService: Angular2TokenService,
     public router: Router
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.noticeCenter = [
+      {
+        "icon": "fa-bug",
+        "msg": "Pending tasks"
+      },
+      {
+        "icon": "fa-calendar",
+        "msg": "Meeting today at 3pm"
+      },
+      {
+        "icon": "fa-download",
+        "msg": "Download documents"
+      },
+      {
+        "icon": "fa-plane",
+        "msg": "Book flight"
+      }
+    ];
+    this.msgCenter = [
+      {
+        "status": false,
+        "msg": "Give me a call",
+        "url": "#",
+      },
+      {
+        "status": true,
+        "msg": "Sales reports attached",
+        "url": "#",
+      },
+      {
+        "status": false,
+        "msg": "About your invoice",
+        "url": "#",
+      },
+      {
+        "status": true,
+        "msg": "Meeting today at 10pm",
+        "url": "#",
+      },
+      {
+        "status": false,
+        "msg": "Out of office",
+        "url": "#",
+      }
+    ];
+  }
 
   logout() {
     return this._tokenService
@@ -50,12 +99,14 @@ export class VmHeaderComponent implements OnInit {
 
   ngAfterViewInit() {
     let
-      $headerMenuItem = jQuery(this._headerMenu.nativeElement).find('li > a');
-    $headerMenuItem.on('focus', function(evt){
-      $(this).parent().addClass('active');
+      $headerMenuItem = jQuery(this._headerMenu.nativeElement).find('li.menu-item');
+    $headerMenuItem.on('click', function(evt){
+      evt.stopPropagation();
+      $headerMenuItem.removeClass('open');
+      $(this).addClass('open');
     });
-    $headerMenuItem.on('blur', function () {
-      $(this).parent().removeClass('active');
+    jQuery(document).click(function() {
+      $headerMenuItem.removeClass('open');
     });
   }
 }
