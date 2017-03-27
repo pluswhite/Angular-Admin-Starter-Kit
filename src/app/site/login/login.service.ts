@@ -12,7 +12,7 @@ export class LoginService {
   ) { }
 
   checkLogin() {
-    if (this._tokenService.currentUserData !== null) {
+    if (this._tokenService.currentUserData != null) {
       this.router.navigate(['/admin/dashboard']);
     }
   }
@@ -21,20 +21,12 @@ export class LoginService {
     var
       that = this;
 
-    this._tokenService
+    return this._tokenService
       .signIn({
         email: data.email,
         password: data.password,
         userType: 'ADMIN'
-      })
-      .subscribe(
-        res => {
-          that.router.navigate(['/admin/dashboard']);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+      });
   };
 
   doLogout() {

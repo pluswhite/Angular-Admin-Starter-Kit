@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonModule } from 'primeng/primeng';
+import {
+  InputTextModule,
+  ButtonModule,
+  MessagesModule
+} from 'primeng/primeng';
 
 import { routing } from './site.routing';
 import { NgaModule } from '../theme/nga.module';
@@ -22,6 +26,8 @@ import { RegisterService } from './register/register.service';
     FormsModule,
     NgaModule,
     ButtonModule,
+    InputTextModule,
+    MessagesModule,
     routing,
   ],
   exports: [],

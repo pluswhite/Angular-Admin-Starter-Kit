@@ -46,8 +46,6 @@ export class SettingsComponent implements OnInit {
   msgs: Message[] = [];
   errorMsgs: Message[] = [];
 
-  public profileInfo = {};
-
   constructor(
     private _titleService: Title,
     private fb: FormBuilder,
@@ -58,17 +56,6 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this._settingsService.getProfile()
-    .map(res => res.json())
-      .subscribe(
-        (res) => {
-          console.log(res.data);
-          this.profileInfo = res.data;
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
   }
 
   buildForm() {

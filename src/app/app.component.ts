@@ -32,7 +32,7 @@ export class App {
     private themeConfig: BaThemeConfig) {
 
     this._tokenService.init({
-      apiPath: 'http://localhost:3011',
+      apiPath: 'http://192.168.1.193:3011',
       signInPath: 'auth/sign_in',
       signInRedirect: '/site/login',
       registerAccountPath: 'auth',

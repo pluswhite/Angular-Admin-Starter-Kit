@@ -1,43 +1,34 @@
 <div class="auth-main">
-  <!--<div class="auth-block" *ngIf="{{_loginService}}">
-    <button (click)="logout()" class="btn btn-danger btn-sm">Logout</button>
-  </div>-->
-  <div class="auth-block">
-    <h1>Sign in to ng2-admin</h1>
-    <a routerLink="/site/register" class="auth-link">New to ng2-admin? Sign up!</a>
-
-    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
-      <div class="form-group row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-
-        <div class="col-sm-10">
-          <input [formControl]="email" type="email" class="form-control" id="inputEmail3" placeholder="Email">
+  <div class="auth-block ui-fluid">
+    <p-messages [value]="msgs"></p-messages>
+    <h1>Sign in to XTHSIA</h1>
+    <a routerLink="/site/register" class="auth-link">New to xthsia-admin? Sign up!</a>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="ui-grid ui-grid-responsive ui-grid-pad">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+          <label for="userEmail" class="label">Email: </label>
+        </div>
+        <div class="ui-grid-col-10" [ngClass]="{'has-error': (formErrors.email)}">
+          <input type="text" id="userEmail" placeholder="Email" [formControl]="email" pInputText>
+          <div class="help-block error-block">{{formErrors.email}}</div>
         </div>
       </div>
-      <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
-        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-
-        <div class="col-sm-10">
-          <input [formControl]="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+          <label for="userPassword" class="label">Password: </label>
+        </div>
+        <div class="ui-grid-col-10" [ngClass]="{'has-error': (formErrors.password)}">
+          <input type="password" id="userPassword" placeholder="Password" [formControl]="password" pInputText>
+          <div class="help-block error-block">{{formErrors.password}}</div>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-          <button [disabled]="!form.valid" pButton type="submit" label="Sign in" class="ui-button-success"></button>
-
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-10">
+          <button [disabled]="!form.valid" pButton type="submit" icon="fa-save" label="Sign in" class="ui-button-success"></button>
           <a routerLink="/site/login" class="forgot-pass">Forgot password?</a>
         </div>
       </div>
     </form>
-
-    <!--<div class="auth-sep"><span><span>or Sign in with one click</span></span></div>
-
-    <div class="al-share-auth">
-      <ul class="al-share clearfix">
-        <li><i class="socicon socicon-facebook" title="Share on Facebook"></i></li>
-        <li><i class="socicon socicon-twitter" title="Share on Twitter"></i></li>
-        <li><i class="socicon socicon-google" title="Share on Google Plus"></i></li>
-      </ul>
-    </div>-->
   </div>
 </div>
