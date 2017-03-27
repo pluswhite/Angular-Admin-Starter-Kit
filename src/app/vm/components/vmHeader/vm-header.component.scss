@@ -46,8 +46,16 @@
         padding: 2px 4px;
         font-size: 12px;
         line-height: 12px;
-        background-color: $warning;
         border-radius: 3px;
+        &.red {
+          background-color: $danger;
+        }
+        &.yellow {
+          background-color: $warning;
+        }
+        &.green {
+          background-color: $success;
+        }
       }
       .profile-info {
         display: inline-block;

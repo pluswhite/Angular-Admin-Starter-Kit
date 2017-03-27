@@ -12,15 +12,9 @@
         <li class="menu-item">
           <a href="javascript:void(0);">
             <i class="fa fa-bell"></i>
-            <span *ngIf="noticeCenter.length > 0" class="top-badge">{{noticeCenter.length}}</span>
+            <span *ngIf="noticeCenter.length > 0" class="top-badge yellow">{{noticeCenter.length}}</span>
           </a>
           <ul *ngIf="noticeCenter.length > 0" class="sub-menu fadeInDown">
-            <!--<li role="menuitem">
-              <a href="#">
-                <i class="fa fa-plane"></i>
-                <span>Book flight</span>
-              </a>
-            </li>-->
             <li *ngFor="let noticeItem of noticeCenter">
               <a href="#">
                 <i class="fa {{noticeItem.icon}}"></i>
@@ -32,15 +26,9 @@
         <li class="menu-item">
           <a href="javascript:void(0);">
             <i class="fa fa-envelope"></i>
-            <span *ngIf="msgCenter.length > 0" class="top-badge">{{msgCenter.length}}</span>
+            <span *ngIf="msgCenter.length > 0" class="top-badge green">{{msgCenter.length}}</span>
           </a>
           <ul *ngIf="msgCenter.length > 0" class="sub-menu fadeInDown">
-            <!--<li role="menuitem">
-              <a href="javascript:void(0);">
-                <i class="fa fa-circle-o"></i>
-                <span>Out of office</span>
-              </a>
-            </li>-->
             <li *ngFor="let msgItem of msgCenter" role="menuitem">
               <a href="{{msgItem.url}}" class="{{!msgItem.status ? 'unread' : '' }}">
                 <i class="fa {{msgItem.status ? 'fa-dot-circle-o' : 'fa-circle-o'}}"></i>
@@ -51,22 +39,21 @@
         </li>
         <li class="menu-item">
           <a href="javascript:void(0);">
-            <i class="fa fa-user"></i>
+            <i class="fa fa-user-circle-o"></i>
             <div class="profile-info">
-              <span class="profile-name">{{_tokenService.currentUserData?.email || 'user@v.com'}}</span>
+              <span class="profile-name">{{_tokenService.currentUserData?.email || 'user@v.com' | uppercase }}</span>
               <span class="profile-role">System Admin</span>
             </div>
-            <!--Thsi@v.com-->
           </a>
           <ul class="sub-menu fadeInDown">
             <li role="menuitem">
-              <a href="javascript:void(0);">
+              <a [routerLink]="['/admin/settings']">
                 <i class="fa fa-user"></i>
                 <span>Profile</span>
               </a>
             </li>
             <li role="menuitem">
-              <a href="javascript:void(0);">
+              <a [routerLink]="['/admin/settings']">
                 <i class="fa fa-key"></i>
                 <span>Password</span>
               </a>

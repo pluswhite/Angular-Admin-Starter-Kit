@@ -29,6 +29,10 @@ const routes: Routes = [
       {
         path: 'reports',
         loadChildren: 'app/admin/reports/reports.module#ReportsModule'
+      },
+      {
+        path: 'settings',
+        loadChildren: 'app/admin/settings/settings.module#SettingsModule'
       }
     ]
   },
