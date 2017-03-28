@@ -139,7 +139,7 @@ export class RegisterComponent implements OnInit {
             errMsgs.forEach((err, idx) => {
               this.msgs.push({
                 severity: 'error',
-                summary: 'Error ' + idx + ': ',
+                summary: 'Error ' + (idx + 1) + ': ',
                 detail: err
               });
             });

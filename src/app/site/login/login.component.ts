@@ -113,11 +113,22 @@ export class LoginComponent implements OnInit {
         },
         error => {
           console.log(error);
+          let
+            errMsgs: string[];
           this.msgs = [];
-          this.msgs.push({
-            severity: 'error',
-            summary: 'Login Error!',
-            detail: "Invalid login credentials. Please try again."
+          if (error.json().errors != null) {
+            if (error.json().errors.full_messages != null) {
+              errMsgs = error.json().errors.full_messages;
+            } else {
+              errMsgs = error.json().errors;
+            }
+          }
+          errMsgs.forEach((err, idx) => {
+            this.msgs.push({
+              severity: 'error',
+              summary: 'Error: ',
+              detail: err
+            });
           });
         }
       );
