@@ -47,10 +47,6 @@ export class MsgCenterComponent implements OnInit {
       {
         field: "date",
         header: "Date"
-      },
-      {
-        field: "msg",
-        header: "Message"
       }
     ];
 
@@ -70,6 +66,7 @@ export class MsgCenterComponent implements OnInit {
       .map(res => res.json())
       .subscribe(
         res => {
+          console.log(res.data);
           this.dataSource = res.data;
           this.blockedPanel = false;
         },

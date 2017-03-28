@@ -21,6 +21,7 @@
     resizableColumns="true"
     sortMode="multiple"
     reorderableColumns="true"
+    expandableRows="true"
     [globalFilter]="gb">
     <p-header>
       <div class="ui-g">
@@ -38,6 +39,17 @@
       </div>
     </p-header>
     <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column>
+    <p-column expander="true" [header]="Details" styleClass="col-icon" [style]="{'width':'35px'}"></p-column>
+    <template let-item="rowData" pTemplate="rowexpansion">
+      <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-12">
+            {{rowData |json}}
+            <p>{{item | json}}</p>
+          </div>
+        </div>
+      </div>
+    </template>
     <!--<p-column styleClass="col-button" header="Actions">
       <template let-item="rowData" pTemplate="body">
         <p-inputSwitch onLabel="On" offLabel="OFF" [(ngModel)]="item.status" styleClass="switch-wrap"></p-inputSwitch>
