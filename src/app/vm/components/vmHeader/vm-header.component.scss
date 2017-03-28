@@ -19,13 +19,14 @@
     height: 25px;
     line-height: 25px;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
 }
 
 .top-menu {
   list-style: none;
   margin: 0;
+  padding: 0;
   & > li {
     position: relative;
     display: inline-block;
@@ -33,10 +34,10 @@
     & > a {
       position: relative;
       display: block;
-      padding: .5rem .75rem;
+      padding: .5em .75em;
       color: #fff;
       .fa {
-        font-size: 1.5rem;
+        font-size: 1.5em;
       }
       .top-badge {
         position: absolute;
@@ -60,12 +61,12 @@
       .profile-info {
         display: inline-block;
         text-align: left;
-        font-size: .75rem;
+        font-size: .75em;
         vertical-align: sub;
         span {
           display: block;
           &.profile-role {
-            font-size: .75rem;
+            font-size: 0.75em;
             color: #c0c0c0;
           }
         }
