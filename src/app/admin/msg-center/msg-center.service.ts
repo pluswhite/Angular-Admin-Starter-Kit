@@ -10,7 +10,9 @@ export class MsgCenterService {
     private _http: Http
   ) { }
 
-  getMsgListData() {
-    return this._http.get(this.requestUrl);
+  getMsgListData(id) {
+    id = id || '';
+    console.log(id);
+    return this._http.get(this.requestUrl + '?id=' + id);
   }
 }

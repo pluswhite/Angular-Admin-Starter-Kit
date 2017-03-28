@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-
 
 import {Message, SelectItem } from 'primeng/primeng';
 
@@ -14,18 +14,20 @@ import { Msg } from './msg';
 
 export class MsgCenterComponent implements OnInit {
 
-  dataSource: Msg[];
-  users: Msg[];
-  cols: any[];
-  columnOptions: SelectItem[] = [];
+  private dataSource: Msg[];
+  private users: Msg[];
+  private cols: any[];
+  private columnOptions: SelectItem[] = [];
 
-  msgs: Message[] = [];
-  popMsgs: Message[] = [];
-  blockedPanel: boolean = false;
+  private msgs: Message[] = [];
+  private popMsgs: Message[] = [];
+  private blockedPanel: boolean = false;
+  private currentId;
 
   constructor(
     private _msgCenterService: MsgCenterService,
-    private _titleService: Title
+    private _titleService: Title,
+    private route: ActivatedRoute
   ) {
     this._titleService.setTitle('Message Center');
   }
@@ -56,13 +58,14 @@ export class MsgCenterComponent implements OnInit {
         value: val
       });
     });
-    this.getDataList();
+    this.currentId = +this.route.snapshot.params['id'];
+    this.getDataList(this.currentId);
   }
 
-  getDataList() {
+  getDataList(id) {
     this.blockedPanel = true;
     this._msgCenterService
-      .getMsgListData()
+      .getMsgListData(id)
       .map(res => res.json())
       .subscribe(
         res => {
