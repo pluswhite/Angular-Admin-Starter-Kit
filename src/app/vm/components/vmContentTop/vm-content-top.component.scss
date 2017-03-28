@@ -7,9 +7,16 @@
     color: #1b1d1f;
     margin: 0;
   }
+}
+
+.vm-breadcrumb {
+  border: none;
+  background: none;
+  text-align: right;
+}
+
+@media screen and (max-width: 40rem){
   .vm-breadcrumb {
-    border: none;
-    background: none;
-    text-align: right;
+    text-align: initial;
   }
 }

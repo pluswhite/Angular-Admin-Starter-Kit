@@ -25,7 +25,7 @@
 <div class="ui-g">
   <div class="ui-g-12">
     <p-panel header="Bar Graph">
-      <p-chart #lineChart type="bar" height="125" [options]="barOptions" [data]="barData"></p-chart>
+      <p-chart #lineChart type="bar" [options]="barOptions" [data]="barData"></p-chart>
     </p-panel>
   </div>
 </div>
@@ -33,12 +33,12 @@
 <div class="ui-g">
   <div class="ui-g-6">
     <p-panel header="Line Graph">
-      <p-chart type="line" height="200" [options]="lineOptions" [data]="lineData"></p-chart>
+      <p-chart type="line" height="250" [options]="lineOptions" [data]="lineData"></p-chart>
     </p-panel>
   </div>
   <div class="ui-g-6">
     <p-panel header="Doughnut Graph">
-      <p-chart type="doughnut" height="200" [options]="doughnutOptions" [data]="doughnutData"></p-chart>
+      <p-chart type="doughnut" height="250" [options]="doughnutOptions" [data]="doughnutData"></p-chart>
     </p-panel>
   </div>
 </div>

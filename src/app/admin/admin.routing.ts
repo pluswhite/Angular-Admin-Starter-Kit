@@ -33,6 +33,10 @@ const routes: Routes = [
       {
         path: 'settings',
         loadChildren: 'app/admin/settings/settings.module#SettingsModule'
+      },
+      {
+        path: 'msg-center',
+        loadChildren: 'app/admin/msg-center/msg-center.module#MsgCenterModule'
       }
     ]
   },

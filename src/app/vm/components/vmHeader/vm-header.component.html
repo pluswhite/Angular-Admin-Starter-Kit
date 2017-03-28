@@ -30,7 +30,7 @@
           </a>
           <ul *ngIf="msgCenter.length > 0" class="sub-menu fadeInDown">
             <li *ngFor="let msgItem of msgCenter" role="menuitem">
-              <a href="{{msgItem.url}}" class="{{!msgItem.status ? 'unread' : '' }}">
+              <a  [routerLink]="['/admin/msg-center', msgItem.id]" class="{{!msgItem.status ? 'unread' : '' }}">
                 <i class="fa {{msgItem.status ? 'fa-dot-circle-o' : 'fa-circle-o'}}"></i>
                 <span>{{msgItem.msg}}</span>
               </a>

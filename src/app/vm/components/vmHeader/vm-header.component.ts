@@ -41,29 +41,29 @@ export class VmHeaderComponent implements OnInit {
     ];
     this.msgCenter = [
       {
+        "id": 1,
         "status": false,
-        "msg": "Give me a call",
-        "url": "#",
+        "msg": "Give me a call"
       },
       {
+        "id": 2,
         "status": true,
-        "msg": "Sales reports attached",
-        "url": "#",
+        "msg": "Sales reports attached"
       },
       {
+        "id": 3,
         "status": false,
-        "msg": "About your invoice",
-        "url": "#",
+        "msg": "About your invoice"
       },
       {
+        "id": 4,
         "status": true,
-        "msg": "Meeting today at 10pm",
-        "url": "#",
+        "msg": "Meeting today at 10pm"
       },
       {
+        "id": 5,
         "status": false,
-        "msg": "Out of office",
-        "url": "#",
+        "msg": "Out of office"
       }
     ];
   }
