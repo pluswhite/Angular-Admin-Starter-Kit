@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
-import { RegisterService } from './register.service';
+import { SiteService } from '../site.service';
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
 
 @Component({
@@ -43,10 +43,10 @@ export class RegisterComponent implements OnInit {
   public msgs = [];
 
   constructor(
-    private _registerService : RegisterService,
+    private _siteService : SiteService,
     private _titleService: Title,
     private router: Router,
-    fb: FormBuilder
+    private fb: FormBuilder
   ) {
     this._titleService.setTitle('Register');
     this.form = fb.group({
@@ -110,7 +110,7 @@ export class RegisterComponent implements OnInit {
       // your code goes here
       console.log(values);
       // this.register(values);
-      this._registerService.doRegister(values)
+      this._siteService.doRegister(values)
         .map(res => res.json())
         .subscribe(
           (res) => {

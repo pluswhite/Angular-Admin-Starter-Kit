@@ -12,12 +12,11 @@ import { routing } from './site.routing';
 import { NgaModule } from '../theme/nga.module';
 
 import { SiteComponent } from './site.component';
+import { SiteService } from './site.service';
 
 import { LoginComponent } from './login';
-import { LoginService } from './login/login.service';
 
 import { RegisterComponent } from './register';
-import { RegisterService } from './register/register.service';
 
 @NgModule({
   imports: [
@@ -37,8 +36,7 @@ import { RegisterService } from './register/register.service';
     RegisterComponent
   ],
   providers: [
-    LoginService,
-    RegisterService
+    SiteService
   ],
 })
 export class SiteModule { }

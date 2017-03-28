@@ -4,12 +4,14 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
 @Injectable()
-export class LoginService {
+export class SiteService {
 
   constructor(
-    private _tokenService: Angular2TokenService,
-    public router: Router
-  ) { }
+    private router: Router,
+    private _tokenService: Angular2TokenService
+  ) {
+
+  }
 
   checkLogin() {
     if (this._tokenService.currentUserData != null) {
@@ -23,6 +25,15 @@ export class LoginService {
         email: data.email,
         password: data.password,
         userType: 'ADMIN'
+      });
+  };
+
+  doRegister(data) {
+    return this._tokenService
+      .registerAccount({
+        email: data.email,
+        password: data.password,
+        passwordConfirmation: data.repeatPassword
       });
   };
 }

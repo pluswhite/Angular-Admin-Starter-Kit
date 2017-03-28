@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
 
-import { LoginService } from './login.service';
+import { SiteService } from '../site.service';
 
 @Component({
   selector: 'login',
@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
   public msgs = [];
 
   constructor(
-    private _loginService: LoginService,
+    private _siteService: SiteService,
     private _titleService: Title,
     public router: Router,
-    public fb: FormBuilder
+    private fb: FormBuilder
   ) {
     this._titleService.setTitle('Login');
     this.form = fb.group({
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._loginService.checkLogin();
+    this._siteService.checkLogin();
   }
 
   onValueChanged(data?: any) {
@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
     let
       that = this;
     if (this.form.valid) {
-      this._loginService.doLogin(values)
+      this._siteService.doLogin(values)
         .map(res => res.json())
         .subscribe(
         res => {
@@ -122,9 +122,5 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-  }
-
-  logout () {
-    this._loginService.doLogout();
   }
 }
