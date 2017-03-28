@@ -18,9 +18,6 @@ export class LoginService {
   }
 
   doLogin(data) {
-    var
-      that = this;
-
     return this._tokenService
       .signIn({
         email: data.email,
@@ -28,18 +25,4 @@ export class LoginService {
         userType: 'ADMIN'
       });
   };
-
-  doLogout() {
-    return this._tokenService
-      .signOut()
-      .subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(['/site/login']);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  }
 }

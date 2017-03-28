@@ -14,21 +14,10 @@ export class RegisterService {
 
   doRegister (data) {
     return this._tokenService
-                .registerAccount({
-                  email: data.email,
-                  password: data.passwords.password,
-                  passwordConfirmation: data.passwords.repeatPassword
-                })
-                .subscribe(
-                  res => {
-                    console.log(res);
-                    this._registerData = <RegisterData>{};
-                    this.router.navigate(['/site/login']);
-                  },
-                  error => {
-                    console.log(error);
-                    this._registerData = <RegisterData>{};
-                  }
-                );
+      .registerAccount({
+        email: data.email,
+        password: data.password,
+        passwordConfirmation: data.repeatPassword
+      });
   };
 }

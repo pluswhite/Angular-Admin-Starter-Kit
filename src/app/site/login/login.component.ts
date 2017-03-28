@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
 
@@ -38,8 +39,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _loginService: LoginService,
+    private _titleService: Title,
     public router: Router,
-    public fb: FormBuilder) {
+    public fb: FormBuilder
+  ) {
+    this._titleService.setTitle('Login');
     this.form = fb.group({
       'email': [
         '',

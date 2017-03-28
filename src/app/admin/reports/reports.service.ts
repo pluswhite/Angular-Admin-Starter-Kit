@@ -16,7 +16,7 @@ export class ReportsService {
 
   getTotalReportListData(search?:any) {
     search = search || {};
-    console.log(search);
+    // console.log(search);
     // return this._tokenService.post(this.requestUrl, search);
     return this.http.get(this.requestUrl, search);
   }
