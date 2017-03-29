@@ -1,0 +1,53 @@
+@import '../../sass/conf/conf';
+
+$sidebar-scroll-width: 4px;
+$angle-left: "\f100";
+$angle-right: "\f101";
+
+.vm-sider {
+  position: fixed;
+  top: $top-height;
+  left: 0;
+  z-index: 1001;
+  display: block;
+  width: $sidebar-width;
+  min-height: 100%;
+  height: 100%;
+  padding: 1em 0 0 .5em;
+  // background-color: $sidebar;
+  border-right: 1px solid #c0c0c0;
+  background-color: #fff;
+}
+
+.navig-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    a {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      display: block;
+      padding: .5em 1em;
+      color: #757575;
+      i.fa {
+        margin-right: .5em;
+      }
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      list-style: none;
+      li {
+        a {
+          padding: .5em 1em .5em 2em;
+        }
+      }
+    }
+  }
+}

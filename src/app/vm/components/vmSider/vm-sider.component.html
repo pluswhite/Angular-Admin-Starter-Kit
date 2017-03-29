@@ -1,0 +1,70 @@
+<aside class="vm-sider">
+  <ul class="navig-menu">
+    <li>
+      <a [routerLink]="['/admin/dashboard']">
+        <i class="fa fa-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0);">
+        <i class="fa fa-users"></i>
+        <span>Users</span>
+      </a>
+      <ul class="sub-menu">
+        <li>
+          <a [routerLink]="['/admin/users']">
+            <i class="fa fa-user"></i>
+            <span>User List</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/admin/users/new']">
+            <i class="fa fa-plus"></i>
+            <span>New User</span>
+          </a>
+        </li>
+        <!--<li>
+          <a [routerLink]="['/admin/dashboard']">
+            <i class="fa fa-edit"></i>
+            <span>Edit User</span>
+          </a>
+        </li>-->
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void(0);">
+        <i class="fa fa-table"></i>
+        <span>Reports</span>
+      </a>
+      <ul class="sub-menu">
+        <li>
+          <a [routerLink]="['/admin/reports']">
+            <i class="fa fa-file"></i>
+            <span>Report List</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void(0);">
+        <i class="fa fa-files-o"></i>
+        <span>Pagess</span>
+      </a>
+      <ul class="sub-menu">
+        <li>
+          <a [routerLink]="['/site/login']">
+            <i class="fa fa-sign-in"></i>
+            <span>Login</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/site/register']">
+            <i class="fa fa-external-link"></i>
+            <span>Register</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</aside>

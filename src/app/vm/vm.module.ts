@@ -12,6 +12,7 @@ import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
 
 import { VmHeaderComponent } from './components/vmHeader';
 import { VmSidebarComponent } from './components/vmSidebar';
+import { VmSiderComponent } from './components/vmSider';
 import { VmContentTopComponent } from './components/vmContentTop';
 import { VmBackTopComponent } from './components/vmBackTop';
 import { VmMenuComponent } from './components/vmMenu';
@@ -24,6 +25,7 @@ import {
 const VM_COMPONENTS = [
   VmHeaderComponent,
   VmSidebarComponent,
+  VmSiderComponent,
   VmContentTopComponent,
   VmBackTopComponent,
   VmMenuComponent,
