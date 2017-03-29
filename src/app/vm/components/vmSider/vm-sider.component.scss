@@ -29,10 +29,13 @@ $angle-right: "\f101";
       z-index: 0;
       overflow: hidden;
       display: block;
-      padding: .5em 1em;
+      padding: .75em .75em .5em 1em;
       color: #757575;
       i.fa {
         margin-right: .5em;
+      }
+      i:last-child {
+        float: right;
       }
       &:hover {
         background-color: #e0e0e0;
@@ -48,6 +51,62 @@ $angle-right: "\f101";
           padding: .5em 1em .5em 2em;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 500px) {
+  .vm-sider {
+    width: 50px;
+    padding-left: 0;
+  }
+
+  .navig-menu {
+    li.menu-item {
+      position: relative;
+      background-color: #fff;
+      .sub-menu {
+        display: none;
+      }
+      & > a {
+        span {
+          display: none;
+        }
+        i:last-child {
+          display: none;
+        }
+      }
+      &:hover {
+        width: $sidebar-width;
+        .sub-menu {
+          position: absolute;
+          display: block;
+          left: 51px;
+          width: $sidebar-width - 50px;
+          border: 1px solid #ccc;
+          border-top: none;
+          border-radius: 0 0 3px 3px;
+          background-color: #fff;
+          a {
+            padding: .5em;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .vm-sider {
+    display: none;
+    width: 100%;
+    padding: .75em 1em;
+    height: inherit;
+    min-height: inherit;
+  }
+  .sider-active {
+    .vm-sider {
+      display: inherit;
     }
   }
 }
