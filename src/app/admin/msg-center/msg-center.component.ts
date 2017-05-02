@@ -14,7 +14,7 @@ import { Msg } from './msg';
 
 export class MsgCenterComponent implements OnInit {
 
-  private dataSource: Msg[];
+  public dataSource: Msg[];
   private users: Msg[];
   private cols: any[];
   private columnOptions: SelectItem[] = [];

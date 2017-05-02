@@ -16,7 +16,7 @@ export class VmHeaderComponent implements OnInit {
 
   @ViewChild('headerMenu') public _headerMenu:ElementRef;
   constructor(
-    private _tokenService: Angular2TokenService,
+    public _tokenService: Angular2TokenService,
     public router: Router
   ) { }
 

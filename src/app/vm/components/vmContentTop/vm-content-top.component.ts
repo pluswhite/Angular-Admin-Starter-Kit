@@ -16,15 +16,15 @@ import 'style-loader!./vm-content-top.component.scss';
 })
 export class VmContentTopComponent implements OnInit {
 
-  private breadcrumbItem: MenuItem[] = [];
+  public breadcrumbItem: MenuItem[] = [];
 
   public _urls: string[] = [];
   public _routerSubscription: any;
 
   constructor(
     private router: Router,
-    private _titleService: Title,
-    private _breadcrumbService: BreadcrumbService
+    public _titleService: Title,
+    public _breadcrumbService: BreadcrumbService
   ) { }
 
   ngOnInit() {
