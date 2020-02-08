@@ -1,76 +1,10 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { GlobalState } from './global.state';
-import { Angular2TokenService } from 'angular2-token';
-import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
-import { BaThemeConfig } from './theme/theme.config';
-import { layoutPaths } from './theme/theme.constants';
-
-import 'style-loader!./app.scss';
-import 'style-loader!./vm/initial.scss';
-import 'style-loader!../../node_modules/primeng/resources/themes/omega/theme.css';
-import 'style-loader!../../node_modules/primeng/resources/primeng.min.css';
-
-/*
- * App Component
- * Top Level Component
- */
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class App {
-
-  isMenuCollapsed: boolean = false;
-
-  constructor(
-    private _state: GlobalState,
-    private _tokenService: Angular2TokenService,
-    private _imageLoader: BaImageLoaderService,
-    private _spinner: BaThemeSpinner,
-    private viewContainerRef: ViewContainerRef,
-    private themeConfig: BaThemeConfig) {
-
-    this._tokenService.init({
-      apiPath: 'http://192.168.1.193:3011',
-      signInPath: 'auth/sign_in',
-      signInRedirect: '/site/login',
-      registerAccountPath: 'auth',
-      // userTypes: [
-      //   {
-      //     name: 'ROOT',
-      //     path: ''
-      //   },
-      //   {
-      //     name: "ADMIN",
-      //     path: ''
-      //   },
-      //   {
-      //     name: 'USER',
-      //     path: ''
-      //   }
-      // ]
-    });
-
-    themeConfig.config();
-
-    this._loadImages();
-
-    this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
-      this.isMenuCollapsed = isCollapsed;
-    });
-  }
-
-  public ngAfterViewInit(): void {
-    // hide spinner once all loaders are completed
-    BaThemePreloader.load().then((values) => {
-      this._spinner.hide();
-    });
-  }
-
-  private _loadImages(): void {
-    // register some loaders
-    BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
-  }
-
+export class AppComponent {
+  title = 'Angular-Admin-Starter-Kit';
 }

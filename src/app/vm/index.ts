@@ -1,1 +1,0 @@
-export { VmMenuService } from './services';
