@@ -27,7 +27,7 @@ export class RestDataSource {
   }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}/posts`);
+    return this.http.get<Post[]>(`${this.baseUrl}posts`);
   }
 
   savePost(post: Post): Observable<Post> {
@@ -55,7 +55,7 @@ export class RestDataSource {
 
   authenticate(email: string, password: string): Observable<boolean> {
     return this.http
-      .post<any>(`${this.baseUrl}/users`, {
+      .post<any>(`${this.baseUrl}users`, {
         email,
         password,
       })

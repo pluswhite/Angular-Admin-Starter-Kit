@@ -3,17 +3,17 @@ import { Post } from './post.model';
 import { RestDataSource } from './rest.datasource';
 
 @Injectable()
-export class ProductRepository {
+export class PostRepository {
   private posts: Post[] = [];
   private categories: string[] = [];
 
   constructor(private dataSource: RestDataSource) {
     dataSource.getPosts().subscribe(data => {
       this.posts = data;
-      this.categories = data
-        .map(p => p.category)
-        .filter((ctg, index, array) => array.indexOf(c) === index)
-        .sort();
+      // this.categories = data
+      //   .map(p => p.category)
+      //   .filter((ctg, index, array) => array.indexOf(ctg) === index)
+      //   .sort();
     });
   }
 
