@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
+import { Post } from './post.model';
+
 const PROTOCOL = 'http';
 const PORT = 3000;
 
@@ -22,6 +24,33 @@ export class RestDataSource {
         Authorization: `Bearer<${this.authToken}>`,
       }),
     };
+  }
+
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}/posts`);
+  }
+
+  savePost(post: Post): Observable<Post> {
+    return this.http.post<Post>(
+      `${this.baseUrl}posts`,
+      post,
+      this.getOptions(),
+    );
+  }
+
+  updatePost(post: Post): Observable<Post> {
+    return this.http.put<Post>(
+      `${this.baseUrl}posts/${post.id}`,
+      post,
+      this.getOptions(),
+    );
+  }
+
+  deletePost(id: number): Observable<Post> {
+    return this.http.delete<Post>(
+      `${this.baseUrl}posts/${id}`,
+      this.getOptions(),
+    );
   }
 
   authenticate(email: string, password: string): Observable<boolean> {
