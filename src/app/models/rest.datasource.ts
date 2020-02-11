@@ -18,7 +18,7 @@ export class RestDataSource {
   authToken: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/api/`;
   }
 
   private getOptions() {
@@ -60,7 +60,7 @@ export class RestDataSource {
 
   updatePost(post: Post): Observable<Post> {
     return this.http.put<Post>(
-      `${this.baseUrl}posts/${post.id}`,
+      `${this.baseUrl}posts/${post._id}`,
       post,
       this.getOptions(),
     );

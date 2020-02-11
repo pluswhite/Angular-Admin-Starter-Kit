@@ -2,14 +2,18 @@
  * Post model
  */
 
+import { User } from './user.model';
+import { Tag } from './tag.model';
+
 export class Post {
   constructor(
-    public id?: number,
+    public _id?: number,
     public title?: string,
     public avatar?: string,
-    public author?: string,
+    public author?: User,
     public content?: string,
     public category?: string,
-    public tags?: number[],
+    public tags?: Tag[],
+    public updatedAt?: Date,
   ) {}
 }

@@ -22,18 +22,18 @@ export class PostRepository {
   }
 
   getPost(id: number): Post {
-    return this.posts.find(p => p.id === id);
+    return this.posts.find(p => p._id === id);
   }
 
   savePost(post: Post) {
     // new post
-    if (post.id == null || post.id === 0) {
+    if (post._id == null || post._id === 0) {
       this.dataSource.savePost(post).subscribe(p => this.posts.push(p));
     } else {
       // edit existing post
       this.dataSource.updatePost(post).subscribe(p => {
         this.posts.splice(
-          this.posts.findIndex(pItem => pItem.id === post.id),
+          this.posts.findIndex(pItem => pItem._id === post._id),
           1,
           post,
         );
@@ -43,7 +43,7 @@ export class PostRepository {
 
   deletePost(id: number) {
     this.dataSource.deletePost(id).subscribe(p => {
-      this.posts.splice(this.posts.findIndex(pItem => pItem.id === id));
+      this.posts.splice(this.posts.findIndex(pItem => pItem._id === id));
     });
   }
 
