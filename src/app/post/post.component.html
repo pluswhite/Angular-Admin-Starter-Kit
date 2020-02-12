@@ -16,13 +16,14 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr *ngFor="let post of posts">
-            <td>{{ post._id }}</td>
+          <tr *ngFor="let post of posts; index as idx">
+            <th>{{ idx }}</th>
             <td>{{ post.title }}</td>
             <td>{{ post.author.name }}</td>
-            <td>{{ post.updatedAt }}</td>
+            <td>{{ post.updatedAt | date: 'yyyy/MM/dd hh:mm' }}</td>
             <td>
-              <button class="btn btn-sm btn-primary m-1">Edit</button>
+              <button class="btn-sm btn-outline-success m-1">View</button>
+              <button class="btn btn-sm btn-outline-primary m-1">Edit</button>
             </td>
           </tr>
         </tbody>
