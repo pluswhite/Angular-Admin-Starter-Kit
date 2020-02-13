@@ -11,13 +11,20 @@ import { PostRepository } from '../../models/post.repository';
 })
 export class PostDetailComponent implements OnInit {
   editing = false;
-  post: Post[] = [];
+  post: Post = new Post();
 
   constructor(
     private repository: PostRepository,
-    router: Router,
+    private router: Router,
     activeRoute: ActivatedRoute,
-  ) {}
+  ) {
+    this.post = repository.getPost(Number(activeRoute.snapshot.params.id));
+  }
 
   ngOnInit(): void {}
+
+  save(form: NgForm) {
+    this.repository.savePost(this.post);
+    this.router.navigateByUrl('/posts');
+  }
 }

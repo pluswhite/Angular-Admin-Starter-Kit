@@ -22,7 +22,11 @@
             <td>{{ post.author.name }}</td>
             <td>{{ post.updatedAt | date: 'yyyy/MM/dd hh:mm' }}</td>
             <td>
-              <button class="btn-sm btn-outline-success m-1">View</button>
+              <a
+                routerLink="/posts/{{ post._id }}"
+                class="btn btn-sm btn-outline-success m-1"
+                >View</a
+              >
               <button class="btn btn-sm btn-outline-primary m-1">Edit</button>
             </td>
           </tr>
@@ -31,3 +35,5 @@
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>
