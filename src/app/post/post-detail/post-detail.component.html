@@ -1,1 +1,8 @@
-<p>post-detail works!</p>
+<h2>post-detail works!</h2>
+<div *ngIf="post">
+  <p>{{ post._id }}</p>
+  <p>{{ post.title }}</p>
+  <p>{{ post.author.name }}</p>
+  <p>{{ post.updatedAt | date: 'yyyy/MM/dd hh:mm' }}</p>
+  <p>{{ post.content }}</p>
+</div>

@@ -21,13 +21,13 @@ export class PostRepository {
     return this.posts;
   }
 
-  getPost(id: number): Post {
+  getPost(id: string): Post {
     return this.posts.find(p => p._id === id);
   }
 
   savePost(post: Post) {
     // new post
-    if (post._id == null || post._id === 0) {
+    if (post._id == null || post._id === '') {
       this.dataSource.savePost(post).subscribe(p => this.posts.push(p));
     } else {
       // edit existing post
@@ -41,7 +41,7 @@ export class PostRepository {
     }
   }
 
-  deletePost(id: number) {
+  deletePost(id: string) {
     this.dataSource.deletePost(id).subscribe(p => {
       this.posts.splice(this.posts.findIndex(pItem => pItem._id === id));
     });

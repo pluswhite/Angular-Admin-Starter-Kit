@@ -17,7 +17,7 @@ export class PostComponent implements OnInit {
     return this.repository.getPosts();
   }
 
-  deletePost(id: number) {
+  deletePost(id: string) {
     this.repository.deletePost(id);
   }
 }

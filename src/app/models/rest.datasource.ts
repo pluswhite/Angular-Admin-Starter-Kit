@@ -66,7 +66,7 @@ export class RestDataSource {
     );
   }
 
-  deletePost(id: number): Observable<Post> {
+  deletePost(id: string): Observable<Post> {
     return this.http.delete<Post>(
       `${this.baseUrl}posts/${id}`,
       this.getOptions(),

@@ -7,7 +7,7 @@ import { Tag } from './tag.model';
 
 export class Post {
   constructor(
-    public _id?: number,
+    public _id?: string,
     public title?: string,
     public avatar?: string,
     public author?: User,
