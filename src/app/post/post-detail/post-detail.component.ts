@@ -19,8 +19,9 @@ export class PostDetailComponent implements OnInit {
     activeRoute: ActivatedRoute,
   ) {
     console.log(activeRoute.snapshot.params.id);
-    this.post = repository.getPost(activeRoute.snapshot.params.id);
-    console.log(this.post);
+    this.repository
+      .getPost(activeRoute.snapshot.params.id)
+      .subscribe(data => (this.post = data));
   }
 
   ngOnInit(): void {}

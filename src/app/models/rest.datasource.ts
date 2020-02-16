@@ -50,6 +50,12 @@ export class RestDataSource {
       .pipe(catchError(this.handleError));
   }
 
+  getPostById(id: string): Observable<Post> {
+    return this.http
+      .get<Post>(`${this.baseUrl}posts/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
   savePost(post: Post): Observable<Post> {
     return this.http.post<Post>(
       `${this.baseUrl}posts`,

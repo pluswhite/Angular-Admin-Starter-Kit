@@ -1,8 +1,16 @@
-<h2>post-detail works!</h2>
-<div *ngIf="post">
-  <p>{{ post._id }}</p>
-  <p>{{ post.title }}</p>
-  <p>{{ post.author.name }}</p>
-  <p>{{ post.updatedAt | date: 'yyyy/MM/dd hh:mm' }}</p>
-  <p>{{ post.content }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 pt-5">
+      <div *ngIf="post">
+        <!-- <p>{{ post._id }}</!-->
+        <h1>{{ post.title }}</h1>
+        <p>
+          {{ post.author }}
+          {{ post.updatedAt | date: 'yyyy/MM/dd hh:mm' }}
+        </p>
+        <hr />
+        <p>{{ post.content }}</p>
+      </div>
+    </div>
+  </div>
 </div>

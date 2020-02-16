@@ -33,7 +33,7 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr *ngFor="let post of getPosts(); index as idx">
+          <tr *ngFor="let post of posts; index as idx">
             <th>{{ idx }}</th>
             <td>{{ post.title }}</td>
             <td>{{ post.author.name }}</td>

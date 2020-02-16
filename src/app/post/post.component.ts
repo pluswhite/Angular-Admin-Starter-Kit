@@ -9,13 +9,12 @@ import { PostRepository } from '../models/post.repository';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-  constructor(private repository: PostRepository) {}
+  public posts: Post[];
+  constructor(private repository: PostRepository) {
+    this.repository.getPosts().subscribe(data => (this.posts = data));
+  }
 
   ngOnInit(): void {}
-
-  getPosts(): Post[] {
-    return this.repository.getPosts();
-  }
 
   deletePost(id: string) {
     this.repository.deletePost(id);

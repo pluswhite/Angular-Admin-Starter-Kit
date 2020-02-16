@@ -1,28 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Post } from './post.model';
 import { RestDataSource } from './rest.datasource';
 
 @Injectable()
 export class PostRepository {
-  private posts: Post[] = [];
+  posts: Post[] = [];
   private categories: string[] = [];
 
-  constructor(private dataSource: RestDataSource) {
-    dataSource.getPosts().subscribe(data => {
-      this.posts = data;
-      // this.categories = data
-      //   .map(p => p.category)
-      //   .filter((ctg, index, array) => array.indexOf(ctg) === index)
-      //   .sort();
-    });
+  constructor(private dataSource: RestDataSource) {}
+
+  getPosts(): Observable<Post[]> {
+    return this.dataSource.getPosts();
   }
 
-  getPosts(): Post[] {
-    return this.posts;
-  }
-
-  getPost(id: string): Post {
-    return this.posts.find(p => p._id === id);
+  getPost(id: string): Observable<Post> {
+    // return this.posts.find(p => p._id === id);
+    return this.dataSource.getPostById(id);
   }
 
   savePost(post: Post) {
