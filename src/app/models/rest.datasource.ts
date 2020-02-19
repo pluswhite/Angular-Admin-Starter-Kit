@@ -81,14 +81,14 @@ export class RestDataSource {
 
   authenticate(email: string, password: string): Observable<boolean> {
     return this.http
-      .post<any>(`${this.baseUrl}users`, {
+      .post<any>(`${this.baseUrl}users/login`, {
         email,
         password,
       })
       .pipe(
         map(response => {
-          this.authToken = response.success ? response.token : null;
-          return response.success;
+          this.authToken = response.token ? response.token : null;
+          return response.token;
         }),
       );
   }

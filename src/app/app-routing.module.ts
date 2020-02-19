@@ -14,6 +14,10 @@ const routes: Routes = [
     component: PostDetailComponent,
   },
   {
+    path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule',
+  },
+  {
     path: '**',
     redirectTo: '/posts',
   },
