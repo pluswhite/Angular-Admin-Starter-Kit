@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'posts/:mode/:id',
         component: PostEditComponent,
-      }
+      },
       {
         path: 'categories',
         component: CategoriesComponent,

@@ -7,7 +7,7 @@ import { AuthService } from './services/auth.service';
 
 import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
-import { PostModule } from './post/post.module';
+import { BlogModule } from './blog/blog.module';
 import { ModelModule } from './models/model.module';
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +15,7 @@ import { ModelModule } from './models/model.module';
     BrowserModule,
     AppRoutingModule,
     AdminModule,
-    PostModule,
+    BlogModule,
     ModelModule,
   ],
   providers: [AuthService],
