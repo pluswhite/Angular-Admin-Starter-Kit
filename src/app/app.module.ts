@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
 import { PostModule } from './post/post.module';
 import { ModelModule } from './models/model.module';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
