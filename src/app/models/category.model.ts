@@ -4,8 +4,9 @@
 
 export class Category {
   constructor(
-    public id?: string,
+    public _id?: string,
     public name?: string,
     public descriptions?: string,
+    public updatedAt?: Date,
   ) {}
 }

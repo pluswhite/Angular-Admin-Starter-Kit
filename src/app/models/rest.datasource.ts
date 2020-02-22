@@ -8,6 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { Post } from './post.model';
+import { Category } from './category.model';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
@@ -42,6 +43,20 @@ export class RestDataSource {
     }
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
+  }
+
+  authenticate(email: string, password: string): Observable<boolean> {
+    return this.http
+      .post<any>(`${this.baseUrl}users/login`, {
+        email,
+        password,
+      })
+      .pipe(
+        map(response => {
+          this.authToken = response.token ? response.token : null;
+          return response.token;
+        }),
+      );
   }
 
   getPosts(): Observable<Post[]> {
@@ -79,17 +94,9 @@ export class RestDataSource {
     );
   }
 
-  authenticate(email: string, password: string): Observable<boolean> {
+  getCategories(): Observable<Category[]> {
     return this.http
-      .post<any>(`${this.baseUrl}users/login`, {
-        email,
-        password,
-      })
-      .pipe(
-        map(response => {
-          this.authToken = response.token ? response.token : null;
-          return response.token;
-        }),
-      );
+      .get<Category[]>(`${this.baseUrl}categories`)
+      .pipe(catchError(this.handleError));
   }
 }

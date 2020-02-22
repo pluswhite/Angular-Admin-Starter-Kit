@@ -4,7 +4,7 @@ import { Post } from '../models/post.model';
 import { PostRepository } from '../models/post.repository';
 
 @Component({
-  selector: 'app-post',
+  selector: 'app-blog',
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
 })
