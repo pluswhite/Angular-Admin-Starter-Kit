@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Post } from '../models/post.model';
 import { PostRepository } from '../models/post.repository';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-blog',
@@ -10,7 +11,7 @@ import { PostRepository } from '../models/post.repository';
 })
 export class BlogComponent implements OnInit {
   public posts: Post[];
-  constructor(private repository: PostRepository) {
+  constructor(private repository: PostRepository, public auth: AuthService) {
     this.repository.getPosts().subscribe(data => (this.posts = data));
   }
 
