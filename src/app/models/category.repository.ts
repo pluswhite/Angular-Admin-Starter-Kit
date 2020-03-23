@@ -12,4 +12,8 @@ export class CategoryRepository {
   getCategories(): Observable<Category[]> {
     return this.dataSource.getCategories();
   }
+
+  getCategory(id: string): Observable<Category> {
+    return this.dataSource.getCategoryById(id);
+  }
 }

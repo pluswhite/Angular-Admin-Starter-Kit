@@ -99,4 +99,10 @@ export class RestDataSource {
       .get<Category[]>(`${this.baseUrl}categories`)
       .pipe(catchError(this.handleError));
   }
+
+  getCategoryById(id: string): Observable<Category> {
+    return this.http
+      .get<Category>(`${this.baseUrl}categories/${id}`)
+      .pipe(catchError(this.handleError));
+  }
 }

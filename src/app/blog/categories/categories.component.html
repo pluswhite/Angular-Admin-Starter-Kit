@@ -5,11 +5,7 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="/admin/main/categorys"
-          routerLinkActive="active"
-        >
+        <a class="nav-link" routerLink="/admin/main" routerLinkActive="active">
           Admin
         </a>
       </li>
@@ -27,7 +23,7 @@
     <div class="col col-sm-3 p-5">
       <button
         class="btn btn-outline-info btn-block"
-        routerLink="/categorys"
+        routerLink="/posts"
         routerLinkActive="active"
       >
         Posts
@@ -42,7 +38,7 @@
     </div>
     <div class="col col-sm-9 p-5">
       <h3>Posts</h3>
-      <table class="table table-bordered table-sm table-striped">
+      <table class="table table-sm table-striped">
         <thead>
           <th>ID</th>
           <th>Title</th>
@@ -56,7 +52,7 @@
             <td>{{ category.updatedAt | date: 'yyyy/MM/dd hh:mm' }}</td>
             <td>
               <a
-                routerLink="/catagories/{{ category._id }}"
+                routerLink="/categories/{{ category._id }}"
                 class="btn btn-sm btn-outline-success m-1"
                 >View</a
               >

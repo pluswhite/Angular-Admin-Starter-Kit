@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 pt-5">
+      <div *ngIf="category">
+        <p>{{ category._id }}</p>
+        <h1>{{ category.name }}</h1>
+        <p>
+          {{ category.updatedAt | date: 'yyyy/MM/dd hh:mm' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
