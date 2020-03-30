@@ -5,23 +5,30 @@ import { BlogComponent } from './blog/blog.component';
 import { PostDetailComponent } from './blog/post-detail/post-detail.component';
 import { CategoriesComponent } from './blog/categories/categories.component';
 import { CategoryDetailComponent } from './blog/category-detail/category-detail.component';
+import { BlogListComponent } from './blog/blog-list/blog-list.component';
 
 const routes: Routes = [
   {
-    path: 'posts',
+    path: 's',
     component: BlogComponent,
-  },
-  {
-    path: 'posts/:id',
-    component: PostDetailComponent,
-  },
-  {
-    path: 'categories',
-    component: CategoriesComponent,
-  },
-  {
-    path: 'categories/:id',
-    component: CategoryDetailComponent,
+    children: [
+      {
+        path: 'posts/:id',
+        component: PostDetailComponent,
+      },
+      {
+        path: 'categories/id',
+        component: CategoryDetailComponent,
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+      },
+      {
+        path: '**',
+        component: BlogListComponent,
+      },
+    ],
   },
   {
     path: 'admin',
@@ -29,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/posts',
+    redirectTo: '/s',
   },
 ];
 

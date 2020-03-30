@@ -5,12 +5,16 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/posts" routerLinkActive="active">
+        <a class="nav-link" routerLink="/s/posts" routerLinkActive="active">
           Post
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/categories" routerLinkActive="active">
+        <a
+          class="nav-link"
+          routerLink="/s/categories"
+          routerLinkActive="active"
+        >
           Categories
         </a>
       </li>
@@ -32,34 +36,4 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col col-sm-12 p-5">
-      <h3>Posts</h3>
-      <table class="table table-sm table-striped">
-        <thead>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Date</th>
-          <th>Actions</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let post of posts; index as idx">
-            <th>{{ idx }}</th>
-            <td>{{ post.title }}</td>
-            <td>{{ post.author.name }}</td>
-            <td>{{ post.updatedAt | date: 'yyyy/MM/dd hh:mm' }}</td>
-            <td>
-              <a
-                routerLink="/posts/{{ post._id }}"
-                class="btn btn-sm btn-outline-success m-1"
-                >View</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>
