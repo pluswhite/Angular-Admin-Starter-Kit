@@ -21,7 +21,6 @@ export class AuthComponent implements OnInit {
   authenticate(form: NgForm) {
     if (form.valid) {
       this.auth.authenticate(this.email, this.password).subscribe(res => {
-        console.log(res);
         if (res) {
           this.router.navigateByUrl('/admin/main');
         } else {
