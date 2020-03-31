@@ -5,11 +5,11 @@ import { AuthService } from '../../services/auth.service';
 import { PostRepository } from '../../models/post.repository';
 
 @Component({
-  selector: 'app-blog-list',
-  templateUrl: './blog-list.component.html',
-  styleUrls: ['./blog-list.component.scss'],
+  selector: 'app-post-list',
+  templateUrl: './posts.component.html',
+  styleUrls: ['./posts.component.scss'],
 })
-export class BlogListComponent implements OnInit {
+export class PostsComponent implements OnInit {
   public posts: Post[];
   constructor(private repository: PostRepository, public auth: AuthService) {
     this.repository.getPosts().subscribe(data => (this.posts = data));

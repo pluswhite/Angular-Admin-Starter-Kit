@@ -5,7 +5,7 @@ import { BlogComponent } from './blog/blog.component';
 import { PostDetailComponent } from './blog/post-detail/post-detail.component';
 import { CategoriesComponent } from './blog/categories/categories.component';
 import { CategoryDetailComponent } from './blog/category-detail/category-detail.component';
-import { BlogListComponent } from './blog/blog-list/blog-list.component';
+import { PostsComponent } from './blog/posts/posts.component';
 
 const routes: Routes = [
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        component: BlogListComponent,
+        component: PostsComponent,
       },
     ],
   },
