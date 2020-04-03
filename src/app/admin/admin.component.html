@@ -23,7 +23,16 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="logout()">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/admin/main/users"
+        >
+          Users
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" (click)="logout()">
           Logout
         </a>
       </li>
@@ -31,6 +40,6 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid pl-5 pr-5 pt-2">
   <router-outlet></router-outlet>
 </div>

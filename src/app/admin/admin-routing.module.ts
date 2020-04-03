@@ -7,6 +7,7 @@ import { AdminComponent } from './admin.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'categories',
         component: CategoriesComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
       },
       {
         path: '**',

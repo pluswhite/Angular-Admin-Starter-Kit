@@ -17,7 +17,7 @@ const routes: Routes = [
         component: PostDetailComponent,
       },
       {
-        path: 'categories/id',
+        path: 'categories/:id',
         component: CategoryDetailComponent,
       },
       {
